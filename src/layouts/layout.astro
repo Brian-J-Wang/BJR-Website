@@ -1,0 +1,33 @@
+---
+import styles from "./layout.module.css"
+---
+<body>
+    <head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>BJR Ophthalmology</title>
+	</head>
+    <header>
+        <div class={styles.headerTop}>
+            <div class={styles.headerLeft}>
+                <img src="/favicon.svg" class={styles.headerLogo}>
+                <div>
+                    <h1 class={styles.title}>BingJing Roberts</h1>
+                    <small class={styles.subtitle}>Ophthalmology</small>
+                </div>
+            </div>
+        </div>
+        <div class={styles.headerBottom}>
+
+        </div>
+    </header>
+    <main>
+        <slot />
+    </main>
+    <footer>
+
+    </footer>
+</body>
