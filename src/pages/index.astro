@@ -1,6 +1,24 @@
 ---
+	import styles from "../styles/index.module.css"
 	import Layout from "../layouts/layout.astro"
 ---
 <Layout>
-	<img src="/brooklynOffice.png" alt="">
+	<div class={styles.hero}>
+		<div class={styles.heroContent}>
+			<div class={styles.textBox}>
+				<h2 class={styles.statement}>
+					Proudly Serving <br> Lower Manhatten <br> and Brooklyn
+				</h2>
+				<small class={styles.subStatement}>
+					Expert Doctors. Professional Staff. Satisfied Patients.
+				</small>
+				<button class={styles.appointmentButton}>
+					Book an Eye Exam Today
+				</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		
+	</div>
 </Layout>

@@ -1,0 +1,76 @@
+:root {
+    --box-shadow-standard: 0px 0px 4px rgba(29, 29, 29, 0.5);
+    --color-primary: #406e9d;
+    --color-secondary: whitesmoke;
+    --color-tertiary: #222933;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+button {
+    font-family: "HeadlandOne-Regular";
+    border: none;
+    box-shadow: var(--box-shadow-standard);
+}
+
+.officeImage {
+    width: 100vw;
+}
+
+.hero {
+    background-image: url("/brooklynOffice.png");
+    background-size: 100vw;
+    padding: 160px 0px 0px 0px;
+    background-repeat: no-repeat;
+}
+
+.heroContent {
+    display: flex;
+    flex-direction: column;
+    padding: 120px;
+
+    .textBox {
+        display: flex;
+        flex-direction: column;
+        border-radius: 4px;
+        box-shadow: var(--box-shadow-standard);
+        gap: 16px;
+        max-width: 522px;
+        padding: 24px 80px;
+        margin: 0px 0px 0px auto;
+        background-color: white;
+        align-items: center;
+        text-align: center;
+    }
+
+    .statement {
+        margin: 0px;
+        font-size: 36px;
+    }
+
+    .subStatement {
+        font-size: 20px;
+    }
+
+    .appointmentButton {
+        height: 48px;
+        padding: 12px 20px;
+        font-family: "Instrument Sans";
+        font-size: 20px;
+        width: fit-content;
+        background-color: #406e9d;
+        color: white;
+        border-radius: 2px;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+    }
+
+    hr {
+        border-top: 1px solid rgba(29, 29, 29, 0.2);
+        border-bottom: none;
+        width: calc(100% + 100px);
+        transform: translateX(-50px);
+    }
+}

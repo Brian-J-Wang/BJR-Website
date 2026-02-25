@@ -1,5 +1,9 @@
 ---
 import styles from "./layout.module.css"
+import Header from "../components/header/header"
+
+const currentPath = Astro.url.pathname;
+console.log(currentPath)
 ---
 <body>
     <head>
@@ -10,24 +14,55 @@ import styles from "./layout.module.css"
 		<meta name="generator" content={Astro.generator} />
 		<title>BJR Ophthalmology</title>
 	</head>
-    <header>
-        <div class={styles.headerTop}>
-            <div class={styles.headerLeft}>
-                <img src="/favicon.svg" class={styles.headerLogo}>
-                <div>
-                    <h1 class={styles.title}>BingJing Roberts</h1>
-                    <small class={styles.subtitle}>Ophthalmology</small>
-                </div>
-            </div>
-        </div>
-        <div class={styles.headerBottom}>
-
-        </div>
-    </header>
+    <Header client:load></Header>
     <main>
         <slot />
     </main>
-    <footer>
-
+    <footer class={styles.footer}>
+        <div class={styles.content}>
+            <div class={styles.nav}>
+                <nav aria-label="Footer Navigation">
+                    <ul>
+                        <li>
+                            <a href="">Our Team</a>
+                        </li>
+                        <li>
+                            <a href="">Eye Surgeries</a>
+                        </li>
+                        <li>
+                            <a href="">Eye Exams</a>
+                        </li>
+                        <li>
+                            <a href="">Resources</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class={styles.locations}>
+                <h3 class={styles.title}>Locations</h3>
+                <div class={styles.content}>
+                    <div class={styles.location}>
+                        <h4>
+                            Manhatten
+                        <p>185 Canal St, #306</p>
+                        <p>Manhatten, NY 10013</p>
+                        <p>(212)-219-7786</p>
+                    </div>
+                    <div class={styles.location}>
+                        <h4>
+                            Brooklyn
+                        </h4>
+                        <p>749 61st St. #303</p>
+                        <p>Brooklyn, NY 11220</p>
+                        <p>(718)-492-3500</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <small>
+                Designed and Built By Brian Wang
+            </small>
+        </div>
     </footer>
 </body>

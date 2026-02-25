@@ -1,0 +1,91 @@
+.headerTop {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+    width: 100vw;
+    padding: 0px 80px;
+    color: white;
+    text-shadow: -1px 1px 2px rgba(29, 29, 29, 0.3);
+    background-color: rgba(45, 96, 148, 0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
+    z-index: 2;
+}
+
+.headerLeft {
+    font-family: "Headland One";
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    height: min-content;
+}
+
+.headerLogo {
+    height: 84px;
+    width: 84px;
+}
+
+.title {
+    font-weight: lighter;
+    font-size: 36px;
+    margin: 0px;
+}
+
+.subtitle {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+nav {
+    width: fit-content;
+    display: flex;
+    gap: 32px;
+    font-size: 18px;
+
+    a {
+        color: white;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        text-shadow: -1px 1px 2px rgba(29, 29, 29, 0.3);
+        opacity: 50%;
+    }
+
+    a:hover {
+        opacity: 100%;
+    }
+
+    .currentPage {
+        opacity: 100%;
+    }
+}
+
+.headerRibbon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0px 80px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.3);
+    color: var(--color-tertiary);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.langSelect {
+}
+
+.infoRibbon {
+    display: flex;
+    gap: 16px;
+}
+
+.fontBold {
+    font-weight: 600;
+}

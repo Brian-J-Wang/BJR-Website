@@ -1,55 +1,87 @@
 @font-face {
-    font-family: "HeadlandOne-Regular";
+    font-family: "Headland One";
     src: url("/fonts/HeadlandOne-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("/fonts/InstrumentSans.ttf") format("truetype");
+}
+
 body {
     padding: 0px;
     margin: 0px;
-    font-family: "HeadlandOne-Regular";
+    font-family: "Instrument Sans";
 }
 
 header {
-    position: absolute;
+    position: fixed;
 }
 
-.headerTop {
-    background-color: rgba(45, 96, 148, 0.75);
-    height: 120px;
-    width: 100vw;
-    color: white;
-    text-shadow: -1px 1px 2px rgba(29, 29, 29, 0.3);
+main {
+    color: #292929;
+}
+
+.footer {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 80px;
+    background-image:
+        linear-gradient(
+            65deg,
+            rgba(64, 110, 157, 0.7) 0%,
+            rgba(34, 41, 51, 1) 30%,
+            rgba(34, 41, 51, 1) 100%
+        ),
+        url(brooklynOffice.png);
+    background-color: #292929;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    color: whitesmoke;
+}
 
-    .headerLeft {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
-        height: min-content;
+.footer > .content {
+    display: flex;
+    justify-content: end;
+    gap: 36px;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: end;
+    list-style: none;
+    margin: 0px;
+}
+
+.nav li {
+    font-size: 20px;
+}
+
+.locations > .title {
+    font-size: 20px;
+    margin: 0px 0px 12px 0px;
+}
+
+.locations > .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.location {
+    h4 {
+        margin: 0px 0px 2px 0px;
+        font-weight: 500;
     }
 
-    .headerLogo {
-        height: 96px;
-        width: 96px;
-    }
-
-    .title {
-        font-weight: normal;
-        font-size: 36px;
+    p {
+        opacity: 85%;
         margin: 0px;
     }
-
-    .subtitle {
-        font-size: 24px;
-    }
-}
-
-.headerBottom {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    height: 40px;
 }

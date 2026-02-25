@@ -1,0 +1,21 @@
+.container {
+    font-family: "Headland One";
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 84px;
+    width: 84px;
+}
+
+.title {
+    font-weight: 100;
+    font-size: 36px;
+    margin: 0px;
+}
+
+.subtitle {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
