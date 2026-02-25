@@ -2,6 +2,7 @@
     font-family: "Headland One";
     display: flex;
     align-items: center;
+    gap: 16px;
 }
 
 .logo {

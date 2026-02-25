@@ -1,0 +1,32 @@
+:root {
+    --box-shadow-standard: 0px 0px 4px rgba(29, 29, 29, 0.5);
+    --color-primary: #406e9d;
+    --color-secondary: whitesmoke;
+    --color-tertiary: #222933;
+}
+
+@font-face {
+    font-family: "Headland One";
+    src: url("/fonts/HeadlandOne-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("/fonts/InstrumentSans.ttf") format("truetype");
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Instrument Sans";
+}
+
+header {
+    position: fixed;
+}
+
+main {
+    color: var(--color-tertiary);
+}

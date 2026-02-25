@@ -5,13 +5,6 @@ const Header: React.FC<{}> = () => {
     return (
         <header>
             <div className={styles.headerTop}>
-                <div className={styles.headerLeft}>
-                    <img src="/favicon.svg" className={styles.headerLogo} />
-                    <div>
-                        <h1 className={styles.title}>BingJing Roberts</h1>
-                        <small className={styles.subtitle}>Ophthalmology</small>
-                    </div>
-                </div>
                 <Logo
                     containerStyle={""}
                     logoStyle={""}

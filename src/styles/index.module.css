@@ -1,9 +1,4 @@
-:root {
-    --box-shadow-standard: 0px 0px 4px rgba(29, 29, 29, 0.5);
-    --color-primary: #406e9d;
-    --color-secondary: whitesmoke;
-    --color-tertiary: #222933;
-}
+
 
 div {
     box-sizing: border-box;
