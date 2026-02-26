@@ -1,0 +1,40 @@
+.titleBackground {
+    padding-top: 160px;
+    background: #222933;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(34, 41, 51, 1) 0%,
+            rgba(50, 77, 106, 1) 25%,
+            rgba(57, 94, 132, 1) 50%,
+            rgba(64, 110, 157, 0.83) 75%
+        ),
+        url("chinatownWorkupRoom.png") 100% calc(100% + 240px) / cover no-repeat;
+}
+
+.title {
+    color: var(--color-secondary);
+    padding: 80px 240px;
+    text-shadow: 0px 0px 4px var(--color-tertiary);
+}
+
+.title > h1 {
+    font-family: "Headland One";
+    font-size: 40px;
+    margin: 0px 0px 0px 0px;
+}
+
+.title > p {
+    opacity: 80%;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 8px 0px 0px 0px;
+    z-index: -1;
+}
+
+.content {
+    padding: 40px 240px;
+    display: flex;
+    flex-direction: column;
+    columns: 20px;
+}
