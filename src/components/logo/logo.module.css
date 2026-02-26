@@ -2,12 +2,12 @@
     font-family: "Headland One";
     display: flex;
     align-items: center;
-    gap: 16px;
 }
 
 .logo {
     height: 84px;
     width: 84px;
+    margin-right: 16px;
 }
 
 .title {
