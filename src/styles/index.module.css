@@ -1,5 +1,3 @@
-
-
 div {
     box-sizing: border-box;
 }
@@ -15,8 +13,16 @@ button {
 }
 
 .hero {
-    background-image: url("/brooklynOffice.png");
-    background-size: 100vw;
+    background: #222933;
+    background:
+        linear-gradient(
+            0deg,
+            rgba(29, 29, 29, 0.8) 0%,
+            rgba(29, 29, 29, 0.6) 20%,
+            rgba(29, 29, 29, 0.3) 40%,
+            rgba(29, 29, 29, 0) 100%
+        ),
+        url("/brooklynOffice.png");
     padding: 160px 0px 0px 0px;
     background-repeat: no-repeat;
 }
@@ -24,48 +30,45 @@ button {
 .heroContent {
     display: flex;
     flex-direction: column;
-    padding: 120px;
+    padding: 160px;
+    gap: 8px;
+    align-items: center;
+}
 
-    .textBox {
-        display: flex;
-        flex-direction: column;
-        border-radius: 4px;
-        box-shadow: var(--box-shadow-standard);
-        gap: 16px;
-        max-width: 522px;
-        padding: 24px 80px;
-        margin: 0px 0px 0px auto;
-        background-color: white;
-        align-items: center;
-        text-align: center;
-    }
+.statement {
+    color: rgb(var(--color-secondary));
+    margin: 0px;
+    font: 36px "Headland One";
+    letter-spacing: 1px;
+}
 
-    .statement {
-        margin: 0px;
-        font-size: 36px;
-    }
+.subStatement {
+    font-style: italic;
+    font-size: 18px;
+    color: rgb(var(--color-secondary));
+}
 
-    .subStatement {
-        font-size: 20px;
-    }
+.appointmentButton {
+    padding: 12px 24px;
+    margin-top: 12px;
+    font: 500 20px "Instrument Sans";
+    letter-spacing: 0.5px;
+    width: fit-content;
+    background-color: rgba(var(--color-primary), 0.9);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px rgba(var(--color-tertiary), 0.2);
+    border: 1px solid rgba(var(--color-tertiary), 0.5);
+    transition: border ease-in 0.15s;
+    text-shadow: -1px 1px 1px rgba(var(--color-tertiary), 0.5);
+}
 
-    .appointmentButton {
-        height: 48px;
-        padding: 12px 20px;
-        font-family: "Instrument Sans";
-        font-size: 20px;
-        width: fit-content;
-        background-color: #406e9d;
-        color: white;
-        border-radius: 2px;
-        cursor: pointer;
-        letter-spacing: 0.5px;
-    }
+.appointmentButton:hover {
+    border: 1px solid rgba(var(--color-secondary), 0.5);
+    box-shadow: 0px 0px 8px rgba(var(--color-secondary), 0.2);
+}
 
-    hr {
-        border-top: 1px solid rgba(29, 29, 29, 0.2);
-        border-bottom: none;
-        width: calc(100% + 100px);
-        transform: translateX(-50px);
-    }
+.section {
+    height: 100vh;
 }

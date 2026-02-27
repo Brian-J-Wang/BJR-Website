@@ -1,14 +1,23 @@
-import { useEffect, useRef, type RefObject } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import Logo from "../logo/logo";
 import styles from "./header.module.css";
+import { navLinks, type NavLinkContent } from "./headerContent";
 
 type HeaderProps = {
     includeBuffer: boolean;
 };
 
-const Header: React.FC<HeaderProps> = (props) => {
-    const navBarRef = useRef<HTMLDivElement>(null) as RefObject<HTMLDivElement>;
+type DropdownState =
+    | { type: null }
+    | { type: "navigation"; content: NavLinkContent[] };
 
+const Header: React.FC<HeaderProps> = (props) => {
+    const [dropdownState, setDropdownState] = useState<DropdownState>(null);
+    const contentRef = useRef<HTMLDivElement>(
+        null,
+    ) as RefObject<HTMLDivElement>;
+
+    //darkens the background color so that the
     useEffect(() => {
         const visibilityThresholdElement =
             document.querySelector("#thresholdElement");
@@ -19,7 +28,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     visibilityThresholdElement.getBoundingClientRect();
                 return (
                     bottom -
-                    navBarRef.current.getBoundingClientRect().height -
+                    contentRef.current.getBoundingClientRect().height -
                     40
                 );
             } else {
@@ -29,9 +38,9 @@ const Header: React.FC<HeaderProps> = (props) => {
 
         const onScroll = () => {
             if (window.scrollY > visibilityThreshold) {
-                navBarRef.current.classList.add(styles.scrolled);
+                contentRef.current.classList.add(styles.scrolled);
             } else {
-                navBarRef.current.classList.remove(styles.scrolled);
+                contentRef.current.classList.remove(styles.scrolled);
             }
         };
 
@@ -43,24 +52,50 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.content}>
-                <div className={styles.navbar} ref={navBarRef}>
+            <div>
+                <div className={styles.content} ref={contentRef}>
                     <Logo
                         containerStyle={""}
-                        logoStyle={""}
-                        titleStyle={""}
-                        subtitleStyle={""}
+                        logoStyle={styles.logo}
+                        titleStyle={styles.title}
+                        subtitleStyle={styles.subtitle}
                     />
-                    <nav>
-                        <a href="/">Home</a>
-                        <a href="/locations">Our Locations</a>
-                        <a href="/team">Our team</a>
-                        <a href="/eye-surgury">Eye Surgeries</a>
-                        <a href="/eye-exam">Eye Exams</a>
-                        <a href="/resources">Resources</a>
+                    <nav className={styles.navbar}>
+                        <ul>
+                            {navLinks.map((navlink) => {
+                                if (navlink.type == "simple") {
+                                    return (
+                                        <li>
+                                            <a href={navlink.href}>
+                                                {navlink.displayName}
+                                            </a>
+                                        </li>
+                                    );
+                                }
+
+                                if (navlink.type == "dropdown") {
+                                    return (
+                                        <li>
+                                            <a
+                                                onClick={(evt) => {
+                                                    evt.preventDefault();
+                                                }}
+                                            >
+                                                {navlink.displayName}
+                                            </a>
+                                            <img
+                                                className={styles.cheveron}
+                                                src="/public/cheveron.svg"
+                                                alt="dropdown arrow"
+                                            />
+                                        </li>
+                                    );
+                                }
+                            })}
+                        </ul>
                     </nav>
                 </div>
-                <div className={styles.headerRibbon}>
+                <div className={styles.ribbon}>
                     <div className={styles.langSelect}>English | 中文</div>
                     <div className={styles.infoRibbon}>
                         <span>
