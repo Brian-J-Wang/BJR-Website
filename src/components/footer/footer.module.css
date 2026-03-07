@@ -53,14 +53,15 @@
 }
 
 .logoBlurb {
-    font-size: 12px;
+    font-style: italic;
+    font-size: 0.75rem;
     opacity: 80%;
 }
 
 .footerContent {
     display: flex;
     justify-content: end;
-    gap: 64px;
+    gap: 32px;
 }
 
 .section {
@@ -128,4 +129,18 @@
 .legal > a {
     color: rgb(var(--color-secondary));
     text-decoration: none;
+}
+
+@media (max-width: 1440px) {
+    .section > h3 {
+        font-size: 1rem;
+    }
+
+    .section > content {
+        font-size: 0.75rem;
+    }
+
+    .locations > p {
+        font-size: 1rem;
+    }
 }

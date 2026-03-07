@@ -1,10 +1,11 @@
 ---
 	import styles from "../styles/index.module.css"
 	import Layout from "../layouts/layout.astro"
+	import ServicesCarousel from "./index.components/_servicesCarousel"
 ---
 <Layout>
-	<div class={styles.hero}>
-		<div class={styles.heroContent} id="thresholdElement">
+	<div class={styles.hero} id="thresholdElement">
+		<div class={styles.heroContent}>
 			<h2 class={styles.statement}>
 				Proudly Serving <br> Lower Manhatten <br> and Brooklyn
 			</h2>
@@ -16,7 +17,51 @@
 			</button>
 		</div>
 	</div>
-	<section class={styles.section} id="About Us">
+	<section id="About Us">
+		<h2>
+			About Us
+		</h2>
+		<p>
+			Since opening in 2009, our ophthalmology clinic has served tens of thousands of patients in New York City with eye conditions.
+			We specialize in treating cataracts, glaucoma, and common retinal diseases personalized to each patient's preference and medical history.
 
+		</p>
+		<p>
+			We understand that not all patients understand English. That's why our staff can speak English, Cantonese, Mandarin, and Fujianese.
+		</p>
+	</section>
+	<section class={styles.DrRobert}>
+		<img src="/profileBJR.png" alt="A photo of Dr. Roberts" class={styles.profile}>
+		<div class={styles.content}>
+			<h2>
+				Dr. BingJing Z. Roberts M.D.
+			</h2>
+			<div class={styles.summary}>
+				<p>
+					Dr. BingJing Z. Roberts is a board-certified ophthalmologist with over 20 years of clinical experience.
+					Dr. Roberts received her medical degree from the University of Maryland School of Medicine and completed
+					her residency in ophthalmology at Montefiore Medical Center. She specializes in treating complex eye conditions
+					such as cataracts, glaucoma, and retinal diseases, and performs advanced surgeries including laser retina surgery
+					and lens replacement.
+				</p>
+				<p>
+					She also serves on the board of directors of the Coalition of Asian-American Independent Practice Association (CAIPA).
+				</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<h2>Our Services</h2>
+		<ServicesCarousel client:only="react"/>
+	</section>
+	<section>
+		<h2>Our Locations</h2>
+		<p>
+			We have two offices, one in Brooklyn and another in Manhatten. Patients going to either one can expect
+			the same high quality level of care from our doctors and staff.
+		</p>
+	</section>
+	<section>
+		<h2>Patient Reviews</h2>
 	</section>
 </Layout>

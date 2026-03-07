@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
         const visibilityThreshold = (() => {
             if (visibilityThresholdElement) {
-                const { bottom } =
+                const { bottom, height } =
                     visibilityThresholdElement.getBoundingClientRect();
                 return (
                     bottom -
@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                             {navLinks.map((navlink) => {
                                 if (navlink.type == "simple") {
                                     return (
-                                        <li>
+                                        <li key={navlink.displayName}>
                                             <a href={navlink.href}>
                                                 {navlink.displayName}
                                             </a>
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
                                 if (navlink.type == "dropdown") {
                                     return (
-                                        <li>
+                                        <li key={navlink.displayName}>
                                             <a
                                                 onClick={(evt) => {
                                                     evt.preventDefault();

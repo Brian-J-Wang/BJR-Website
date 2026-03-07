@@ -1,0 +1,7 @@
+.content {
+    display: flex;
+}
+
+.animation_reversed {
+    animation-direction: reverse;
+}

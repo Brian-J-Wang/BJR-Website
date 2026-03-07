@@ -18,8 +18,8 @@ button {
         linear-gradient(
             0deg,
             rgba(29, 29, 29, 0.8) 0%,
-            rgba(29, 29, 29, 0.6) 20%,
-            rgba(29, 29, 29, 0.3) 40%,
+            rgba(29, 29, 29, 0.6) 30%,
+            rgba(29, 29, 29, 0.3) 60%,
             rgba(29, 29, 29, 0) 100%
         ),
         url("/brooklynOffice.png");
@@ -46,29 +46,97 @@ button {
     font-style: italic;
     font-size: 18px;
     color: rgb(var(--color-secondary));
+    letter-spacing: 0.5px;
 }
 
 .appointmentButton {
     padding: 12px 24px;
     margin-top: 12px;
+    border-radius: 2px;
     font: 500 20px "Instrument Sans";
     letter-spacing: 0.5px;
     width: fit-content;
-    background-color: rgba(var(--color-primary), 0.9);
+    background-color: rgb(var(--color-primary));
     color: white;
-    border-radius: 4px;
     cursor: pointer;
     box-shadow: 0px 0px 2px rgba(var(--color-tertiary), 0.2);
     border: 1px solid rgba(var(--color-tertiary), 0.5);
-    transition: border ease-in 0.15s;
-    text-shadow: -1px 1px 1px rgba(var(--color-tertiary), 0.5);
+    transition:
+        border ease-in 0.15s,
+        box-shadow ease-in 0.15s;
 }
 
 .appointmentButton:hover {
     border: 1px solid rgba(var(--color-secondary), 0.5);
-    box-shadow: 0px 0px 8px rgba(var(--color-secondary), 0.2);
+    box-shadow: -2px 2px 0px rgba(var(--color-secondary), 1);
 }
 
-.section {
-    height: 100vh;
+section {
+    padding: 12px 160px;
+}
+
+section h2 {
+    font: 32px "Headland One";
+    font-weight: bold;
+    margin: 16px 0px;
+}
+
+section p {
+    font-size: 16px;
+    line-height: 1.4rem;
+}
+
+section.DrRobert {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto;
+
+    .profile {
+        position: relative;
+        height: 360px;
+        border: 1px solid rgba(var(--color-tertiary), 1);
+        box-shadow: -2px 2px 4px rgb(var(--color-tertiary), 0.3);
+        z-index: 2;
+    }
+
+    h2 {
+        font-size: 24px;
+        position: absolute;
+        transform: translateY(-50%);
+        width: fit-content;
+        color: rgb(var(--color-secondary));
+        letter-spacing: 1px;
+        text-shadow: 0px 0px 12px rgb(var(--color-tertiary));
+        margin: 0px 0px;
+        padding: 16px 32px;
+        background:
+            linear-gradient(
+                to right,
+                rgba(var(--color-primary-dark), 0.9),
+                rgba(var(--color-primary), 0.9)
+            ),
+            url("/manhattenOffice.png");
+        border: 1px solid rgb(var(--color-primary-dark));
+        box-shadow: -2px 2px 0px rgb(var(--color-primary-dark));
+        border-left: none;
+    }
+
+    .content {
+        margin-top: 48px;
+    }
+
+    .summary {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 48px;
+        box-shadow: -0px 0px 4px rgba(var(--color-tertiary), 0.5);
+        line-height: 1.3em;
+        background-color: white;
+    }
+
+    .summary p {
+        margin: 0px;
+    }
 }

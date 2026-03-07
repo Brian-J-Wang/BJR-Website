@@ -18,6 +18,10 @@
     src: url("/fonts/InstrumentSans.ttf") format("truetype");
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     padding: 0px;
     margin: 0px;
