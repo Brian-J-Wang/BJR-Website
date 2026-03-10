@@ -1,5 +1,6 @@
 type ControllerOptions = {
     primaryKeyframeOffset: number;
+    wrap: "wrap" | "nowrap";
 };
 
 class SlideKeyframe {
@@ -37,8 +38,11 @@ export class CarouselAnimation {
         }
         this.leadingSlideKeyframe = slideKeyframe;
         this.chainLength++;
+
+        return this;
     }
 
+    //extends the animation slides to slideElement length
     addPadding(count: number) {
         if (this.leadingSlideKeyframe == undefined || this.rootKeyframe == undefined) {
             throw new Error("Cannot call this method with no keyframes");
@@ -74,7 +78,7 @@ export class CarouselAnimation {
         for (let i = 0; i < slideElements.length; i++) {
             const offset = (i + this.controllerOptions.primaryKeyframeOffset) % slideElements.length;
             carouselSlides.push(new CarouselSlide(slideElements[offset], keyframes));
-            keyframes = keyframes.next!;
+            keyframes = keyframes.prev!;
         }
 
         return new CarouselAnimationController(carouselSlides, this.controllerOptions);
@@ -93,90 +97,118 @@ export class CarouselAnimationController {
 
     private slides: CarouselSlide[] = [];
     private promise: Promise<void> = new Promise((_) => {});
+
+    isPlaying: boolean = false;
     constructor(slides: CarouselSlide[], controllerOptions: ControllerOptions) {
         this.slides = slides;
         this.controllerOptions = controllerOptions;
     }
 
+    private debugtime = Date.now();
     setOffset(offset: number | ((offset: number) => number)) {
+        if (this.isPlaying) {
+            return;
+        }
+
         const newOffset = typeof offset === "function" ? offset(this.targetOffset) : offset;
 
         if (newOffset == this.targetOffset) {
             return;
         } else {
             this.targetOffset = newOffset;
-            this.animateSlides();
+
+            this.isPlaying = true;
+            this.debugtime = Date.now();
+            this.animateSlides().then(() => {
+                this.isPlaying = false;
+            });
         }
     }
 
-    animateSlides() {
+    animateSlides(): Promise<void> {
         if (this.currentOffset == this.targetOffset) {
-            return;
+            return Promise.resolve();
         }
 
-        const animationFinishPromises: Promise<Animation>[] = [];
-        //moving right
-        if (this.currentOffset < this.targetOffset) {
-            this.currentOffset++;
-            this.slides.forEach((slide) => {
-                slide.moveNext();
-            });
-        } else {
-            this.currentOffset--;
-            this.slides.forEach((slide) => {
-                slide.movePrev();
-            });
-        }
+        const direction = this.currentOffset < this.targetOffset ? "next" : "prev";
+        const difference = Math.abs(this.targetOffset - this.currentOffset);
+
+        return Promise.allSettled(
+            this.slides.map((slide) => {
+                return slide.move(direction, (option) => {
+                    return {
+                        ...option,
+                        duration: (option.duration as number) / difference,
+                        easing: difference == 1 ? "ease-out" : "linear",
+                    };
+                });
+            }),
+        ).then(() => {
+            if (this.currentOffset < this.targetOffset) {
+                this.currentOffset++;
+            } else {
+                this.currentOffset--;
+            }
+
+            return this.animateSlides();
+        });
     }
 }
 
+const defaultKeyframeEffectOptions: KeyframeEffectOptions = {
+    duration: 400,
+    fill: "forwards",
+    easing: "ease",
+};
+
 class CarouselSlide {
     element: HTMLDivElement;
-    animation: Animation = new Animation();
+    animation: Animation = new Animation(null, document.timeline);
     currentKeyframe: SlideKeyframe;
-    constructor(element: HTMLDivElement, initialKeyframe: SlideKeyframe) {
+    keyframeOption?: KeyframeAnimationOptions;
+    constructor(element: HTMLDivElement, initialKeyframe: SlideKeyframe, keyframeOption?: KeyframeAnimationOptions) {
         this.element = element;
         this.currentKeyframe = initialKeyframe;
         this.animation.effect = new KeyframeEffect(element, [initialKeyframe.keyframe], {
-            duration: 200,
             fill: "forwards",
         });
         this.animation.finish();
+        this.keyframeOption = keyframeOption;
     }
 
-    moveNext() {
-        const nextKeyframe = this.currentKeyframe.next;
-        if (!nextKeyframe) {
-            return;
-        }
+    move(
+        direction: "next" | "prev",
+        options?: KeyframeEffectOptions | ((option: Required<KeyframeEffectOptions>) => KeyframeAnimationOptions),
+    ) {
+        const keyframes =
+            direction == "next"
+                ? [this.currentKeyframe.keyframe, this.currentKeyframe.next?.keyframe!]
+                : [this.currentKeyframe.keyframe, this.currentKeyframe.prev?.keyframe!];
 
-        this.animation.effect = new KeyframeEffect(
-            this.element,
-            [this.currentKeyframe.keyframe, nextKeyframe.keyframe],
-            {
-                duration: 200,
-                fill: "forwards",
-            },
-        );
+        const computedOptions = (() => {
+            if (!options) {
+                if (!this.keyframeOption) {
+                    return defaultKeyframeEffectOptions;
+                } else {
+                    return this.keyframeOption;
+                }
+            }
+
+            if (typeof options == "function") {
+                if (!this.keyframeOption) {
+                    return options(defaultKeyframeEffectOptions as Required<KeyframeEffectOptions>);
+                } else {
+                    return options(this.keyframeOption as Required<KeyframeEffectOptions>);
+                }
+            }
+
+            return options;
+        })();
+        this.animation.cancel();
+        this.animation.effect = new KeyframeEffect(this.element, keyframes, computedOptions);
         this.animation.play();
-        this.currentKeyframe = nextKeyframe;
-    }
-
-    movePrev() {
-        const prevKeyframe = this.currentKeyframe.prev;
-        if (!prevKeyframe) {
-            return;
-        }
-
-        this.animation.effect = new KeyframeEffect(
-            this.element,
-            [this.currentKeyframe.keyframe, prevKeyframe.keyframe],
-            {
-                duration: 200,
-                fill: "forwards",
-            },
-        );
-        this.animation.play();
-        this.currentKeyframe = prevKeyframe;
+        return this.animation.finished.then(() => {
+            this.currentKeyframe = direction == "next" ? this.currentKeyframe.next! : this.currentKeyframe.prev!;
+        });
     }
 }
