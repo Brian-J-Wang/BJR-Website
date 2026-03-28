@@ -138,8 +138,8 @@ export class CarouselAnimationController {
                 return slide.move(direction, (option) => {
                     return {
                         ...option,
-                        duration: (option.duration as number) / difference,
-                        easing: difference == 1 ? "ease-out" : "linear",
+                        duration: (option.duration as number) / Math.pow(difference, 1.2),
+                        easing: difference == 1 ? "cubic-bezier(0.22, 1, 0.36, 1)" : "linear",
                     };
                 });
             }),
@@ -158,7 +158,7 @@ export class CarouselAnimationController {
 const defaultKeyframeEffectOptions: KeyframeEffectOptions = {
     duration: 400,
     fill: "forwards",
-    easing: "ease",
+    easing: "cubic-bezier(0.22, 1, 0.36, 1)",
 };
 
 class CarouselSlide {

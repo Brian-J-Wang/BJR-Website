@@ -17,18 +17,25 @@
 			</button>
 		</div>
 	</div>
-	<section id="About Us">
-		<h2>
-			About Us
-		</h2>
-		<p>
-			Since opening in 2009, our ophthalmology clinic has served tens of thousands of patients in New York City with eye conditions.
-			We specialize in treating cataracts, glaucoma, and common retinal diseases personalized to each patient's preference and medical history.
-
-		</p>
-		<p>
-			We understand that not all patients understand English. That's why our staff can speak English, Cantonese, Mandarin, and Fujianese.
-		</p>
+	<section class={styles.AboutUs}>
+		<div class={styles.content}>
+			<div>
+				<h2>
+					About Us
+				</h2>
+			</div>	
+			<div>
+				<p>
+					Established in 2009, our ophthalmology clinic has proudly served tens of thousands of patients across the five boroughs. 
+					We are dedicated to delivering high-quality, personalized eye care with a deep understanding of the communities we serve.
+				</p>
+				<p>
+					Our multilingual team is fluent in Chinese and English, allowing us to communicate clearly and comfortably with a diverse patient base.
+					While we primarily serve the Asian community, we welcome patients from all backgrounds and are committed to providing attentive,
+					culturally sensitive care to everyone who walks through our doors.
+				</p>
+			</div>
+		</div>
 	</section>
 	<section class={styles.DrRobert}>
 		<img src="/profileBJR.png" alt="A photo of Dr. Roberts" class={styles.profile}>
@@ -50,9 +57,20 @@
 			</div>
 		</div>
 	</section>
-	<section>
-		<h2>Our Services</h2>
-		<ServicesCarousel client:only="react"/>
+	<section class={styles["surgical-services"]}>
+		<div>
+			<div class={styles["content"]}>
+			<h2>Surgical Services</h2>
+			<p class={styles["summary"]}>
+				Explore our range of advanced surgical treatments for a variety of eye conditions and diseases. 
+				We combine modern technology with personalized care to achieve the best possible outcomes. 
+				From consultation to recovery, Dr. Roberts and her dedicated team are committed to providing high-quality care focused 
+				on your comfort, safety, and long-term vision health.
+			</p>
+			</div>
+			<ServicesCarousel client:only="react"/>
+		</div>
+		
 	</section>
 	<section>
 		<h2>Our Locations</h2>

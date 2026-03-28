@@ -72,7 +72,14 @@ button {
 }
 
 section {
-    padding: 12px 160px;
+    padding: 48px 160px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+
+section .sectionContent {
+    max-width: 1200px;
 }
 
 section h2 {
@@ -82,8 +89,37 @@ section h2 {
 }
 
 section p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.4rem;
+}
+
+section.AboutUs {
+    background: #2e567d;
+    background: linear-gradient(
+        0deg,
+        rgba(46, 86, 125, 1) 0%,
+        rgba(64, 110, 157, 1) 40%,
+        rgba(64, 110, 157, 1) 60%,
+        rgba(46, 86, 125, 1) 100%
+    );
+    color: rgb(var(--color-secondary));
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    h2 {
+        font-weight: 500;
+        width: 240px;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 1.6rem;
+        word-spacing: 1px;
+        max-width: max(50%);
+    }
 }
 
 section.DrRobert {
@@ -111,11 +147,7 @@ section.DrRobert {
         margin: 0px 0px;
         padding: 16px 32px;
         background:
-            linear-gradient(
-                to right,
-                rgba(var(--color-primary-dark), 0.9),
-                rgba(var(--color-primary), 0.9)
-            ),
+            linear-gradient(to right, rgba(var(--color-primary-dark), 0.9), rgba(var(--color-primary), 0.9)),
             url("/manhattenOffice.png");
         border: 1px solid rgb(var(--color-primary-dark));
         box-shadow: -2px 2px 0px rgb(var(--color-primary-dark));
@@ -138,5 +170,34 @@ section.DrRobert {
 
     .summary p {
         margin: 0px;
+    }
+}
+
+section.surgical-services {
+    background: #222933;
+    background: linear-gradient(
+        0deg,
+        rgba(34, 41, 51, 1) 0%,
+        rgba(43, 55, 71, 1) 30%,
+        rgba(43, 55, 71, 1) 70%,
+        rgba(34, 41, 51, 1) 100%
+    );
+
+    .content {
+        color: rgb(var(--color-secondary));
+    }
+
+    h2 {
+        color: rgb(var(--color-secondary));
+        font:
+            500 40px "Headland One",
+            serif;
+        margin: 24px 0px;
+        text-align: center;
+    }
+
+    .summary {
+        line-height: 1.5em;
+        text-align: center;
     }
 }
