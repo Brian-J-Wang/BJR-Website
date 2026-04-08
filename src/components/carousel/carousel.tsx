@@ -1,24 +1,8 @@
-import styles from "./carousel.module.css";
-import {
-    Children,
-    useEffect,
-    useRef,
-    useState,
-    type PropsWithChildren,
-    type ReactElement,
-    type ReactNode,
-    type Ref,
-    type RefObject,
-} from "react";
-import CarouselSlide, { type CarouselSlideHandle } from "./_carouselSlide/_carouselSlide";
-import React from "react";
+import React, { Children, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
 import { CarouselContext } from "./_carouselContext/carouselContext";
+import CarouselSlide from "./_carouselSlide/_carouselSlide";
 import { CarouselAnimation, CarouselAnimationController } from "./carousel.classes";
-
-type SlideOffset = {
-    index: number;
-    direction: "forward" | "backward";
-};
+import styles from "./carousel.module.css";
 
 type CarouselProps = {
     slideAnimation: CarouselAnimation;
@@ -36,11 +20,8 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
     //calculate and set initial animation state
     useEffect(() => {
         controller.current = slideAnimation.build(slides.current);
+        controller.current.onOffsetChange = _setOffset;
     }, []);
-
-    useEffect(() => {
-        _setOffset(controller.current?.currentOffset!);
-    }, [controller.current?.currentOffset]);
 
     const setOffset = (value: number | ((prev: number) => number)) => {
         controller.current?.setOffset(value);
@@ -66,7 +47,7 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
                             },
                         });
                     } else {
-                        return <></>;
+                        return null;
                     }
                 })}
             </div>

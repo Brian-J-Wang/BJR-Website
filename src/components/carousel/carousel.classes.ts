@@ -27,12 +27,12 @@ export class CarouselAnimation {
     addKeyframe(name: string, keyframe: Keyframe) {
         const slideKeyframe = new SlideKeyframe(name, keyframe);
         //sets the rootKeyframe as the first keyframe that is added;
-        if (this.rootKeyframe == undefined) {
+        if (this.rootKeyframe === undefined) {
             this.rootKeyframe = slideKeyframe;
         }
 
         //links the last leading keyframe with the next one;
-        if (this.leadingSlideKeyframe != undefined) {
+        if (this.leadingSlideKeyframe !== undefined) {
             this.leadingSlideKeyframe.next = slideKeyframe;
             slideKeyframe.prev = this.leadingSlideKeyframe;
         }
@@ -44,7 +44,7 @@ export class CarouselAnimation {
 
     //extends the animation slides to slideElement length
     addPadding(count: number) {
-        if (this.leadingSlideKeyframe == undefined || this.rootKeyframe == undefined) {
+        if (this.leadingSlideKeyframe === undefined || this.rootKeyframe === undefined) {
             throw new Error("Cannot call this method with no keyframes");
         }
 
@@ -62,7 +62,7 @@ export class CarouselAnimation {
     }
 
     build(slideElements: HTMLDivElement[]) {
-        if (this.rootKeyframe == undefined) {
+        if (this.rootKeyframe === undefined) {
             throw new Error("Root Keyframe not defined");
         }
 
@@ -96,15 +96,15 @@ export class CarouselAnimationController {
     targetOffset: number = 0;
 
     private slides: CarouselSlide[] = [];
-    private promise: Promise<void> = new Promise((_) => {});
 
     isPlaying: boolean = false;
+    onOffsetChange?: (offset: number) => void;
+    
     constructor(slides: CarouselSlide[], controllerOptions: ControllerOptions) {
         this.slides = slides;
         this.controllerOptions = controllerOptions;
     }
 
-    private debugtime = Date.now();
     setOffset(offset: number | ((offset: number) => number)) {
         if (this.isPlaying) {
             return;
@@ -118,7 +118,6 @@ export class CarouselAnimationController {
             this.targetOffset = newOffset;
 
             this.isPlaying = true;
-            this.debugtime = Date.now();
             this.animateSlides().then(() => {
                 this.isPlaying = false;
             });
@@ -149,6 +148,7 @@ export class CarouselAnimationController {
             } else {
                 this.currentOffset--;
             }
+            if (this.onOffsetChange) this.onOffsetChange(this.currentOffset);
 
             return this.animateSlides();
         });
@@ -186,20 +186,12 @@ class CarouselSlide {
                 : [this.currentKeyframe.keyframe, this.currentKeyframe.prev?.keyframe!];
 
         const computedOptions = (() => {
-            if (!options) {
-                if (!this.keyframeOption) {
-                    return defaultKeyframeEffectOptions;
-                } else {
-                    return this.keyframeOption;
-                }
-            }
+            const baseOption = this.keyframeOption || defaultKeyframeEffectOptions;
+            
+            if (!options) return baseOption;
 
-            if (typeof options == "function") {
-                if (!this.keyframeOption) {
-                    return options(defaultKeyframeEffectOptions as Required<KeyframeEffectOptions>);
-                } else {
-                    return options(this.keyframeOption as Required<KeyframeEffectOptions>);
-                }
+            if (typeof options === "function") {
+                return options(baseOption as Required<KeyframeEffectOptions>);
             }
 
             return options;

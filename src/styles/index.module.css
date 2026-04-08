@@ -76,6 +76,7 @@ section {
     margin: 0px auto;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
 section .sectionContent {
@@ -199,5 +200,30 @@ section.surgical-services {
     .summary {
         line-height: 1.5em;
         text-align: center;
+    }
+}
+
+.officeLocations {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonialHeader {
+    margin-right: auto;
+
+    h2 {
+        font-size: 16px;
+        margin: 0px;
+        color: rgb(var(--color-primary));
+    }
+
+    small {
+        font-size: 40px;
+        font-weight: 600;
     }
 }

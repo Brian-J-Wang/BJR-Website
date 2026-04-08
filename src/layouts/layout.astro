@@ -3,20 +3,28 @@ import "./layout.css"
 import Header from "../components/header/header"
 import Footer from "../components/footer/footer.astro";
 
-const { includeHeaderBuffer = false } = Astro.props;
+const { 
+	title = "BJR Ophthalmology", 
+	description = "Expert eye care by Dr. BingJing Z. Roberts in Lower Manhattan and Brooklyn. Specializing in cataracts, glaucoma, and retinal diseases.",
+	includeHeaderBuffer = false 
+} = Astro.props;
 ---
-<body>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>BJR Ophthalmology</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
 	</head>
-    <Header includeBuffer={includeHeaderBuffer} client:load></Header>
-    <main>
-        <slot />
-    </main>
-    <Footer/>
-</body>
+	<body>
+		<Header includeBuffer={includeHeaderBuffer} client:load></Header>
+		<main>
+			<slot />
+		</main>
+		<Footer/>
+	</body>
+</html>

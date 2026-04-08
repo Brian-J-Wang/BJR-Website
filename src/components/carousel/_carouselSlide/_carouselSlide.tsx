@@ -1,16 +1,6 @@
-import Styles from "./_carouselSlide.module.css";
-
-import React, { forwardRef, useContext, useEffect, useImperativeHandle, useRef, type Ref, type RefObject } from "react";
-import { useState, type PropsWithChildren } from "react";
-import { CarouselContext } from "../_carouselContext/carouselContext";
-
-export type CarouselSlideHandle = {
-    animation: Animation;
-    setAnimation: (effect: KeyframeEffect) => void;
-    toggleVisibility: (visible?: boolean) => void;
-    currentOffset: number;
-    slideIndex: number;
-};
+import styles from "./_carouselSlide.module.css";
+import React, { type Ref } from "react";
+import { type PropsWithChildren } from "react";
 
 type CarouselSlideProps = PropsWithChildren & {
     className?: string;
@@ -20,7 +10,7 @@ type CarouselSlideProps = PropsWithChildren & {
 
 const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
     return (
-        <div className={`${props.className}`} ref={props.ref}>
+        <div className={`${styles.content} ${props.className}`} ref={props.ref}>
             {props.children}
         </div>
     );
