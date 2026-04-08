@@ -34,7 +34,7 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
                 setOffset,
             }}
         >
-            <div>{typeof props.before === "function" ? props.before() : props.before}</div>
+            {typeof props.before === "function" ? props.before() : props.before}
             <div className={`${styles.content} ${props.className}`}>
                 {Children.map(props.children, (child, index) => {
                     if (React.isValidElement(child)) {
@@ -51,7 +51,7 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
                     }
                 })}
             </div>
-            <div>{typeof props.after === "function" ? props.after() : props.after}</div>
+            {typeof props.after === "function" ? props.after() : props.after}
         </CarouselContext.Provider>
     );
 };
