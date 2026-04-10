@@ -35,22 +35,12 @@ slideAnimation
 const TestimonialCarousel: React.FC = () => {
     return (
         <div className={styles.content}>
-            <Carousel
-                after={() => {
-                    return (
-                        <div className={styles["button-column"]}>
-                            <AfterElement />
-                        </div>
-                    );
-                }}
-                className={styles.carousel}
-                slideAnimation={slideAnimation}
-            >
+            <Carousel before={() => <ButtonRow />} className={styles.carousel} slideAnimation={slideAnimation}>
                 <Slide
                     name={"Scott Camilleri"}
-                    text={`"Over the course of several visits to the doctor's office, 
+                    text={`Over the course of several visits to the doctor's office, 
                         I have consistently experienced exceptional care from Dr. Roberts. 
-                        She demonstrates a genuine concern for her patients, making each interaction feel personal and compassionate."`}
+                        She demonstrates a genuine concern for her patients, making each interaction feel personal and compassionate.`}
                     link={"https://maps.app.goo.gl/TbQ6AUZsUJxTrWXx8"}
                 />
                 <Slide
@@ -116,41 +106,29 @@ const TestimonialCarousel: React.FC = () => {
     );
 };
 
-const AfterElement = () => {
+const ButtonRow = () => {
     const carouselContext = useContext(CarouselContext);
     return (
-        <div>
+        <div className={styles.buttonRow}>
             <button
+                className={`${styles.button} ${styles.leftButton}`}
                 onClick={() => {
-                    carouselContext.setOffset((prev: number) => {
-                        return prev - 1;
-                    });
+                    carouselContext.setOffset((prev) => prev - 1);
                 }}
             >
-                -1
+                <svg width="20" height="26" viewBox="1 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.7745 23.3338L4.77454 12.8338L17.7745 2.3338" stroke="#292929" strokeWidth="6" />
+                </svg>
             </button>
             <button
+                className={`${styles.button} ${styles.rightButton}`}
                 onClick={() => {
-                    carouselContext.setOffset((prev: number) => {
-                        return prev + 1;
-                    });
+                    carouselContext.setOffset((prev) => prev + 1);
                 }}
             >
-                +1
-            </button>
-            <button
-                onClick={() => {
-                    carouselContext.setOffset((prev) => prev + 5);
-                }}
-            >
-                +5
-            </button>
-            <button
-                onClick={() => {
-                    carouselContext.setOffset((prev) => prev - 5);
-                }}
-            >
-                -5
+                <svg width="20" height="26" viewBox="-1 0 19 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.88501 23.3338L14.885 12.8338L1.88501 2.3338" stroke="#292929" strokeWidth="6" />
+                </svg>
             </button>
         </div>
     );
@@ -167,8 +145,24 @@ type SlideProps = {
 const Slide: React.FC<SlideProps> = (props) => {
     return (
         <CarouselSlide _slideIndex={props._slideIndex} ref={props.ref} className={styles.slide}>
-            <p>{props.text}</p>
-            <small>{props.name}</small>
+            <div className={styles.slideIcon}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11 25.5C11 23 13 21 15.5 21C18 21 20 23 20 25.5C20 28 18 30 15.5 30C12 30 11 28 11 25.5ZM25 25.5C25 23 27 21 29.5 21C32 21 34 23 34 25.5C34 28 32 30 29.5 30C26 30 25 28 25 25.5Z"
+                        fill="rgba(64, 110, 157, 0.2)"
+                    />
+                    <path
+                        d="M20 25.5C20 20 18 14 11 14V17C15 17 17 21 17 25.5H20ZM34 25.5C34 20 32 14 25 14V17C29 17 31 21 31 25.5H34Z"
+                        fill="rgba(64, 110, 157, 0.2)"
+                    />
+                </svg>
+            </div>
+            <div className={styles.slideContent}>
+                <p>"{props.text.trim()}"</p>
+            </div>
+            <div className={styles.slideFooter}>
+                <span>- {props.name}</span>
+            </div>
         </CarouselSlide>
     );
 };

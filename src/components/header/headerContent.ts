@@ -27,11 +27,6 @@ export const navLinks: NavLink[] = [
         displayName: "Home",
     },
     {
-        type: "simple",
-        href: "/locations",
-        displayName: "Our Locations",
-    },
-    {
         type: "dropdown",
         href: "/team",
         displayName: "Our Team",

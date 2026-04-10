@@ -12,7 +12,7 @@ type DropdownState =
     | { type: "navigation"; content: NavLinkContent[] };
 
 const Header: React.FC<HeaderProps> = (props) => {
-    const [dropdownState, setDropdownState] = useState<DropdownState>(null);
+    const [dropdownState, setDropdownState] = useState<DropdownState>({ type: null });
     const contentRef = useRef<HTMLDivElement>(
         null,
     ) as RefObject<HTMLDivElement>;
@@ -99,7 +99,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     <div className={styles.langSelect}>English | 中文</div>
                     <div className={styles.infoRibbon}>
                         <span>
-                            <span className={styles.fontBold}>Manhatten </span>|
+                            <span className={styles.fontBold}>Manhattan </span>|
                             (212) 219-7786
                         </span>
                         <span>

@@ -1,0 +1,23 @@
+.testimonial {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonialHeader {
+    margin-right: auto;
+}
+
+.testimonialHeading {
+    font-size: 16px;
+    margin: 0px;
+    color: rgb(var(--color-primary));
+}
+
+.testimonialSubheading {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.testimonialCarousel {
+    padding: 24px 160px;
+}
