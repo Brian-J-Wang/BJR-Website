@@ -3,7 +3,7 @@
     background: linear-gradient(180deg, rgba(64, 110, 157, 1) 0%, rgba(64, 110, 157, 1) 60%, rgb(34, 64, 95) 100%);
     padding: 80px 160px;
     position: relative;
-    width: 100vw;
+    width: 100%;
 }
 
 .card {
