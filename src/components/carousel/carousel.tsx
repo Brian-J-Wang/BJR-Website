@@ -32,6 +32,7 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
             value={{
                 offset,
                 setOffset,
+                slideCount: slides.current.length,
             }}
         >
             {typeof props.before === "function" ? props.before() : props.before}

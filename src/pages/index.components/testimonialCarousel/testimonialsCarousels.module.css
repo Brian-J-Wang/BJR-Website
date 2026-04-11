@@ -32,7 +32,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-height: 420px;
+    min-height: 360px;
     width: 100%;
 }
 
@@ -41,63 +41,19 @@
     position: absolute;
 }
 
-.slide {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 380px;
-    width: min(800px, 60%);
-    padding: 48px 64px;
-    border-radius: 24px;
-    background-color: white;
-    border: 1px solid rgba(var(--color-primary), 0.05);
-    box-shadow:
-        0px 20px 48px rgba(34, 41, 51, 0.08),
-        0 2px 6px rgba(0, 0, 0, 0.03);
-}
-
-.slideIcon {
-    margin-bottom: 24px;
-}
-
-.slideContent p {
-    font:
-        400 20px/1.6 "Instrument Sans",
-        sans-serif;
-    color: #4a5568;
-    margin: 0;
-    text-align: center;
-}
-
-.slideFooter {
-    margin-top: auto;
-    font:
-        700 18px "Headland One",
-        serif;
-    color: rgb(var(--color-primary));
-    letter-spacing: 1px;
-}
-
 .buttonRow {
-    position: absolute;
     display: flex;
     flex-direction: row;
     width: fit-content;
     justify-content: space-between;
-    width: calc(min(800px, 60%) + 122px);
-    top: 50%;
-    transform: translateY(-50%);
     z-index: 10;
 }
 
 .button {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    background-color: white;
-    border: 1px solid rgba(var(--color-primary), 0.1);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+    border: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -125,4 +81,30 @@
 
 .rightButton:hover {
     transform: translateX(2px);
+}
+
+.dotContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid rgba(var(--color-primary), 0.1);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-out;
+}
+
+.dot:hover {
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
+    background-color: rgb(250, 252, 255);
 }

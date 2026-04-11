@@ -1,0 +1,65 @@
+.slide {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 320px;
+    width: min(800px, 60%);
+    padding: 48px 56px;
+    border-radius: 16px;
+    background-color: white;
+    border: 1px solid rgba(var(--color-primary), 0.06);
+    box-shadow:
+        0px 12px 24px rgba(34, 41, 51, 0.04),
+        0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.slideIcon {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(var(--color-primary), 0.05);
+    border-radius: 50%;
+}
+
+.slideContent {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.slideContent p {
+    font:
+        400 16px/1.8 "Instrument Sans",
+        sans-serif;
+    color: #4a5568;
+    margin: 0;
+    text-align: left;
+}
+
+.slideFooter {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.slideFooter span {
+    font:
+        700 14px "Instrument Sans",
+        sans-serif;
+    color: rgb(var(--color-primary));
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.slideFooter::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: rgb(var(--color-tertiary));
+}
