@@ -15,18 +15,18 @@ type CarouselProps = {
 const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
     const [offset, _setOffset] = useState<number>(0);
     const slides = useRef<HTMLDivElement[]>([]);
-    const controller = useRef<CarouselAnimationController>(null);
-
+    const [controller, _setController] = useState<CarouselAnimationController | null>(null);
     //calculate and set initial animation state
     useEffect(() => {
-        controller.current = slideAnimation.build(slides.current);
-        controller.current.onOffsetChange = _setOffset;
+        _setController(slideAnimation.build(slides.current));
     }, []);
 
     const setOffset = (value: number | ((prev: number) => number)) => {
-        controller.current?.setOffset(value);
+        controller?.setOffset(value);
+        _setOffset(value);
     };
 
+    //should remove the offset, state
     return (
         <CarouselContext.Provider
             value={{
@@ -39,6 +39,7 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
             <div className={`${styles.content} ${props.className}`}>
                 {Children.map(props.children, (child, index) => {
                     if (React.isValidElement(child)) {
+                        const grabController = controller?.grabController();
                         return React.cloneElement(child, {
                             key: index,
                             //@ts-ignore
@@ -46,6 +47,8 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
                             ref: (el: HTMLDivElement) => {
                                 slides.current[index] = el;
                             },
+                            onPointerUp: grabController?.release,
+                            onPointerMove: grabController?.shiftTo,
                         });
                     } else {
                         return null;

@@ -2,6 +2,8 @@
 import "./layout.css"
 import Header from "../components/header/header"
 import Footer from "../components/footer/footer.astro";
+import ResponsiveComponent from "../components/responsiveComponent/ResponsiveComponent";
+import TabletHeader from "../components/header/tablet/TabletHeader";
 
 const { 
 	title = "BJR Ophthalmology", 
@@ -21,7 +23,14 @@ const {
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header includeBuffer={includeHeaderBuffer} client:load></Header>
+		<ResponsiveComponent
+			client:only="react"
+			tabletThreshold={830}
+			desktopThreshold={1280}
+		>
+			<TabletHeader slot="tablet"/>
+			<Header slot="desktop" includeBuffer={includeHeaderBuffer}/>
+		</ResponsiveComponent>
 		<main>
 			<slot />
 		</main>

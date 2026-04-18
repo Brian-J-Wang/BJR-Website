@@ -1,9 +1,8 @@
-@media (max-width: 1280) {
-}
 
 .header {
     position: fixed;
     z-index: 999;
+    width: 100%;
 }
 
 .content {
@@ -19,6 +18,7 @@
     backdrop-filter: blur(10px);
     box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
     transition: background-color ease-in 0.1s;
+    overflow: hidden;
 }
 
 .content.scrolled {
@@ -30,6 +30,7 @@
     align-items: center;
     justify-content: space-between;
     color: rgb(var(--color-secondary));
+    overflow: hidden;
 }
 
 .navbar > ul {
@@ -96,6 +97,7 @@
     align-items: center;
     justify-content: space-between;
     height: 40px;
+    width: 100vw;
     padding: 0px 80px;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
@@ -112,9 +114,6 @@
 
 .fontBold {
     font-weight: 600;
-}
-
-@media (max-width: 1280px) {
 }
 
 @media (max-width: 1440px) {

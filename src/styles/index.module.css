@@ -9,21 +9,15 @@ div {
 .hero {
     background: #1a202c;
     background:
-        linear-gradient(
-            0deg,
-            rgba(15, 23, 42, 0.9) 0%,
-            rgba(15, 23, 42, 0.5) 40%,
-            rgba(15, 23, 42, 0.2) 100%
-        ),
-        url("/brooklynOffice.png");
+        linear-gradient(0deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.5) 40%, rgba(15, 23, 42, 0.2) 100%),
+        url("/brooklynOffice.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 85vh; /* Dynamic full-screen feel */
-    padding-top: 64px; /* Give space for header */
+    min-height: 100vh;
 }
 
 .heroContent {
@@ -37,7 +31,9 @@ div {
 }
 
 .kicker {
-    font: 600 14px "Instrument Sans", sans-serif;
+    font:
+        600 14px "Instrument Sans",
+        sans-serif;
     color: #cbd5e1;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -47,13 +43,17 @@ div {
 .statement {
     color: #ffffff;
     margin: 0;
-    font: 700 64px/1.1 "Headland One", serif;
+    font:
+        700 64px/1.1 "Headland One",
+        serif;
     letter-spacing: -1px;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .subStatement {
-    font: 400 22px/1.5 "Instrument Sans", sans-serif;
+    font:
+        400 22px/1.5 "Instrument Sans",
+        sans-serif;
     color: #e2e8f0;
     margin: 0 0 16px 0;
     max-width: 600px;
@@ -67,7 +67,9 @@ div {
     gap: 12px;
     padding: 16px 36px;
     border-radius: 40px; /* Pill shape for modern feel */
-    font: 500 16px "Instrument Sans", sans-serif;
+    font:
+        500 16px "Instrument Sans",
+        sans-serif;
     letter-spacing: 0.5px;
     width: fit-content;
     color: white;
@@ -85,15 +87,11 @@ div {
 }
 
 section {
-    padding: 48px 160px;
+    padding: 48px 32px;
     margin: 0px auto;
     display: flex;
     justify-content: center;
     overflow: hidden;
-}
-
-section .sectionContent {
-    max-width: 1200px;
 }
 
 section h2 {
@@ -106,73 +104,6 @@ section p {
     font-size: 18px;
     line-height: 1.4rem;
 }
-
-.aboutUs {
-    background: linear-gradient(135deg, rgb(250, 252, 255) 0%, rgb(245, 248, 252) 100%);
-    border-top: 1px solid rgba(var(--color-primary), 0.1);
-    border-bottom: 1px solid rgba(var(--color-primary), 0.1);
-}
-
-.aboutUsContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 80px;
-    max-width: 1200px;
-    width: 100%;
-}
-
-.aboutUsHeadingWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 320px;
-}
-
-.aboutUsSubtitle {
-    font:
-        700 14px "Headland One",
-        serif;
-    color: rgba(var(--color-primary), 1);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.aboutUsHeading {
-    font:
-        700 48px "Instrument Sans",
-        sans-serif;
-    color: rgb(var(--color-tertiary));
-    margin: 0;
-    line-height: 1.1;
-    position: relative;
-    padding-bottom: 12px;
-}
-
-.aboutUsHeading::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 80px;
-    height: 4px;
-    background: rgba(var(--color-tertiary), 1);
-}
-
-.aboutUsTextContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    max-width: 700px;
-}
-
-.aboutUsText {
-    font-size: 18px;
-    line-height: 1.6;
-    font-weight: 500;
-    margin: 0;
-}
-
 
 .surgicalServices {
     background: #222933;
@@ -208,3 +139,13 @@ section p {
     flex-direction: column;
 }
 
+@media (min-width: 1281px) {
+    section {
+        padding: 48px 80px;
+    }
+
+    .hero {
+        min-height: 85vh;
+        padding-top: 64px;
+    }
+}

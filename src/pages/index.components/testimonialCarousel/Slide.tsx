@@ -10,9 +10,9 @@ type SlideProps = {
     ref?: Ref<HTMLDivElement>;
 };
 
-const Slide: React.FC<SlideProps> = (props) => {
+const Slide: React.FC<SlideProps> = ({ name, text, ...props }) => {
     return (
-        <CarouselSlide _slideIndex={props._slideIndex} ref={props.ref} className={styles.slide}>
+        <CarouselSlide {...props} className={styles.slide}>
             <div className={styles.slideIcon}>
                 <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -26,10 +26,10 @@ const Slide: React.FC<SlideProps> = (props) => {
                 </svg>
             </div>
             <div className={styles.slideContent}>
-                <p>"{props.text.trim()}"</p>
+                <p>"{text.trim()}"</p>
             </div>
             <div className={styles.slideFooter}>
-                <span>{props.name}</span>
+                <span>{name}</span>
             </div>
         </CarouselSlide>
     );

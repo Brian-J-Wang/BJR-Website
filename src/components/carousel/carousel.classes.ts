@@ -99,7 +99,7 @@ export class CarouselAnimationController {
 
     isPlaying: boolean = false;
     onOffsetChange?: (offset: number) => void;
-    
+
     constructor(slides: CarouselSlide[], controllerOptions: ControllerOptions) {
         this.slides = slides;
         this.controllerOptions = controllerOptions;
@@ -122,6 +122,55 @@ export class CarouselAnimationController {
                 this.isPlaying = false;
             });
         }
+    }
+
+    grabController() {
+        let currentshift = 0;
+
+        const shiftTo = (shift: number) => {
+            let direction: "next" | "prev" = shift < 0 ? "next" : "prev";
+
+            if (shift >= 1) {
+                this.slides.forEach((slide) => {
+                    slide.currentKeyframe = slide.currentKeyframe.next!;
+                });
+                this.currentOffset++;
+                currentshift = 0;
+                return;
+            } else if (shift <= -1) {
+                this.slides.forEach((slide) => {
+                    slide.currentKeyframe = slide.currentKeyframe.prev!;
+                });
+                this.currentOffset--;
+                currentshift = 0;
+                return;
+            }
+
+            this.slides.forEach((slide) => {
+                slide.drag(direction, Math.abs(shift), (option) => {
+                    return {
+                        ...option,
+                        duration: 200,
+                        easing: "linear",
+                    };
+                });
+            });
+
+            currentshift = shift;
+        };
+
+        //returns to original position if shift is less than the absolute value of 0.5.
+        //otherwise shifts to the new position.
+        const release = () => {
+            this.slides.forEach((slide) => {
+                slide.release();
+            });
+        };
+
+        return {
+            shiftTo,
+            release,
+        };
     }
 
     animateSlides(): Promise<void> {
@@ -187,7 +236,7 @@ class CarouselSlide {
 
         const computedOptions = (() => {
             const baseOption = this.keyframeOption || defaultKeyframeEffectOptions;
-            
+
             if (!options) return baseOption;
 
             if (typeof options === "function") {
@@ -202,5 +251,49 @@ class CarouselSlide {
         return this.animation.finished.then(() => {
             this.currentKeyframe = direction == "next" ? this.currentKeyframe.next! : this.currentKeyframe.prev!;
         });
+    }
+
+    drag(
+        direction: "next" | "prev",
+        amount: number,
+        options?: KeyframeEffectOptions | ((option: Required<KeyframeEffectOptions>) => KeyframeAnimationOptions),
+    ) {
+        const keyframes =
+            direction == "next"
+                ? [this.currentKeyframe.keyframe, this.currentKeyframe.next?.keyframe!]
+                : [this.currentKeyframe.keyframe, this.currentKeyframe.prev?.keyframe!];
+
+        const computedOptions = (() => {
+            const baseOption = this.keyframeOption || defaultKeyframeEffectOptions;
+
+            if (!options) return baseOption;
+
+            if (typeof options === "function") {
+                return options(baseOption as Required<KeyframeEffectOptions>);
+            }
+
+            return options;
+        })();
+
+        this.animation.effect = new KeyframeEffect(this.element, keyframes, computedOptions);
+        this.animation.pause();
+        const duration = this.animation.effect?.getComputedTiming().duration;
+
+        if (typeof duration === "number") {
+            this.animation.currentTime = duration * amount;
+        }
+    }
+
+    release() {
+        const currentPosition =
+            ((this.animation.currentTime as number) ?? 1) /
+            (this.animation.effect?.getComputedTiming().duration as number);
+
+        if (currentPosition < 0.5) {
+            this.animation.playbackRate = -1;
+        } else {
+            this.animation.playbackRate = 1;
+        }
+        this.animation.play();
     }
 }

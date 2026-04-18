@@ -1,9 +1,10 @@
 import styles from "./servicesCarousel.module.css";
-
-import { Carousel, CarouselSlide } from "../../components/carousel";
+import slideStyles from "./slide.module.css";
+import { Carousel, CarouselSlide } from "../../../components/carousel";
 import { useContext, useEffect } from "react";
-import { CarouselContext } from "../../components/carousel/_carouselContext/carouselContext";
-import { CarouselAnimation } from "../../components/carousel/carousel.classes";
+import { CarouselContext } from "../../../components/carousel/_carouselContext/carouselContext";
+import { CarouselAnimation } from "../../../components/carousel/carousel.classes";
+import Slide from "./Slide";
 
 const slideAnimation = new CarouselAnimation({
     primaryKeyframeOffset: 2,
@@ -49,33 +50,33 @@ const ServicesCarousel: React.FC<{}> = () => {
                 className={styles.carousel}
                 slideAnimation={slideAnimation}
             >
-                <CarouselSlide className={styles.slide}>
-                    <h3 className={styles["slide-header"]}>Lasik</h3>
+                <Slide>
+                    <h3 className={slideStyles["slide-header"]}>Lasik</h3>
                     <p>
                         LASIK is a common refractive surgery that permanently reshapes the cornea using a laser to
                         correct nearsightedness, farsightedness, and astigmatism. The process takes about 10 to 15
                         minutes per eye, with most patients returning to normal activities within a day or two.
                     </p>
-                </CarouselSlide>
-                <CarouselSlide className={styles.slide}>
-                    <h3 className={styles["slide-header"]}>Cataract Surgery</h3>
+                </Slide>
+                <Slide>
+                    <h3 className={slideStyles["slide-header"]}>Cataract Surgery</h3>
                     <p>
                         We offer a range of cataract surgeries for patients based on their cataract density as well as
                         according to their medical history.
                     </p>
-                </CarouselSlide>
-                <CarouselSlide className={styles.slide}>
-                    <h3 className={styles["slide-header"]}>Toric IOL</h3>
+                </Slide>
+                <Slide>
+                    <h3 className={slideStyles["slide-header"]}>Toric IOL</h3>
                     <p>
                         Patients with servere astigmatism, a condition in which the cornea has an irregular football
                         like shape causing light to focus unevenly, can qualify for Toric IOLs. This process improves
                         vision distance and can eliminate the need for glasses after surgery.
                     </p>
-                </CarouselSlide>
-                <CarouselSlide className={styles.slide}>Slide 4</CarouselSlide>
-                <CarouselSlide className={styles.slide}>Slide 5</CarouselSlide>
-                <CarouselSlide className={styles.slide}>Slide 6</CarouselSlide>
-                <CarouselSlide className={styles.slide}>Slide 7</CarouselSlide>
+                </Slide>
+                <Slide>Slide 4</Slide>
+                <Slide>Slide 5</Slide>
+                <Slide>Slide 6</Slide>
+                <Slide>Slide 7</Slide>
             </Carousel>
         </div>
     );
