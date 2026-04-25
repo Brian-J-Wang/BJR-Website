@@ -1,6 +1,7 @@
 import styles from "./_carouselSlide.module.css";
-import React, { useCallback, type Ref } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, type Ref } from "react";
 import { type PropsWithChildren } from "react";
+import type { CarouselSlideElement } from "../carousel.classes";
 
 type CarouselSlideProps = PropsWithChildren & {
     className?: string;
@@ -8,6 +9,7 @@ type CarouselSlideProps = PropsWithChildren & {
     ref?: Ref<HTMLDivElement>;
     onPointerUp?: () => void;
     onPointerMove?: (shift: number) => void;
+    carouselSlideElement?: CarouselSlideElement;
 };
 
 const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
@@ -39,7 +41,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
 
     return (
         <div
-            className={`${styles.content} ${props.className}`}
+            className={`${styles.content} ${props.className} `}
             ref={props.ref}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}

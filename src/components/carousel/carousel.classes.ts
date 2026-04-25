@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 type ControllerOptions = {
     primaryKeyframeOffset: number;
     wrap: "wrap" | "nowrap";
@@ -61,7 +63,7 @@ export class CarouselAnimation {
         }
     }
 
-    build(slideElements: HTMLDivElement[]) {
+    buildCarouselSlides(slideElements: HTMLDivElement[]) {
         if (this.rootKeyframe === undefined) {
             throw new Error("Root Keyframe not defined");
         }
@@ -74,14 +76,14 @@ export class CarouselAnimation {
         this.rootKeyframe.prev = this.leadingSlideKeyframe!;
 
         let keyframes = this.rootKeyframe;
-        const carouselSlides: CarouselSlide[] = [];
+        const carouselSlides: CarouselSlideElement[] = [];
         for (let i = 0; i < slideElements.length; i++) {
             const offset = (i + this.controllerOptions.primaryKeyframeOffset) % slideElements.length;
-            carouselSlides.push(new CarouselSlide(slideElements[offset], keyframes));
+            carouselSlides.push(new CarouselSlideElement(slideElements[offset], keyframes));
             keyframes = keyframes.prev!;
         }
 
-        return new CarouselAnimationController(carouselSlides, this.controllerOptions);
+        return carouselSlides;
     }
 
     get length() {
@@ -91,16 +93,15 @@ export class CarouselAnimation {
 
 export class CarouselAnimationController {
     controllerOptions: ControllerOptions;
-
     currentOffset: number = 0;
     targetOffset: number = 0;
 
-    private slides: CarouselSlide[] = [];
+    private slides: CarouselSlideElement[] = [];
 
     isPlaying: boolean = false;
     onOffsetChange?: (offset: number) => void;
 
-    constructor(slides: CarouselSlide[], controllerOptions: ControllerOptions) {
+    constructor(slides: CarouselSlideElement[], controllerOptions: ControllerOptions) {
         this.slides = slides;
         this.controllerOptions = controllerOptions;
     }
@@ -125,29 +126,32 @@ export class CarouselAnimationController {
     }
 
     grabController() {
-        let currentshift = 0;
+        let slideOffset = 0;
+        let currentShift = 0;
+        const dragTo = (shift: number) => {
+            let direction: "next" | "prev" = currentShift < 0 ? "next" : "prev";
+            currentShift = shift - slideOffset;
 
-        const shiftTo = (shift: number) => {
-            let direction: "next" | "prev" = shift < 0 ? "next" : "prev";
-
-            if (shift >= 1) {
+            console.log(currentShift);
+            if (currentShift >= 1) {
                 this.slides.forEach((slide) => {
-                    slide.currentKeyframe = slide.currentKeyframe.next!;
+                    slide.setCurrentKeyframe("prev");
                 });
                 this.currentOffset++;
-                currentshift = 0;
-                return;
-            } else if (shift <= -1) {
+                this.targetOffset++;
+                slideOffset++;
+            } else if (currentShift <= -1) {
                 this.slides.forEach((slide) => {
-                    slide.currentKeyframe = slide.currentKeyframe.prev!;
+                    slide.setCurrentKeyframe("next");
                 });
                 this.currentOffset--;
-                currentshift = 0;
-                return;
+                this.targetOffset--;
+                slideOffset--;
             }
 
             this.slides.forEach((slide) => {
-                slide.drag(direction, Math.abs(shift), (option) => {
+                slide.setKeyframe(direction);
+                slide.drag(Math.abs(currentShift), (option) => {
                     return {
                         ...option,
                         duration: 200,
@@ -155,21 +159,36 @@ export class CarouselAnimationController {
                     };
                 });
             });
+        };
 
-            currentshift = shift;
+        let onRelease = () => {};
+        const setReleaseCallback = (onReleaseCallback: () => void) => {
+            onRelease = onReleaseCallback;
         };
 
         //returns to original position if shift is less than the absolute value of 0.5.
         //otherwise shifts to the new position.
         const release = () => {
             this.slides.forEach((slide) => {
-                slide.release();
+                if (Math.abs(currentShift) < 0.5) {
+                    slide.animation.playbackRate = -1;
+                }
+                slide
+                    .release()
+                    .then(() => {
+                        slide.animation.playbackRate = 1;
+                    })
+                    .then(() => {
+                        onRelease();
+                    });
             });
         };
 
         return {
-            shiftTo,
+            shiftTo: dragTo,
             release,
+            setReleaseCallback,
+            slideOffset,
         };
     }
 
@@ -204,16 +223,20 @@ export class CarouselAnimationController {
     }
 }
 
+type SlideDirection = "next" | "prev";
+
 const defaultKeyframeEffectOptions: KeyframeEffectOptions = {
     duration: 400,
     fill: "forwards",
     easing: "cubic-bezier(0.22, 1, 0.36, 1)",
 };
 
-class CarouselSlide {
+class CarouselSlideElement {
     element: HTMLDivElement;
     animation: Animation = new Animation(null, document.timeline);
     currentKeyframe: SlideKeyframe;
+    currentAnimationFrames: Keyframe[] = [];
+    currentDirection?: SlideDirection;
     keyframeOption?: KeyframeAnimationOptions;
     constructor(element: HTMLDivElement, initialKeyframe: SlideKeyframe, keyframeOption?: KeyframeAnimationOptions) {
         this.element = element;
@@ -225,14 +248,31 @@ class CarouselSlide {
         this.keyframeOption = keyframeOption;
     }
 
-    move(
-        direction: "next" | "prev",
-        options?: KeyframeEffectOptions | ((option: Required<KeyframeEffectOptions>) => KeyframeAnimationOptions),
-    ) {
-        const keyframes =
+    setKeyframe(direction: SlideDirection) {
+        if (this.currentDirection == direction) return;
+        this.currentDirection = direction;
+
+        this.currentAnimationFrames =
             direction == "next"
                 ? [this.currentKeyframe.keyframe, this.currentKeyframe.next?.keyframe!]
                 : [this.currentKeyframe.keyframe, this.currentKeyframe.prev?.keyframe!];
+    }
+
+    setCurrentKeyframe(direction: SlideDirection) {
+        this.currentKeyframe = direction == "next" ? this.currentKeyframe.next! : this.currentKeyframe.prev!;
+        this.currentDirection = undefined;
+        this.animation.effect = new KeyframeEffect(this.element, [this.currentKeyframe.keyframe], {
+            ...this.keyframeOption,
+            fill: "forwards",
+        });
+        this.animation.finish();
+    }
+
+    move(
+        direction: SlideDirection,
+        options?: KeyframeEffectOptions | ((option: Required<KeyframeEffectOptions>) => KeyframeAnimationOptions),
+    ) {
+        this.setKeyframe(direction);
 
         const computedOptions = (() => {
             const baseOption = this.keyframeOption || defaultKeyframeEffectOptions;
@@ -246,23 +286,17 @@ class CarouselSlide {
             return options;
         })();
         this.animation.cancel();
-        this.animation.effect = new KeyframeEffect(this.element, keyframes, computedOptions);
+        this.animation.effect = new KeyframeEffect(this.element, this.currentAnimationFrames, computedOptions);
         this.animation.play();
         return this.animation.finished.then(() => {
-            this.currentKeyframe = direction == "next" ? this.currentKeyframe.next! : this.currentKeyframe.prev!;
+            this.setCurrentKeyframe(direction);
         });
     }
 
     drag(
-        direction: "next" | "prev",
         amount: number,
         options?: KeyframeEffectOptions | ((option: Required<KeyframeEffectOptions>) => KeyframeAnimationOptions),
     ) {
-        const keyframes =
-            direction == "next"
-                ? [this.currentKeyframe.keyframe, this.currentKeyframe.next?.keyframe!]
-                : [this.currentKeyframe.keyframe, this.currentKeyframe.prev?.keyframe!];
-
         const computedOptions = (() => {
             const baseOption = this.keyframeOption || defaultKeyframeEffectOptions;
 
@@ -275,7 +309,7 @@ class CarouselSlide {
             return options;
         })();
 
-        this.animation.effect = new KeyframeEffect(this.element, keyframes, computedOptions);
+        this.animation.effect = new KeyframeEffect(this.element, this.currentAnimationFrames, computedOptions);
         this.animation.pause();
         const duration = this.animation.effect?.getComputedTiming().duration;
 
@@ -285,15 +319,18 @@ class CarouselSlide {
     }
 
     release() {
-        const currentPosition =
-            ((this.animation.currentTime as number) ?? 1) /
-            (this.animation.effect?.getComputedTiming().duration as number);
-
-        if (currentPosition < 0.5) {
-            this.animation.playbackRate = -1;
-        } else {
-            this.animation.playbackRate = 1;
-        }
         this.animation.play();
+        return this.animation.finished;
+    }
+
+    //when react components rerender, the elements moves back to natural position, this places them back to the correct location
+    reposition() {
+        if (this.animation.playState === "running") return;
+        this.animation.effect = new KeyframeEffect(this.element, [this.currentKeyframe.keyframe], {
+            fill: "forwards",
+        });
+        this.animation.finish();
     }
 }
+
+export { CarouselSlideElement };

@@ -1,8 +1,6 @@
 .slide {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     height: 320px;
     width: min(800px, 60%);
     padding: 48px 56px;
@@ -12,17 +10,8 @@
     box-shadow:
         0px 12px 24px rgba(34, 41, 51, 0.04),
         0 2px 6px rgba(0, 0, 0, 0.02);
-}
-
-.slideIcon {
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(var(--color-primary), 0.05);
-    border-radius: 50%;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .slideContent {
@@ -41,7 +30,6 @@
 }
 
 .slideFooter {
-    margin-top: 24px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -62,4 +50,23 @@
     width: 24px;
     height: 2px;
     background-color: rgb(var(--color-tertiary));
+}
+
+.reviewLink {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: rgba(var(--color-primary), 0.6);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.reviewLink:hover {
+    color: rgb(var(--color-primary));
+    background: rgba(var(--color-primary), 0.1);
+    border-color: rgba(var(--color-primary), 0.1);
+    transform: scale(1.05);
 }

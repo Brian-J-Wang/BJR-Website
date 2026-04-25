@@ -1,0 +1,12 @@
+.map {
+    height: 1000px;
+    width: 100%;
+}
+
+.maplibregl-canvas {
+    cursor: default;
+}
+
+.maplibregl-marker {
+    cursor: pointer;
+}

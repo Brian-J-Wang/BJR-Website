@@ -1,0 +1,16 @@
+---
+    import testimonials from "./testimonial.module.css"
+    import TestimonialCarousel from "./testimonialCarousel/TestimonialsCarousel"
+---
+<section class={testimonials.testimonial}>
+    <div class={testimonials.testimonialHeader}>
+        <h2 class={testimonials.testimonialHeading}>Patient Testimonials</h2>
+        <small class={testimonials.testimonialSubheading}>
+            Real results from real people.
+        </small>
+    </div>
+    <div class={testimonials.testimonialCarousel}>
+        <TestimonialCarousel client:only="react"/>
+        <div class={testimonials.carouselBackgroundGradient}></div>
+    </div>
+</section>

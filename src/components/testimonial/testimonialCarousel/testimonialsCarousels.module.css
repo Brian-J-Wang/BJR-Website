@@ -1,0 +1,63 @@
+.content {
+    padding: 48px 0px 24px 0px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    z-index: 20;
+    position: relative;
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: rgba(var(--color-primary), 0.4);
+}
+
+.arrow:hover:not(:disabled) {
+    background: rgba(var(--color-primary), 0.06);
+    color: rgb(var(--color-primary));
+}
+
+.arrow:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.arrow:disabled {
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
+.dotContainer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(var(--color-primary), 0.15);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+}
+
+.dotActive {
+    background: rgb(var(--color-primary));
+    width: 14px;
+    border-radius: 3px;
+}
