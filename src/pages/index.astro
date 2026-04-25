@@ -5,31 +5,15 @@
 	import Layout from "../layouts/layout.astro"
 	import ServicesCarousel from "./index.components/surgicalCarousel/_servicesCarousel"
 	import TestimonialCarousel from "../components/testimonial/testimonialCarousel/TestimonialsCarousel"
-import Testimonial from "../components/testimonial/testimonial.astro"
-import Locations from "../components/locations/locations.astro"
+	import Testimonial from "../components/testimonial/testimonial.astro"
+	import Locations from "../components/locations/locations.astro"
+	import Hero from "../components/index/Hero/Hero.astro"
 ---
 <Layout 
 	title="Top Ophthalmologist in Manhattan & Brooklyn | BJR Ophthalmology"
 	description="Dr. BingJing Z. Roberts is a board-certified ophthalmologist offering advanced medical and surgical eye care in Brooklyn and Lower Manhattan."
 >
-	<div class={styles.hero} id="thresholdElement">
-		<div class={styles.heroContent}>
-			<span class={styles.kicker}>Welcome to BJR Ophthalmology</span>
-			<h1 class={styles.statement}>
-				Proudly Serving <br/> Lower Manhattan & Brooklyn
-			</h1>
-			<p class={styles.subStatement}>
-				Expert Doctors. Professional Staff. Satisfied Patients.
-			</p>
-			<button class={styles.appointmentButton}>
-				<span>Book a Consultation Today</span>
-				<svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M6 11L10.6464 6.35355C10.8417 6.15829 10.8417 5.84171 10.6464 5.64645L6 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-					<path d="M1 6H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-				</svg>
-			</button>
-		</div>
-	</div>
+	<Hero/>
 	<AboutUs/>
 	<section class={styles.surgicalServices}>
 		<div>

@@ -1,0 +1,133 @@
+.hero {
+    background: #1a202c;
+    background:
+        linear-gradient(0deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.5) 40%, rgba(15, 23, 42, 0.2) 100%),
+        url("/brooklynOffice.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.heroContent {
+    display: flex;
+    flex-direction: column;
+    padding: 0 48px;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+}
+
+.kicker {
+    font:
+        600 10px "Instrument Sans",
+        sans-serif;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.statement {
+    color: #ffffff;
+    margin: 0;
+    font:
+        700 28px/1.1 "Headland One",
+        serif;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.subStatement {
+    font:
+        400 16px/1.5 "Instrument Sans",
+        sans-serif;
+    color: #e2e8f0;
+    margin: 0 0 16px 0;
+    max-width: 600px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.appointmentButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 18px;
+    border-radius: 40px; /* Pill shape for modern feel */
+    font:
+        500 12px "Instrument Sans",
+        sans-serif;
+    letter-spacing: 0.5px;
+    width: fit-content;
+    color: white;
+    cursor: pointer;
+    border: none;
+    background: rgb(var(--color-primary));
+    box-shadow: 0px 8px 24px rgba(var(--color-primary), 0.4);
+    transition: all 0.2s ease-out;
+}
+
+.appointmentButton:hover {
+    background: rgb(var(--color-tertiary));
+    transform: translateY(-2px);
+    box-shadow: 0px 12px 32px rgba(var(--color-tertiary), 0.5);
+}
+
+@media (min-width: 830px) {
+    .statement {
+        font:
+            700 48px/1.1 "Headland One",
+            serif;
+    }
+
+    .subStatement {
+        font:
+            400 22px/1.5 "Instrument Sans",
+            sans-serif;
+        margin: 0 0 16px 0;
+        max-width: 600px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .kicker {
+        font:
+            600 14px "Instrument Sans",
+            sans-serif;
+    }
+
+    .appointmentButton {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 36px;
+        border-radius: 40px; /* Pill shape for modern feel */
+        font:
+            500 16px "Instrument Sans",
+            sans-serif;
+        letter-spacing: 0.5px;
+        width: fit-content;
+        color: white;
+        cursor: pointer;
+        border: none;
+        background: rgb(var(--color-primary));
+        box-shadow: 0px 8px 24px rgba(var(--color-primary), 0.4);
+        transition: all 0.2s ease-out;
+    }
+
+    .heroContent {
+        gap: 24px;
+    }
+}
+
+@media (min-width: 1281px) {
+    .statement {
+        font:
+            700 64px/1.1 "Headland One",
+            serif;
+    }
+}
