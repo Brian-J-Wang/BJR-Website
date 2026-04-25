@@ -105,12 +105,17 @@
     font-size: 16px;
     color: rgba(var(--color-tertiary), 0.8);
     margin: 0;
+    font-style: normal;
 }
 
 .phone {
     font-size: 16px;
     color: rgba(var(--color-tertiary), 0.8);
     margin: 0;
+}
+
+.phone a {
+    color: rgba(var(--color-tertiary), 0.8);
 }
 
 .viewButton {

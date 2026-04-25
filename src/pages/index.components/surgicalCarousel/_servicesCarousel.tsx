@@ -1,123 +1,104 @@
 import styles from "./servicesCarousel.module.css";
-import slideStyles from "./slide.module.css";
-import { Carousel, CarouselSlide } from "../../../components/carousel";
-import { useContext, useEffect } from "react";
-import { CarouselContext } from "../../../components/carousel/_carouselContext/carouselContext";
-import { CarouselAnimation } from "../../../components/carousel/carousel.classes";
-import Slide from "./Slide";
+import { useState } from "react";
 
-const slideAnimation = new CarouselAnimation({
-    primaryKeyframeOffset: 2,
-    wrap: "wrap",
-});
-slideAnimation
-    .addKeyframe("stage-bottom", {
-        opacity: "0%",
-        transform: "translateX(45%) scale(80%)",
-        zIndex: 1,
-    })
-    .addKeyframe("appear-bottom", {
-        transform: "translateX(15%) scale(95%)",
-        zIndex: 2,
-    })
-    .addKeyframe("enter-right", {
-        zIndex: 3,
-    })
-    .addKeyframe("appear-top", {
-        transform: "translateX(-15%) scale(95%)",
-        zIndex: 2,
-    })
-    .addKeyframe("stage-top", {
-        opacity: "0%",
-        transform: "translateX(-45%) scale(80%)",
-        zIndex: 1,
-    });
+const services = [
+    {
+        title: "Lasik",
+        kicker: "Precision Vision Correction",
+        description:
+            "Experience freedom from glasses and contacts. Our state-of-the-art LASIK technology reshapes your vision with microscopic precision, often resulting in 20/20 vision or better.",
+        link: "/lasik",
+        image: "/services/lasik.png",
+    },
+    {
+        title: "EVO ICL",
+        kicker: "Advanced Lens Implant",
+        description:
+            "A flexible lens implant that works with your natural eye to correct nearsightedness and astigmatism without removing corneal tissue.",
+        link: "/evo-icl",
+        image: "/services/evo_icl.png",
+    },
+    {
+        title: "Cataract Surgery",
+        kicker: "Restorative Eye Care",
+        description:
+            "Regain the clarity you've been missing. We replace clouded lenses with advanced intraocular technology, tailored to your specific lifestyle and visual goals.",
+        link: "/cataract-surgery",
+        image: "/services/cataract.png",
+    },
+    {
+        title: "Toric IOL",
+        kicker: "Specialized Astigmatism Care",
+        description:
+            "Say goodbye to blurry vision caused by astigmatism. Our premium Toric lenses are engineered to correct corneal irregularities, providing sharp, stable vision.",
+        link: "/toric-iol",
+        image: "/services/toric.png",
+    },
+    {
+        title: "Multifocal Toric IOL",
+        kicker: "Full Range Astigmatism Care",
+        description:
+            "Combining astigmatism correction with multifocal capability, these premium lenses provide a full range of vision from near to far.",
+        link: "/multifocal-toric-iol",
+        image: "/services/toric.png",
+    },
+    {
+        title: "Multifocal IOL",
+        kicker: "Premium Lifestyle Lenses",
+        description:
+            "Designed to reduce dependency on reading glasses, these advanced lenses provide high-quality vision at multiple distances.",
+        link: "/multifocal-iol",
+        image: "/services/cataract.png",
+    },
+];
 
 const ServicesCarousel: React.FC<{}> = () => {
-    return (
-        <div className={styles.content}>
-            <Carousel
-                before={() => {
-                    return (
-                        <div className={styles["button-column"]}>
-                            <button>Lasik</button>
-                            <button>Cataracts</button>
-                            <button>Toric IOL</button>
-                            <AfterElement />
-                        </div>
-                    );
-                }}
-                className={styles.carousel}
-                slideAnimation={slideAnimation}
-            >
-                <Slide>
-                    <h3 className={slideStyles["slide-header"]}>Lasik</h3>
-                    <p>
-                        LASIK is a common refractive surgery that permanently reshapes the cornea using a laser to
-                        correct nearsightedness, farsightedness, and astigmatism. The process takes about 10 to 15
-                        minutes per eye, with most patients returning to normal activities within a day or two.
-                    </p>
-                </Slide>
-                <Slide>
-                    <h3 className={slideStyles["slide-header"]}>Cataract Surgery</h3>
-                    <p>
-                        We offer a range of cataract surgeries for patients based on their cataract density as well as
-                        according to their medical history.
-                    </p>
-                </Slide>
-                <Slide>
-                    <h3 className={slideStyles["slide-header"]}>Toric IOL</h3>
-                    <p>
-                        Patients with servere astigmatism, a condition in which the cornea has an irregular football
-                        like shape causing light to focus unevenly, can qualify for Toric IOLs. This process improves
-                        vision distance and can eliminate the need for glasses after surgery.
-                    </p>
-                </Slide>
-                <Slide>Slide 4</Slide>
-                <Slide>Slide 5</Slide>
-                <Slide>Slide 6</Slide>
-                <Slide>Slide 7</Slide>
-            </Carousel>
-        </div>
-    );
-};
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeService = services[activeIndex];
 
-const AfterElement = () => {
-    const carouselContext = useContext(CarouselContext);
     return (
-        <div>
-            <button
-                onClick={() => {
-                    carouselContext.setOffset((prev: number) => {
-                        return prev - 1;
-                    });
-                }}
-            >
-                -1
-            </button>
-            <button
-                onClick={() => {
-                    carouselContext.setOffset((prev: number) => {
-                        return prev + 1;
-                    });
-                }}
-            >
-                +1
-            </button>
-            <button
-                onClick={() => {
-                    carouselContext.setOffset((prev) => prev + 5);
-                }}
-            >
-                +5
-            </button>
-            <button
-                onClick={() => {
-                    carouselContext.setOffset((prev) => prev - 5);
-                }}
-            >
-                -5
-            </button>
+        <div className={styles.layout}>
+            <div className={styles.tabBar}>
+                {services.map((service, index) => (
+                    <button
+                        key={`tab-${service.title}`}
+                        className={`${styles.tab} ${activeIndex === index ? styles.activeTab : ""}`}
+                        onClick={() => setActiveIndex(index)}
+                    >
+                        {service.title}
+                        {activeIndex === index && <div className={styles.activeLine} />}
+                    </button>
+                ))}
+            </div>
+
+            {/* Content Display Area */}
+            <div className={styles.displayArea}>
+                <div key={activeService.title} className={styles.contentWrapper}>
+                    <div className={styles.imageSection}>
+                        <img src={activeService.image} alt={activeService.title} className={styles.activeImage} />
+                    </div>
+
+                    <div className={styles.infoSection}>
+                        <span className={styles.kicker}>{activeService.kicker}</span>
+                        <h3 className={styles.title}>{activeService.title}</h3>
+                        <p className={styles.description}>{activeService.description}</p>
+
+                        <a href={activeService.link} className={styles.cta}>
+                            <span>Explore Procedure</span>
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            >
+                                <path d="M5 12h14m-7-7l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

@@ -32,6 +32,25 @@ const MapModal = () => {
         }
     };
 
+    // Structured Data for local SEO
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "MedicalOrganization",
+        "name": "BJR Ophthalmology",
+        "location": locations.map((loc) => ({
+            "@type": "MedicalBusiness",
+            "name": `BJR Ophthalmology - ${loc.name}`,
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": loc.addressLine1,
+                "addressLocality": loc.id === "manhattan" ? "Manhattan" : "Brooklyn",
+                "addressRegion": "NY",
+                "postalCode": loc.addressLine2.match(/\d{5}/)?.[0],
+            },
+            "telephone": loc.phone,
+        })),
+    };
+
     return (
         <div className={styles.modal}>
             <div className={styles.header}>
@@ -44,20 +63,44 @@ const MapModal = () => {
 
             <div className={styles.locationsList}>
                 {locations.map((loc) => (
-                    <div key={loc.id} className={`${styles.item} ${activeLocation === loc.id ? styles.active : ""}`}>
-                        <button
-                            className={`${styles.trigger}  ${activeLocation === loc.id ? styles.active : ""}`}
-                            onClick={() => handleAccordionClick(loc.id)}
+                    <article
+                        key={loc.id}
+                        className={`${styles.item} ${activeLocation === loc.id ? styles.active : ""}`}
+                    >
+                        <h3>
+                            <button
+                                className={`${styles.trigger}  ${activeLocation === loc.id ? styles.active : ""}`}
+                                onClick={() => handleAccordionClick(loc.id)}
+                                aria-expanded={activeLocation === loc.id}
+                                aria-controls={`details-${loc.id}`}
+                            >
+                                {loc.name}
+                                <span className={styles.arrow} aria-hidden="true">
+                                    ↓
+                                </span>
+                            </button>
+                        </h3>
+                        <div
+                            id={`details-${loc.id}`}
+                            className={styles.content}
+                            aria-hidden={activeLocation !== loc.id}
                         >
-                            {loc.name}
-                            <span className={styles.arrow}>↓</span>
-                        </button>
-                        <div className={styles.content}>
                             <div className={styles.inner}>
-                                <p className={styles.address}>{loc.addressLine1}</p>
-                                <p className={styles.address}>{loc.addressLine2}</p>
-                                <p className={styles.phone}>{loc.phone}</p>
-                                <a href={loc.mapLink} target="_blank" className={styles.viewButton}>
+                                <address className={styles.address}>
+                                    {loc.addressLine1}
+                                    <br />
+                                    {loc.addressLine2}
+                                </address>
+                                <p className={styles.phone}>
+                                    <a href={`tel:${loc.phone.replace(/\D/g, "")}`}>{loc.phone}</a>
+                                </p>
+                                <a
+                                    href={loc.mapLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.viewButton}
+                                    title={`Get directions to our ${loc.name}`}
+                                >
                                     <span>Get Directions</span>
                                     <svg
                                         width="14"
@@ -77,9 +120,11 @@ const MapModal = () => {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 ))}
             </div>
+
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         </div>
     );
 };
