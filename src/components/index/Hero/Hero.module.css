@@ -53,25 +53,54 @@
 	max-width: 900px;
 }
 
-.kicker {
+.welcome {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 1rem 0;
+}
+
+.welcome span {
 	font:
-		600 10px "Instrument Sans",
-		sans-serif;
+		300 0.75rem var(--font-serif),
+		serif;
 	color: rgb(var(--color-secondary));
-	text-shadow: 0px 0px 8px rgba(var(--color-tertiary), 0.5);
 	text-transform: uppercase;
-	letter-spacing: 3px;
+	letter-spacing: 0.5em;
+	opacity: 0.8;
+}
+
+.welcome strong {
+	font:
+		800 2.5rem/1 var(--font-sans-serif),
+		sans-serif;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: -0.02em;
+	text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .statement {
 	color: #ffffff;
-	margin: 0;
+	margin: 0 0 2rem 0;
 	font:
-		700 28px/1.1 "Headland One",
-		serif;
-	letter-spacing: -1px;
-	text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-	line-height: 1.3;
+		400 0.875rem var(--font-sans-serif),
+		sans-serif;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	opacity: 0.7;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.statement::before,
+.statement::after {
+	content: "";
+	width: 20px;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.3);
 }
 
 .subStatement {
@@ -87,32 +116,38 @@
 .appointmentButton {
 	display: flex;
 	align-items: center;
-	gap: 4px;
-	padding: 12px 18px;
-	border-radius: 40px;
-	font:
-		500 12px "Instrument Sans",
-		sans-serif;
-	letter-spacing: 0.5px;
+	gap: 12px;
+	padding: 14px 24px;
+	border-radius: 2px;
+	font: 600 0.75rem var(--font-sans-serif);
 	color: white;
-	background: rgb(var(--color-primary));
-	box-shadow: 0px 8px 24px rgba(var(--color-primary), 0.4);
-	transition: all 0.2s ease-out;
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 	cursor: pointer;
-	border: none;
 }
 
 .appointmentButton:hover {
-	background: rgb(var(--color-tertiary));
-	transform: translateY(-2px);
-	box-shadow: 0px 12px 32px rgba(var(--color-tertiary), 0.5);
+	background: white;
+	color: rgb(var(--color-primary));
+	border-color: white;
+}
+
+.appointmentButton svg {
+	transition: transform 0.3s ease;
+}
+
+.appointmentButton:hover svg {
+	transform: translateX(4px);
 }
 
 @media (min-width: 830px) {
 	.heroContent {
 		gap: 24px;
 	}
-	.kicker {
+	.welcome {
 		font-size: 20px;
 	}
 	.statement {
@@ -126,51 +161,6 @@
 		padding: 16px 36px;
 		font-size: 16px;
 	}
-}
-
-.statistics {
-	position: absolute;
-	bottom: 0;
-	transform: translateY(50%);
-	width: 90%;
-	max-width: 800px;
-	background-color: white;
-	border-radius: 8px;
-	box-shadow: var(--shadow-sm);
-	padding: 16px;
-	z-index: 10;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.statItem {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2px;
-	flex: 1;
-}
-
-.statValue {
-	font: 700 24px var(--font-heading);
-	color: rgb(var(--color-primary));
-	line-height: 1;
-}
-
-.statLabel {
-	font: 600 10px var(--font-body);
-	color: var(--text-muted);
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-	text-align: center;
-}
-
-.statDivider {
-	width: 1px;
-	height: 30px;
-	background-color: rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 830px) {
@@ -197,8 +187,59 @@
 		gap: 8px;
 	}
 
+	.welcome {
+		font: lighter 3rem var(--font-serif);
+		letter-spacing: -1px;
+	}
+
 	.statement {
-		font-size: 64px;
+		font-size: 16px;
+		letter-spacing: 1px;
 		margin-bottom: 12px;
+	}
+
+	.statistics {
+		position: absolute;
+		bottom: 0;
+		transform: translateY(50%);
+		width: 90%;
+		max-width: 800px;
+		background-color: white;
+		border-radius: 8px;
+		box-shadow: var(--shadow-sm);
+		padding: 16px;
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		border: 1px solid rgba(0, 0, 0, 0.05);
+	}
+
+	.statItem {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2px;
+		flex: 1;
+	}
+
+	.statValue {
+		font: normal 20px var(--font-sans-serif);
+		color: rgb(var(--color-primary));
+		line-height: 1;
+	}
+
+	.statLabel {
+		font: lighter 16px var(--font-serif);
+		color: var(--text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		text-align: center;
+	}
+
+	.statDivider {
+		width: 1px;
+		height: 30px;
+		background-color: rgba(0, 0, 0, 0.1);
 	}
 }
