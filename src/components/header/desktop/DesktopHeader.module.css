@@ -10,7 +10,7 @@
 	align-items: center;
 	justify-content: space-between;
 	box-sizing: border-box;
-	height: 120px;
+	height: 96px;
 	width: 100vw;
 	padding: 0px 80px;
 	color: rgb(var(--color-secondary));
@@ -84,7 +84,8 @@
 }
 
 .fontBold {
-	font-weight: 600;
+	font: 600 0.75rem var(--font-serif);
+	letter-spacing: 1px;
 }
 
 @media (min-width: 1280px) {
