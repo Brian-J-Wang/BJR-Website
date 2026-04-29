@@ -1,0 +1,41 @@
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: rgb(var(--color-secondary));
+	overflow: hidden;
+}
+
+.navbar > ul {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	gap: 24px;
+	transition: gap 0.2s ease-in;
+}
+
+.navbar li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 4px;
+	opacity: 60%;
+	cursor: pointer;
+
+	.cheveron {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.navbar li:hover {
+	opacity: 100%;
+}
+
+.navbar a {
+	display: inline;
+	color: rgb(var(--color-secondary));
+	text-decoration: none;
+	letter-spacing: 0.5px;
+	text-shadow: -1px 1px 2px rgba(29, 29, 29, 0.3);
+}

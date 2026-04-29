@@ -1,0 +1,94 @@
+.header {
+	display: none;
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+}
+
+.content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+	height: 120px;
+	width: 100vw;
+	padding: 0px 80px;
+	color: rgb(var(--color-secondary));
+	background-color: rgb(45, 96, 148);
+	backdrop-filter: blur(10px);
+	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
+	transition: background-color ease-in 0.1s;
+	overflow: hidden;
+}
+
+.content.scrolled {
+	background-color: rgb(var(--color-primary-dark));
+}
+
+.headerBuffer {
+	height: 160px;
+	width: 100vw;
+	background-image: url("brooklynOffice.png");
+}
+
+.logo {
+	height: 84px;
+	width: 84px;
+	transition: all 0.2s ease-in;
+}
+
+.title {
+	font: lighter 48px var(--font-serif);
+	margin: 0px;
+	transition: all 0.2s ease-in;
+}
+
+.subtitle {
+	font-size: 24px;
+	letter-spacing: 1px;
+	transition: all 0.2s ease-in;
+}
+
+.drawer {
+	width: 100vw;
+	padding: 0px 80px;
+	background-color: rgb(var(--color-secondary));
+	backdrop-filter: blur(20px);
+	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.3);
+	color: var(--color-tertiary);
+	font-size: 14px;
+	letter-spacing: 0.5px;
+}
+
+.drawerInner {
+	interpolate-size: allow-keywords;
+	overflow: hidden;
+	height: 0px;
+	transition: height 0.2s ease-out;
+}
+
+.drawerInnerActive {
+	height: fit-content;
+}
+
+.bottomBar {
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.infoRibbon {
+	display: flex;
+	gap: 16px;
+}
+
+.fontBold {
+	font-weight: 600;
+}
+
+@media (min-width: 1280px) {
+	.header {
+		display: block;
+	}
+}

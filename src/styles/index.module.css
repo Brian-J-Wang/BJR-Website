@@ -1,69 +1,8 @@
-div {
-    box-sizing: border-box;
-}
-
-
-
-section {
-    padding: 48px 32px;
-    margin: 0px auto;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-
-section h2 {
-    font: 32px "Headland One";
-    font-weight: bold;
-    margin: 16px 0px;
-}
-
-section p {
-    font-size: 18px;
-    line-height: 1.4rem;
-}
-
-.surgicalServices {
-    background: #222933;
-    background: linear-gradient(
-        0deg,
-        rgba(34, 41, 51, 1) 0%,
-        rgba(43, 55, 71, 1) 30%,
-        rgba(43, 55, 71, 1) 70%,
-        rgba(34, 41, 51, 1) 100%
-    );
-}
-
-.surgicalServicesContent {
-    color: rgb(var(--color-secondary));
-}
-
-.surgicalServicesHeading {
-    color: rgb(var(--color-secondary));
-    font:
-        500 40px "Headland One",
-        serif;
-    margin: 24px 0px;
-    text-align: center;
-}
-
-.surgicalServicesSummary {
-    line-height: 1.5em;
-    text-align: center;
-}
-
-.officeLocations {
-    display: flex;
-    flex-direction: column;
+.entry {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
 @media (min-width: 1281px) {
-    section {
-        padding: 48px 80px;
-    }
-
-    .hero {
-        min-height: 85vh;
-        padding-top: 64px;
-    }
 }

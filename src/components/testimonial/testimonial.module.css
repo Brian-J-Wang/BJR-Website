@@ -1,10 +1,11 @@
 .testimonial {
     display: flex;
     flex-direction: column;
+    padding: 72px 0px;
 }
 
 .testimonialHeader {
-    margin-right: auto;
+    text-align: center;
 }
 
 .testimonialHeading {

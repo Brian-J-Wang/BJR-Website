@@ -1,0 +1,21 @@
+---
+import ServicesCarousel from "./Carousel/_servicesCarousel";
+import styles from "./surgical-services.module.css";
+---
+
+<section class={styles.section}>
+	<div>
+		<div class={styles.content}>
+			<h2 class={styles.heading}>Surgical Services</h2>
+			<p class={styles.summary}>
+				Explore our range of advanced surgical treatments for a variety
+				of eye conditions and diseases. We combine modern technology
+				with personalized care to achieve the best possible outcomes.
+				From consultation to recovery, Dr. Roberts and her dedicated
+				team are committed to providing high-quality care focused on
+				your comfort, safety, and long-term vision health.
+			</p>
+		</div>
+		<ServicesCarousel client:only="react" />
+	</div>
+</section>

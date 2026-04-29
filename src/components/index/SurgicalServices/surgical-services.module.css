@@ -1,0 +1,28 @@
+.section {
+	background: #222933;
+	background: linear-gradient(
+		0deg,
+		rgba(34, 41, 51, 1) 0%,
+		rgba(43, 55, 71, 1) 30%,
+		rgba(43, 55, 71, 1) 70%,
+		rgba(34, 41, 51, 1) 100%
+	);
+}
+
+.content {
+	color: rgb(var(--color-secondary));
+}
+
+.heading {
+	color: rgb(var(--color-secondary));
+	font:
+		500 40px "Headland One",
+		serif;
+	margin: 24px 0px;
+	text-align: center;
+}
+
+.summary {
+	line-height: 1.5em;
+	text-align: center;
+}

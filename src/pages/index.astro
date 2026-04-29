@@ -1,34 +1,24 @@
 ---
-	import styles from "../styles/index.module.css"
-	import testimonials from "../styles/index/testimonials.module.css"
-	import AboutUs from "../components/aboutUs/aboutUs.astro"
-	import Layout from "../layouts/layout.astro"
-	import ServicesCarousel from "./index.components/surgicalCarousel/_servicesCarousel"
-	import TestimonialCarousel from "../components/testimonial/testimonialCarousel/TestimonialsCarousel"
-	import Testimonial from "../components/testimonial/testimonial.astro"
-	import Locations from "../components/locations/locations.astro"
-	import Hero from "../components/index/Hero/Hero.astro"
+import styles from "../styles/index.module.css";
+import Layout from "../layouts/layout.astro";
+import Testimonial from "../components/testimonial/testimonial.astro";
+import Locations from "../components/locations/locations.astro";
+import Hero from "../components/index/Hero/Hero.astro";
+import SurgicalServices from "../components/index/SurgicalServices/surgical-services.astro";
+import AboutUs from "../components/index/AboutUs/aboutUs.astro";
+import DrRoberts from "../components/index/DrRoberts/dr-roberts.astro";
 ---
-<Layout 
+
+<Layout
 	title="Top Ophthalmologist in Manhattan & Brooklyn | BJR Ophthalmology"
 	description="Dr. BingJing Z. Roberts is a board-certified ophthalmologist offering advanced medical and surgical eye care in Brooklyn and Lower Manhattan."
 >
-	<Hero/>
-	<AboutUs/>
-	<section class={styles.surgicalServices}>
-		<div>
-			<div class={styles.surgicalServicesContent}>
-			<h2 class={styles.surgicalServicesHeading}>Surgical Services</h2>
-			<p class={styles.surgicalServicesSummary}>
-				Explore our range of advanced surgical treatments for a variety of eye conditions and diseases. 
-				We combine modern technology with personalized care to achieve the best possible outcomes. 
-				From consultation to recovery, Dr. Roberts and her dedicated team are committed to providing high-quality care focused 
-				on your comfort, safety, and long-term vision health.
-			</p>
-			</div>
-			<ServicesCarousel client:only="react"/>
-		</div>
-	</section>
-	<Locations></Locations>
-	<Testimonial></Testimonial>
+	<div class={styles.entry}>
+		<Hero />
+		<AboutUs />
+	</div>
+	<DrRoberts />
+	<SurgicalServices />
+	<Locations />
+	<Testimonial />
 </Layout>

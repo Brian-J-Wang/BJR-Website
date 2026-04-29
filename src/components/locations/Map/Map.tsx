@@ -3,6 +3,7 @@ import maplibregl, { type LngLatLike, type StyleSpecification } from "maplibre-g
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext, useEffect, useRef } from "react";
 import LocationContext from "../InteractiveLocations/InteractiveLocations.context";
+import style from "../../../../public/styles.json";
 
 const defaultCoords: LngLatLike = [-74, 40.675];
 const manhattenCoords: LngLatLike = [-73.99777155378611, 40.71717392006884];
@@ -44,9 +45,10 @@ const LocationMap = () => {
 
         map.current = new maplibregl.Map({
             container: mapContainer.current,
-            style: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+            style: style as StyleSpecification,
             center: defaultCoords,
             zoom: 12,
+            maxZoom: 24,
             scrollZoom: false,
             dragPan: false,
             dragRotate: false,
@@ -59,11 +61,6 @@ const LocationMap = () => {
 
         manhattanMarker.getElement().addEventListener("click", () => {
             setActiveLocation("manhattan");
-            map.current?.flyTo({
-                center: manhattenCoords,
-                zoom: 17,
-                essential: true,
-            });
         });
 
         // Brooklyn Office
@@ -71,11 +68,6 @@ const LocationMap = () => {
 
         brooklynMarker.getElement().addEventListener("click", () => {
             setActiveLocation("brooklyn");
-            map.current?.flyTo({
-                center: brooklynCoords,
-                zoom: 17,
-                essential: true,
-            });
         });
 
         const handleMapClick = (evt: PointerEvent) => {
