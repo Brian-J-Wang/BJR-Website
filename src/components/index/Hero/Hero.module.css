@@ -1,11 +1,14 @@
 .wrapper {
 	position: relative;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	flex: 1 0;
 }
 
 .hero {
+	position: relative;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -115,6 +118,7 @@
 
 .appointmentButton {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	gap: 12px;
 	padding: 14px 24px;
@@ -182,28 +186,38 @@
 	}
 }
 
-@media (min-width: 1281px) {
-	.heroContent {
+@media (min-width: 1268px) {
+	.welcome {
+		margin: 0px 0px 24px 0px;
 		gap: 8px;
 	}
 
-	.welcome {
-		font: lighter 3rem var(--font-serif);
-		letter-spacing: -1px;
+	.welcome span {
+		font: normal 1rem var(--font-serif);
+		letter-spacing: 4px;
+	}
+
+	.welcome strong {
+		font: normal 3.5rem var(--font-sans-serif);
 	}
 
 	.statement {
 		font-size: 16px;
 		letter-spacing: 1px;
-		margin-bottom: 12px;
+		margin: 0px;
+	}
+
+	.appointmentButton {
+		width: 368px;
 	}
 
 	.statistics {
+		padding: 0px;
 		position: absolute;
 		bottom: 0;
-		transform: translateY(50%);
-		width: 95%;
-		max-width: 1000px;
+		transform: translateY(50%) translateX(-50%);
+		left: calc(50%);
+		width: 1152px;
 		display: flex;
 		gap: 24px;
 		z-index: 10;
@@ -211,15 +225,17 @@
 	}
 
 	.statCard {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 144px;
 		position: relative;
 		flex: 1;
 		background: white;
 		padding: 32px 24px;
 		border-radius: 2px;
 		box-shadow: var(--shadow-sm);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 		gap: 8px;
 		transition: all 0.3s ease;
 		overflow: hidden;
@@ -252,5 +268,10 @@
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		text-align: center;
+	}
+
+	.statisticsPadding {
+		height: 72px;
+		width: 100%;
 	}
 }

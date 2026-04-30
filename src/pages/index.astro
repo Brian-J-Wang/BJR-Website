@@ -13,11 +13,12 @@ import DrRoberts from "../components/index/DrRoberts/dr-roberts.astro";
 	title="Top Ophthalmologist in Manhattan & Brooklyn | BJR Ophthalmology"
 	description="Dr. BingJing Z. Roberts is a board-certified ophthalmologist offering advanced medical and surgical eye care in Brooklyn and Lower Manhattan."
 >
-	<div class={styles.entry}>
-		<Hero />
+	<Hero class="h-[75vh]" />
+	<div class="h-18"></div>
+	<div class="py-24 flex flex-col gap-24">
 		<AboutUs />
+		<DrRoberts />
 	</div>
-	<DrRoberts />
 	<SurgicalServices />
 	<Locations />
 	<Testimonial />

@@ -1,19 +1,23 @@
 ---
 import styles from "./Hero.module.css";
+
+const { class: className = "" } = Astro.props;
 ---
 
-<div class={styles.wrapper}>
+<div class={`${className} ${styles.wrapper}`}>
 	<section class={styles.hero} id="thresholdElement">
 		<div class={styles.heroContent}>
-			<h1 class={styles.welcome}>
+			<div class={styles.welcome}>
 				<span>Welcome to</span>
 				<strong>BJR OPHTHALMOLOGY</strong>
-			</h1>
-			<p class={styles.statement}>
-				Expert Eye Care for a Clearer Future
-			</p>
-			<button class={styles.appointmentButton}>
-				<span>Book a Consultation Today</span>
+				<p class={styles.statement}>
+					Expert Eye Care for a Clearer Future
+				</p>
+			</div>
+			<button
+				class={`${styles.appointmentButton} containerUnderlineOnHover`}
+			>
+				<span>Book a Consultation</span>
 				<svg
 					width="14"
 					height="14"
