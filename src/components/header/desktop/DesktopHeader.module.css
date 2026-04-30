@@ -12,7 +12,7 @@
 	box-sizing: border-box;
 	height: 96px;
 	width: 100vw;
-	padding: 0px 80px;
+	padding: 0px max(calc((90vw - var(--container-width)) / 2), 72px);
 	color: rgb(var(--color-secondary));
 	background-color: rgb(45, 96, 148);
 	backdrop-filter: blur(10px);
@@ -51,8 +51,12 @@
 
 .drawer {
 	width: 100vw;
-	padding: 0px 80px;
-	background-color: rgb(var(--color-secondary));
+	padding: 0px max(calc((90vw - var(--container-width)) / 2), 72px);
+	background-color: color-mix(
+		in srgb,
+		var(--color-neutral-50) 40%,
+		var(--color-neutral-50)
+	);
 	backdrop-filter: blur(20px);
 	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.3);
 	color: var(--color-tertiary);
@@ -88,7 +92,7 @@
 	letter-spacing: 1px;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1268px) {
 	.header {
 		display: block;
 	}

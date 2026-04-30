@@ -64,40 +64,36 @@ const DesktopHeader: React.FC = (props) => {
 	return (
 		<HeaderContext.Provider value={{ navLink, setNavLink }}>
 			<header className={styles.header} ref={headerRef}>
-				<div>
-					<div className={styles.content} ref={contentRef}>
-						<Logo
-							containerStyle={""}
-							logoStyle={styles.logo}
-							titleStyle={styles.title}
-							subtitleStyle={styles.subtitle}
-						/>
-						<NavBar navLinks={navLinks} />
+				<div className={styles.content} ref={contentRef}>
+					<Logo
+						containerStyle={""}
+						logoStyle={styles.logo}
+						titleStyle={styles.title}
+						subtitleStyle={styles.subtitle}
+					/>
+					<NavBar navLinks={navLinks} />
+				</div>
+				<div className={`${styles.drawer} `}>
+					<div
+						className={`${styles.drawerInner} ${navLink ? styles.drawerInnerActive : ""}`}
+					>
+						<DropDown navLink={navLink}></DropDown>
 					</div>
-					<div className={`${styles.drawer} `}>
-						<div
-							className={`${styles.drawerInner} ${navLink ? styles.drawerInnerActive : ""}`}
-						>
-							<DropDown navLink={navLink}></DropDown>
-						</div>
-						<div className={styles.bottomBar}>
-							<div className={styles.langSelect}>
-								English | 中文
-							</div>
-							<div className={styles.infoRibbon}>
-								<span>
-									<span className={styles.fontBold}>
-										Manhattan{" "}
-									</span>
-									| (212) 219-7786
+					<div className={styles.bottomBar}>
+						<div className={styles.langSelect}>English | 中文</div>
+						<div className={styles.infoRibbon}>
+							<span>
+								<span className={styles.fontBold}>
+									Manhattan{" "}
 								</span>
-								<span>
-									<span className={styles.fontBold}>
-										Brooklyn{" "}
-									</span>
-									| (718) 492-3500
+								| (212) 219-7786
+							</span>
+							<span>
+								<span className={styles.fontBold}>
+									Brooklyn{" "}
 								</span>
-							</div>
+								| (718) 492-3500
+							</span>
 						</div>
 					</div>
 				</div>

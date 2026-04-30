@@ -2,7 +2,6 @@
 	/* Color Palette (RGB for opacity support) */
 	--color-primary: 64, 110, 157;
 	--color-primary-dark: 50, 98, 146;
-	--color-secondary: 245, 245, 245;
 	--color-tertiary: 34, 41, 51;
 	--color-white: 255, 255, 255;
 	--color-slate-100: 241, 245, 249;
@@ -25,6 +24,8 @@
 	--space-lg: 24px;
 	--space-xl: 48px;
 	--space-2xl: 80px;
+
+	--container-width: 1152px;
 
 	/* Borders & Shadows */
 	--radius-sm: 2px;
@@ -121,7 +122,4 @@ p {
 /* Layout Blocks */
 main {
 	color: var(--text-main);
-}
-
-section {
 }
