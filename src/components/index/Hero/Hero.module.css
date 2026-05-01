@@ -147,27 +147,69 @@
 	transform: translateX(4px);
 }
 
+.stats {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	bottom: 0;
+	transform: translateY(50%) translateX(-50%);
+	left: calc(50%);
+}
+
+.stats__card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: white;
+}
+
+.stats__card::after {
+	content: "";
+	height: 4px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background-color: rgb(var(--color-primary));
+}
+
+.stats__value {
+	font: normal 20px var(--font-sans-serif);
+	color: rgb(var(--color-primary));
+	line-height: 1;
+}
+
+.stats__label {
+	font: lighter 16px var(--font-serif);
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	text-align: center;
+}
+
 @media (min-width: 830px) {
 	.heroContent {
 		gap: 24px;
 	}
+
 	.welcome {
 		font-size: 20px;
 	}
+
 	.statement {
 		font-size: 48px;
 	}
+
 	.subStatement {
 		font-size: 20px;
 	}
+
 	.appointmentButton {
 		gap: 12px;
 		padding: 16px 36px;
 		font-size: 16px;
 	}
-}
 
-@media (min-width: 830px) {
 	.statistics {
 		padding: 32px;
 	}
@@ -211,28 +253,17 @@
 		width: 368px;
 	}
 
-	.statistics {
+	.stats {
 		padding: 0px;
-		position: absolute;
-		bottom: 0;
-		transform: translateY(50%) translateX(-50%);
-		left: calc(50%);
 		width: 1152px;
-		display: flex;
 		gap: 24px;
 		z-index: 10;
-		justify-content: center;
 	}
 
-	.statCard {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+	.stats__card {
 		height: 144px;
 		position: relative;
 		flex: 1;
-		background: white;
 		padding: 32px 24px;
 		border-radius: 2px;
 		box-shadow: var(--shadow-sm);
@@ -241,33 +272,10 @@
 		overflow: hidden;
 	}
 
-	.statCard::after {
-		content: "";
-		height: 4px;
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		background-color: rgb(var(--color-primary));
-	}
-
-	.statCard:hover {
+	.stats__card:hover {
 		transform: translateY(-4px);
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 		border-color: rgb(var(--color-primary));
-	}
-
-	.statValue {
-		font: normal 20px var(--font-sans-serif);
-		color: rgb(var(--color-primary));
-		line-height: 1;
-	}
-
-	.statLabel {
-		font: lighter 16px var(--font-serif);
-		color: var(--text-muted);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		text-align: center;
 	}
 
 	.statisticsPadding {

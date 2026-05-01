@@ -2,6 +2,12 @@
 import styles from "./Hero.module.css";
 
 const { class: className = "" } = Astro.props;
+
+const stats = [
+	{ value: "2", label: "Locations" },
+	{ value: "5", label: "Expert Doctors" },
+	{ value: "2009", label: "Open Since" },
+];
 ---
 
 <div class={`${className} ${styles.wrapper}`}>
@@ -39,18 +45,14 @@ const { class: className = "" } = Astro.props;
 			</button>
 		</div>
 	</section>
-	<div class={styles.statistics}>
-		<div class={styles.statCard}>
-			<span class={styles.statValue}>2</span>
-			<span class={styles.statLabel}>Locations</span>
-		</div>
-		<div class={styles.statCard}>
-			<span class={styles.statValue}>5</span>
-			<span class={styles.statLabel}>Expert Doctors</span>
-		</div>
-		<div class={styles.statCard}>
-			<span class={styles.statValue}>2009</span>
-			<span class={styles.statLabel}>Open Since</span>
-		</div>
+	<div class={styles.stats}>
+		{
+			stats.map(({ value, label }) => (
+				<div class={styles.stats__card}>
+					<span class={styles.stats__value}>{value}</span>
+					<span class={styles.stats__label}>{label}</span>
+				</div>
+			))
+		}
 	</div>
 </div>

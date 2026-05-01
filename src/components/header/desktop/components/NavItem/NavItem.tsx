@@ -50,7 +50,7 @@ const DropdownNavItem: React.FC<{ navlink: DropDownNavLink }> = ({
 				{navlink.displayName}
 			</a>
 			<img
-				className={styles.cheveron}
+				className={`${styles.cheveron} ${context.navLink == navlink && styles.cheveron_active}`}
 				src="/public/cheveron.svg"
 				alt="dropdown arrow"
 			/>
@@ -80,7 +80,7 @@ const CustomDropdownNavItem: React.FC<{ navItem: CustomDropDownNavLink }> = ({
 		<li key={navItem.displayName}>
 			<a onClick={handleClick}>{navItem.displayName}</a>
 			<img
-				className={styles.cheveron}
+				className={`${styles.cheveron} ${navLink == navItem && styles.cheveron_active}`}
 				src="/public/cheveron.svg"
 				alt="dropdown arrow"
 			/>

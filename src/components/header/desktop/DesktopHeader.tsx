@@ -8,30 +8,40 @@ import DropDown from "./components/DropDown/DropDown";
 
 const DesktopHeader: React.FC = (props) => {
 	const [navLink, setNavLink] = useState<NavLink | null>(null);
-	const contentRef = useRef<HTMLDivElement>(
-		null,
-	) as RefObject<HTMLDivElement>;
+	const contentRef = useRef<HTMLDivElement>(null);
 	const headerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const visibilityThresholdElement =
 			document.querySelector("#thresholdElement");
-		const visibilityThreshold = visibilityThresholdElement?.scrollHeight!;
-
-		//Initial Opacity
-		const addOpacity =
-			((window.scrollY + 160) / visibilityThreshold) * 0.35;
-		contentRef.current.style.backgroundColor = `rgba(45, 96, 148, ${0.65 + addOpacity})`;
+		let visibilityThreshold =
+			visibilityThresholdElement?.scrollHeight ?? 0;
 
 		const onScroll = () => {
+			if (contentRef.current == null) {
+				return;
+			}
+
 			const addOpacity =
 				((window.scrollY + 160) / visibilityThreshold) * 0.35;
 			contentRef.current.style.backgroundColor = `rgba(45, 96, 148, ${0.65 + addOpacity})`;
 		};
 
+		const resizeObserver = visibilityThresholdElement
+			? new ResizeObserver(() => {
+					visibilityThreshold =
+						visibilityThresholdElement.scrollHeight;
+					onScroll();
+				})
+			: null;
+
+		resizeObserver?.observe(visibilityThresholdElement!);
+		onScroll();
+
 		window.addEventListener("scroll", onScroll);
 		return () => {
 			window.removeEventListener("scroll", onScroll);
+			resizeObserver?.disconnect();
 		};
 	}, []);
 

@@ -12,7 +12,7 @@
 	justify-content: space-between;
 	box-sizing: border-box;
 	height: 96px;
-	padding: 0px calc((100% - var(--container-width)) / 2);
+	padding: 0px max(calc((100% - var(--container-width)) / 2), 72px);
 	background-color: rgb(45, 96, 148);
 	backdrop-filter: blur(10px);
 	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
@@ -40,16 +40,18 @@
 	font: lighter 48px var(--font-serif);
 	margin: 0px;
 	transition: all 0.2s ease-in;
+	visibility: hidden;
 }
 
 .subtitle {
 	font-size: 24px;
 	letter-spacing: 1px;
 	transition: all 0.2s ease-in;
+	visibility: hidden;
 }
 
 .drawer {
-	padding: 0px calc((100% - var(--container-width)) / 2);
+	padding: 0px max(calc((100% - var(--container-width)) / 2), 72px);
 	background-color: color-mix(
 		in srgb,
 		var(--color-neutral-50) 40%,
@@ -64,7 +66,8 @@
 
 .drawerInner {
 	interpolate-size: allow-keywords;
-	overflow: hidden;
+	overflow-y: clip;
+	overflow-x: visible;
 	height: 0px;
 	transition: height 0.2s ease-out;
 }
@@ -91,8 +94,16 @@
 	letter-spacing: 1px;
 }
 
-@media (min-width: 1268px) {
+@media (min-width: 980px) {
 	.header {
 		display: block;
+	}
+
+	.title {
+		visibility: visible;
+	}
+
+	.subtitle {
+		visibility: visible;
 	}
 }

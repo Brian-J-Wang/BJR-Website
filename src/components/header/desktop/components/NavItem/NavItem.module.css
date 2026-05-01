@@ -1,0 +1,9 @@
+.cheveron {
+	width: 14px;
+	height: 14px;
+	transition: ease-out 0.15s all;
+}
+
+.cheveron_active {
+	transform: rotate(180deg);
+}
