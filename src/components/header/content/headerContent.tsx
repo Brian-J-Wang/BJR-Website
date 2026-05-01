@@ -1,5 +1,6 @@
 import React, { type ReactNode } from "react";
 import TeamDropDown from "./TeamDropDown/TeamDropDown";
+import Services from "./Services/Services";
 
 type BaseNavLink = {
 	href: string;
@@ -41,10 +42,10 @@ export const navLinks: NavLink[] = [
 		dropdownContent: <TeamDropDown />,
 	},
 	{
-		type: "dropdown",
+		type: "customDropdown",
 		href: "/eye-surgery",
 		displayName: "Eye Surgeries",
-		dropdownContent: [],
+		dropdownContent: <Services className="py-12" />,
 	},
 	{
 		type: "dropdown",
