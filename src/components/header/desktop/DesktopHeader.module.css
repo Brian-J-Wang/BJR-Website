@@ -2,6 +2,7 @@
 	display: none;
 	position: fixed;
 	z-index: 999;
+	color: var(--color-neutral-50);
 	width: 100%;
 }
 
@@ -11,9 +12,7 @@
 	justify-content: space-between;
 	box-sizing: border-box;
 	height: 96px;
-	width: 100vw;
-	padding: 0px max(calc((90vw - var(--container-width)) / 2), 72px);
-	color: rgb(var(--color-secondary));
+	padding: 0px calc((100% - var(--container-width)) / 2);
 	background-color: rgb(45, 96, 148);
 	backdrop-filter: blur(10px);
 	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
@@ -50,8 +49,7 @@
 }
 
 .drawer {
-	width: 100vw;
-	padding: 0px max(calc((90vw - var(--container-width)) / 2), 72px);
+	padding: 0px calc((100% - var(--container-width)) / 2);
 	background-color: color-mix(
 		in srgb,
 		var(--color-neutral-50) 40%,
@@ -80,6 +78,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	color: var(--color-secondary);
 }
 
 .infoRibbon {

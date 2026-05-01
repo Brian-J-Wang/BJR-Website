@@ -18,14 +18,15 @@
 
 .title {
 	font: 800 1.75rem var(--font-sans-serif);
-	color: rgb(var(--color-secondary));
+	color: var(--color-neutral-50);
 	margin: 0px;
 	letter-spacing: 1px;
 }
 
 .subtitle {
 	font: 300 1rem var(--font-serif);
-	color: rgb(var(--color-tertiary));
+	color: var(--color-neutral-50);
+
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	margin-top: 2px;

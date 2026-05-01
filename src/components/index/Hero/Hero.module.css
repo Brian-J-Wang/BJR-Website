@@ -68,7 +68,7 @@
 	font:
 		300 0.75rem var(--font-serif),
 		serif;
-	color: rgb(var(--color-secondary));
+	color: var(--color-neutral-50);
 	text-transform: uppercase;
 	letter-spacing: 0.5em;
 	opacity: 0.8;

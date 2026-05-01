@@ -1,72 +1,75 @@
 .slide {
-    display: flex;
-    flex-direction: column;
-    height: 320px;
-    width: min(800px, 60%);
-    padding: 48px 56px;
-    border-radius: 16px;
-    background-color: white;
-    border: 1px solid rgba(var(--color-primary), 0.06);
-    box-shadow:
-        0px 12px 24px rgba(34, 41, 51, 0.04),
-        0 2px 6px rgba(0, 0, 0, 0.02);
-    user-select: none;
-    -webkit-user-select: none;
+	display: flex;
+	position: relative;
+	flex: 0 0 720px;
+	flex-direction: column;
+	height: 320px;
+	width: min(600px, 60%);
+	padding: 48px 56px;
+	border-radius: var(--radius-xs);
+	margin-left: 48px;
+	background-color: white;
+	border: 1px solid rgba(var(--color-primary), 0.06);
+	box-shadow:
+		0px 12px 24px rgba(34, 41, 51, 0.04),
+		0 2px 6px rgba(0, 0, 0, 0.02);
+	user-select: none;
+	-webkit-user-select: none;
 }
 
 .slideContent {
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
+	flex: 1;
+	display: flex;
+	align-items: flex-start;
 }
 
 .slideContent p {
-    font:
-        400 16px/1.8 "Instrument Sans",
-        sans-serif;
-    color: #4a5568;
-    margin: 0;
-    text-align: left;
+	font:
+		400 16px/1.8 "Instrument Sans",
+		sans-serif;
+	color: #4a5568;
+	margin: 0;
+	text-align: left;
 }
 
 .slideFooter {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
 }
 
 .slideFooter span {
-    font:
-        700 14px "Instrument Sans",
-        sans-serif;
-    color: rgb(var(--color-primary));
-    text-transform: uppercase;
-    letter-spacing: 1px;
+	font:
+		700 14px "Instrument Sans",
+		sans-serif;
+	color: rgb(var(--color-primary));
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 .slideFooter::before {
-    content: "";
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: rgb(var(--color-tertiary));
+	content: "";
+	display: block;
+	width: 24px;
+	height: 2px;
+	background-color: rgb(var(--color-tertiary));
 }
 
 .reviewLink {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: rgba(var(--color-primary), 0.6);
-    transition: all 0.2s ease;
-    text-decoration: none;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	color: rgba(var(--color-primary), 0.6);
+	transition: all 0.2s ease;
+	text-decoration: none;
 }
 
 .reviewLink:hover {
-    color: rgb(var(--color-primary));
-    background: rgba(var(--color-primary), 0.1);
-    border-color: rgba(var(--color-primary), 0.1);
-    transform: scale(1.05);
+	color: rgb(var(--color-primary));
+	background: rgba(var(--color-primary), 0.1);
+	border-color: rgba(var(--color-primary), 0.1);
+	transform: scale(1.05);
 }
