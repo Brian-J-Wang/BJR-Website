@@ -112,14 +112,7 @@ const DesktopHeader: React.FC = (props) => {
 							className={styles.langSelect}
 							aria-label="Language Selector"
 						>
-							<a
-								href="/"
-								className={clsx(
-									styles.langLink,
-									styles.langLink_active,
-								)}
-								aria-current="page"
-							>
+							<a href="/en" className={styles.langLink}>
 								English
 							</a>
 							<span aria-hidden="true"> | </span>

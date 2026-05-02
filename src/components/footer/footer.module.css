@@ -1,147 +1,187 @@
 .footer {
-    font-family: "Instrument Sans";
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 60px 80px;
-    background-image:
-        linear-gradient(
-            65deg,
-            rgba(var(--color-primary), 0.7) 0%,
-            rgba(var(--color-tertiary), 1) 30%,
-            rgba(var(--color-tertiary)) 100%
-        ),
-        url(brooklynOffice.png);
-    background-color: #292929;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-clip: border-box;
-    color: whitesmoke;
+	font-family: "Instrument Sans";
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 64px calc((100% - 1152px) / 2);
+	background-image:
+		linear-gradient(
+			65deg,
+			rgba(var(--color-primary), 0.7) 0%,
+			rgba(var(--color-tertiary), 1) 30%,
+			rgba(var(--color-tertiary)) 100%
+		),
+		url(brooklynOffice.png);
+	background-color: #292929;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-clip: border-box;
+	color: whitesmoke;
 }
 
 .mainContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .sideContent {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    gap: 4px;
+	display: flex;
+	flex-direction: column;
+	height: fit-content;
+	gap: 4px;
 }
 
 .logo {
-    margin-bottom: auto;
-    font-size: 16px;
-    height: min-content;
+	margin-bottom: auto;
+	font-size: 16px;
+	height: min-content;
 }
 
 .logoImage {
-    width: 52px;
-    height: 52px;
-    margin-right: 8px;
+	width: 52px;
+	height: 52px;
+	margin-right: 8px;
 }
 
 .logoTitle {
-    font-size: 1.5em;
+	font-size: 1.5em;
 }
 
 .logoSubtitle {
-    font-size: 1em;
+	font-size: 1em;
 }
 
 .logoBlurb {
-    font-style: italic;
-    font-size: 0.75rem;
-    opacity: 80%;
+	font-style: italic;
+	font-size: 0.75rem;
+	opacity: 80%;
 }
 
 .footerContent {
-    display: flex;
-    justify-content: end;
-    gap: 32px;
-    overflow: hidden;
+	display: flex;
+	justify-content: end;
+	gap: 32px;
+	overflow: hidden;
 }
 
 .section {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .section > h3 {
-    margin: 0px 0px 12px 0px;
-    font-weight: 500;
-    font-size: 20px;
-    letter-spacing: 0.5px;
-    opacity: 80%;
+	margin: 0px 0px 12px 0px;
+	font-weight: 500;
+	font-size: 0.75rem;
+	letter-spacing: 0.5px;
+	font-family: var(--font-serif);
 }
 
 .section > .content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	opacity: 80%;
+	font-size: 0.75rem;
 }
 
 .section > .content a {
-    color: rgb(var(--color-secondary));
-    text-decoration: none;
+	color: var(--color-neutral-50);
+	text-decoration: none;
+	opacity: 0.7;
+	transition: opacity 0.2s;
+}
+
+.section > .content a:hover {
+	opacity: 1;
 }
 
 .divider {
-    border-left: rgb(var(--color-primary)) 1px solid;
-    opacity: 40%;
-}
-
-.locations > .title {
-    font-size: 20px;
-    margin: 0px 0px 12px 0px;
-}
-
-.locations > .content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+	border-left: rgb(var(--color-primary)) 1px solid;
+	opacity: 40%;
 }
 
 .location {
-    h4 {
-        margin: 0px 0px 2px 0px;
-        font-weight: 500;
-    }
+	font-style: normal;
 
-    p {
-        opacity: 85%;
-        margin: 0px;
-    }
+	h4 {
+		margin: 0px 0px 2px 0px;
+		font-weight: 500;
+		font-size: 1.1rem;
+	}
+
+	p {
+		opacity: 85%;
+		margin: 0px;
+		line-height: 1.4;
+	}
 }
 
+.phoneLink {
+	color: rgb(var(--color-secondary));
+	text-decoration: none;
+	display: block;
+	margin-top: 4px;
+	font-size: 0.9rem;
+	transition: opacity 0.2s;
+}
+
+.phoneLink:hover {
+	opacity: 0.7;
+}
+
+/* #region MiscContent MARK: MiscContent
+*/
+
 .miscContent {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+	margin-top: 48px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding-top: 24px;
 }
 
 .legal {
+	display: flex;
+	gap: 12px;
+	font-size: 0.85rem;
+	opacity: 0.8;
 }
 
 .legal > a {
-    color: rgb(var(--color-secondary));
-    text-decoration: none;
+	color: rgb(var(--color-secondary));
+	text-decoration: none;
 }
 
+.copyright {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	opacity: 0.6;
+	font-size: 0.75rem;
+}
+
+.attribution {
+	font-style: italic;
+}
+
+/* #endregion */
+
 @media (max-width: 1440px) {
-    .section > h3 {
-        font-size: 1rem;
-    }
+	.section > h3 {
+		font-size: 1rem;
+	}
 
-    .section > content {
-        font-size: 0.75rem;
-    }
+	.section > content {
+		font-size: 0.75rem;
+	}
 
-    .locations > p {
-        font-size: 1rem;
-    }
+	.locations > p {
+		font-size: 1rem;
+	}
 }
