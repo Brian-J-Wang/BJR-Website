@@ -107,3 +107,20 @@
 		visibility: visible;
 	}
 }
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: rgb(var(--color-secondary));
+	overflow: hidden;
+	@apply select-none;
+}
+
+.navbar > ul {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	gap: 24px;
+	transition: gap 0.2s ease-in;
+}

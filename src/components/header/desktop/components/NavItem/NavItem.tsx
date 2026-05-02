@@ -1,4 +1,5 @@
 import styles from "./NavItem.module.css";
+import clsx from "clsx";
 import type {
 	NavLink,
 	SimpleNavLink,
@@ -9,16 +10,22 @@ import { useHeaderContext } from "../../../context/headerContext";
 
 type NavItemProps = {
 	navlink: NavLink;
+	className: string;
 };
 
-const NavItem: React.FC<NavItemProps> = ({ navlink }) => {
+const NavItem: React.FC<NavItemProps> = ({ navlink, className }) => {
 	switch (navlink.type) {
 		case "simple":
 			return <SimpleNavItem navlink={navlink} />;
 		case "dropdown":
-			return <DropdownNavItem navlink={navlink} />;
+			return <DropdownNavItem navlink={navlink} className={className} />;
 		case "customDropdown":
-			return <CustomDropdownNavItem navItem={navlink} />;
+			return (
+				<CustomDropdownNavItem
+					navItem={navlink}
+					className={className}
+				/>
+			);
 		default:
 			return null;
 	}
@@ -26,21 +33,41 @@ const NavItem: React.FC<NavItemProps> = ({ navlink }) => {
 
 /* --- Sub-Components --- */
 
-const SimpleNavItem: React.FC<{ navlink: SimpleNavLink }> = ({ navlink }) => {
+const SimpleNavItem: React.FC<{
+	navlink: SimpleNavLink;
+	className?: string;
+}> = ({ navlink, className }) => {
+	const context = useHeaderContext();
+
 	return (
-		<li key={navlink.displayName}>
+		<li
+			key={navlink.displayName}
+			className={clsx(styles.dropdown, {
+				[styles.dropdown_active]:
+					navlink?.displayName ==
+					(context.navLink?.displayName ?? ""),
+			})}
+		>
 			<a href={navlink.href}>{navlink.displayName}</a>
 		</li>
 	);
 };
 
-const DropdownNavItem: React.FC<{ navlink: DropDownNavLink }> = ({
-	navlink,
-}) => {
+const DropdownNavItem: React.FC<{
+	navlink: DropDownNavLink;
+	className?: string;
+}> = ({ navlink, className }) => {
 	const context = useHeaderContext();
 
 	return (
-		<li key={navlink.displayName}>
+		<li
+			key={navlink.displayName}
+			className={clsx(styles.dropdown, {
+				[styles.dropdown_active]:
+					navlink?.displayName ==
+					(context.navLink?.displayName ?? ""),
+			})}
+		>
 			<a
 				onClick={(evt) => {
 					evt.preventDefault();
@@ -50,7 +77,9 @@ const DropdownNavItem: React.FC<{ navlink: DropDownNavLink }> = ({
 				{navlink.displayName}
 			</a>
 			<img
-				className={`${styles.cheveron} ${context.navLink == navlink && styles.cheveron_active}`}
+				className={clsx(styles.cheveron, {
+					[styles.cheveron_active]: context.navLink === navlink,
+				})}
 				src="/public/cheveron.svg"
 				alt="dropdown arrow"
 			/>
@@ -58,9 +87,10 @@ const DropdownNavItem: React.FC<{ navlink: DropDownNavLink }> = ({
 	);
 };
 
-const CustomDropdownNavItem: React.FC<{ navItem: CustomDropDownNavLink }> = ({
-	navItem,
-}) => {
+const CustomDropdownNavItem: React.FC<{
+	navItem: CustomDropDownNavLink;
+	className?: string;
+}> = ({ navItem, className }) => {
 	const { navLink, setNavLink } = useHeaderContext();
 
 	const handleClick = (evt: React.MouseEvent<HTMLAnchorElement>) => {
@@ -77,10 +107,18 @@ const CustomDropdownNavItem: React.FC<{ navItem: CustomDropDownNavLink }> = ({
 	};
 
 	return (
-		<li key={navItem.displayName}>
+		<li
+			key={navItem.displayName}
+			className={clsx(styles.dropdown, {
+				[styles.dropdown_active]:
+					navLink?.displayName == navItem.displayName,
+			})}
+		>
 			<a onClick={handleClick}>{navItem.displayName}</a>
 			<img
-				className={`${styles.cheveron} ${navLink == navItem && styles.cheveron_active}`}
+				className={clsx(styles.cheveron, {
+					[styles.cheveron_active]: navLink === navItem,
+				})}
 				src="/public/cheveron.svg"
 				alt="dropdown arrow"
 			/>

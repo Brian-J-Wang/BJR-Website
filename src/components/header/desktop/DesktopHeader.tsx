@@ -1,10 +1,11 @@
 import styles from "./DesktopHeader.module.css";
+import clsx from "clsx";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import Logo from "../../logo/logo";
 import { navLinks, type NavLink } from "../content/headerContent";
-import NavBar from "./components/NavBar/NavBar";
 import { HeaderContext } from "../context/headerContext";
 import DropDown from "./components/DropDown/DropDown";
+import NavItem from "./components/NavItem/NavItem";
 
 const DesktopHeader: React.FC = (props) => {
 	const [navLink, setNavLink] = useState<NavLink | null>(null);
@@ -14,8 +15,7 @@ const DesktopHeader: React.FC = (props) => {
 	useEffect(() => {
 		const visibilityThresholdElement =
 			document.querySelector("#thresholdElement");
-		let visibilityThreshold =
-			visibilityThresholdElement?.scrollHeight ?? 0;
+		let visibilityThreshold = visibilityThresholdElement?.scrollHeight ?? 0;
 
 		const onScroll = () => {
 			if (contentRef.current == null) {
@@ -81,11 +81,29 @@ const DesktopHeader: React.FC = (props) => {
 						titleStyle={styles.title}
 						subtitleStyle={styles.subtitle}
 					/>
-					<NavBar navLinks={navLinks} />
+					<nav className={styles.navbar}>
+						<ul>
+							{navLinks.map((navItem) => {
+								return (
+									<NavItem
+										key={navItem.displayName}
+										navlink={navItem}
+										className={clsx({
+											[styles.navItem_active]:
+												navItem.displayName ==
+												navLink?.displayName,
+										})}
+									/>
+								);
+							})}
+						</ul>
+					</nav>
 				</div>
-				<div className={`${styles.drawer} `}>
+				<div className={styles.drawer}>
 					<div
-						className={`${styles.drawerInner} ${navLink ? styles.drawerInnerActive : ""}`}
+						className={clsx(styles.drawerInner, {
+							[styles.drawerInnerActive]: navLink,
+						})}
 					>
 						<DropDown navLink={navLink}></DropDown>
 					</div>

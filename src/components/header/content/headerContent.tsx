@@ -43,14 +43,14 @@ export const navLinks: NavLink[] = [
 	},
 	{
 		type: "customDropdown",
-		href: "/eye-surgery",
-		displayName: "Eye Surgeries",
+		href: "/services",
+		displayName: "Our Services",
 		dropdownContent: <Services className="py-12" />,
 	},
 	{
 		type: "dropdown",
-		href: "/eye-exams",
-		displayName: "Eye Exams",
+		href: "",
+		displayName: "Locations",
 		dropdownContent: [],
 	},
 	{
