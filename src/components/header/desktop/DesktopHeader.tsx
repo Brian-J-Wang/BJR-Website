@@ -73,7 +73,7 @@ const DesktopHeader: React.FC = (props) => {
 
 	return (
 		<HeaderContext.Provider value={{ navLink, setNavLink }}>
-			<header className={styles.header} ref={headerRef}>
+			<header className={styles.header} ref={headerRef} role="banner">
 				<div className={styles.content} ref={contentRef}>
 					<Logo
 						containerStyle={""}
@@ -81,7 +81,7 @@ const DesktopHeader: React.FC = (props) => {
 						titleStyle={styles.title}
 						subtitleStyle={styles.subtitle}
 					/>
-					<nav className={styles.navbar}>
+					<nav className={styles.navbar} aria-label="Main Navigation">
 						<ul>
 							{navLinks.map((navItem) => {
 								return (
@@ -108,21 +108,71 @@ const DesktopHeader: React.FC = (props) => {
 						<DropDown navLink={navLink}></DropDown>
 					</div>
 					<div className={styles.bottomBar}>
-						<div className={styles.langSelect}>English | 中文</div>
-						<div className={styles.infoRibbon}>
-							<span>
-								<span className={styles.fontBold}>
-									Manhattan{" "}
+						<nav
+							className={styles.langSelect}
+							aria-label="Language Selector"
+						>
+							<a
+								href="/"
+								className={clsx(
+									styles.langLink,
+									styles.langLink_active,
+								)}
+								aria-current="page"
+							>
+								English
+							</a>
+							<span aria-hidden="true"> | </span>
+							<a href="/zh" className={styles.langLink}>
+								中文
+							</a>
+						</nav>
+						<address className={styles.infoRibbon}>
+							<div
+								className={styles.location}
+								itemScope
+								itemType="https://schema.org/MedicalBusiness"
+							>
+								<span
+									className={styles.fontBold}
+									itemProp="name"
+								>
+									Manhattan
 								</span>
-								| (212) 219-7786
-							</span>
-							<span>
-								<span className={styles.fontBold}>
-									Brooklyn{" "}
+								<span aria-hidden="true" className="mx-1">
+									|
 								</span>
-								| (718) 492-3500
-							</span>
-						</div>
+								<a
+									href="tel:2122197786"
+									itemProp="telephone"
+									className={styles.phoneLink}
+								>
+									(212) 219-7786
+								</a>
+							</div>
+							<div
+								className={styles.location}
+								itemScope
+								itemType="https://schema.org/MedicalBusiness"
+							>
+								<span
+									className={styles.fontBold}
+									itemProp="name"
+								>
+									Brooklyn
+								</span>
+								<span aria-hidden="true" className="mx-1">
+									|
+								</span>
+								<a
+									href="tel:7184923500"
+									itemProp="telephone"
+									className={styles.phoneLink}
+								>
+									(718) 492-3500
+								</a>
+							</div>
+						</address>
 					</div>
 				</div>
 			</header>

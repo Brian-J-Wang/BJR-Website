@@ -13,13 +13,26 @@ const Logo: React.FC<LogoProps> = (props) => {
 	const titleStyle = `${styles.title} ${props.titleStyle}`;
 	const subtitleStyle = `${styles.subtitle} ${props.subtitleStyle}`;
 	return (
-		<div className={containerStyle}>
-			<img src="/favicon.svg" className={logoStyle} alt="BJR Logo" />
+		<a
+			href="/"
+			className={containerStyle}
+			aria-label="BJR Ophthalmology Home"
+			itemScope
+			itemType="https://schema.org/MedicalBusiness"
+		>
+			<img
+				src="/favicon.svg"
+				className={logoStyle}
+				alt="Bingjing Roberts Ophthalmology Logo"
+				itemProp="logo"
+			/>
 			<div className={styles.textContainer}>
-				<h1 className={titleStyle}>BINGJING ROBERTS</h1>
+				<div className={titleStyle} itemProp="name">
+					BINGJING ROBERTS
+				</div>
 				<span className={subtitleStyle}>OPHTHALMOLOGY</span>
 			</div>
-		</div>
+		</a>
 	);
 };
 
