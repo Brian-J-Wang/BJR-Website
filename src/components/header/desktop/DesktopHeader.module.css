@@ -11,8 +11,8 @@
 	align-items: center;
 	justify-content: space-between;
 	box-sizing: border-box;
-	height: 96px;
-	padding: 0px max(calc((100% - var(--container-width)) / 2), 72px);
+	height: 80px;
+	padding: 0px max(calc((100% - var(--width-full)) / 2), 72px);
 	background-color: rgb(45, 96, 148);
 	backdrop-filter: blur(10px);
 	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
@@ -31,27 +31,24 @@
 }
 
 .logo {
-	height: 84px;
-	width: 84px;
+	height: 48px;
+	width: 48px;
 	transition: all 0.2s ease-in;
 }
 
 .title {
-	font: lighter 48px var(--font-serif);
+	font-size: var(--font-size-lg);
 	margin: 0px;
 	transition: all 0.2s ease-in;
 	visibility: hidden;
 }
 
 .subtitle {
-	font-size: 24px;
-	letter-spacing: 1px;
 	transition: all 0.2s ease-in;
-	visibility: hidden;
 }
 
 .drawer {
-	padding: 0px max(calc((100% - var(--container-width)) / 2), 72px);
+	padding: 0px max(calc((100% - var(--width-full)) / 2), 72px);
 	background-color: color-mix(
 		in srgb,
 		var(--color-neutral-50) 40%,
@@ -81,17 +78,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	color: var(--color-secondary);
-}
-
-.infoRibbon {
-	display: flex;
-	gap: 16px;
+	color: var(--color-primary);
 }
 
 .fontBold {
-	font: 600 0.75rem var(--font-serif);
-	letter-spacing: 1px;
+	font: 400 0.85rem var(--font-sans-serif);
+	letter-spacing: 0.5px;
+}
+
+.phoneLink {
+	font: 400 0.85rem var(--font-sans-serif);
 }
 
 @media (min-width: 980px) {
@@ -112,9 +108,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	color: rgb(var(--color-secondary));
+	color: var(--color-primary);
 	overflow: hidden;
-	@apply select-none;
+	user-select: none;
 }
 
 .navbar > ul {

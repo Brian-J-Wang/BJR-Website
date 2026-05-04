@@ -120,7 +120,7 @@ const DesktopHeader: React.FC = (props) => {
 								中文
 							</a>
 						</nav>
-						<address className={styles.infoRibbon}>
+						<address className="flex gap-6">
 							<div
 								className={styles.location}
 								itemScope
@@ -132,7 +132,10 @@ const DesktopHeader: React.FC = (props) => {
 								>
 									Manhattan
 								</span>
-								<span aria-hidden="true" className="mx-1">
+								<span
+									aria-hidden="true"
+									className="mx-1 opacity-40"
+								>
 									|
 								</span>
 								<a
@@ -154,7 +157,10 @@ const DesktopHeader: React.FC = (props) => {
 								>
 									Brooklyn
 								</span>
-								<span aria-hidden="true" className="mx-1">
+								<span
+									aria-hidden="true"
+									className="mx-1 opacity-40"
+								>
 									|
 								</span>
 								<a

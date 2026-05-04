@@ -1,66 +1,3 @@
-:root {
-	/* Color Palette (RGB for opacity support) */
-	--color-primary: 64, 110, 157;
-	--color-primary-dark: 50, 98, 146;
-	--color-tertiary: 34, 41, 51;
-	--color-white: 255, 255, 255;
-	--color-slate-100: 241, 245, 249;
-	--color-slate-300: 203, 213, 225;
-	--color-slate-800: 30, 41, 59;
-	--color-slate-900: 15, 23, 42;
-
-	/* Semantic Tokens */
-	--bg-primary: rgb(var(--color-secondary));
-	--bg-dark: rgb(var(--color-slate-900));
-	--text-main: rgb(var(--color-tertiary));
-	--text-muted: rgba(var(--color-tertiary), 0.7);
-	--text-white: rgb(var(--color-white));
-	--accent: rgb(var(--color-primary));
-
-	/* Spacing System */
-	--space-xs: 4px;
-	--space-sm: 8px;
-	--space-md: 16px;
-	--space-lg: 24px;
-	--space-xl: 48px;
-	--space-2xl: 80px;
-
-	--container-width: 1152px;
-
-	/* Borders & Shadows */
-	--radius-sm: 2px;
-	--radius-md: 4px;
-	--radius-lg: 8px;
-	--radius-pill: 100px;
-	--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-	--shadow-md: 0 8px 24px rgba(0, 0, 0, 0.15);
-	--shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
-	--box-shadow-standard: 0px 0px 4px rgba(29, 29, 29, 0.5);
-
-	/* Typography Scale */
-	--font-serif: "Headland One", serif;
-	--font-sans-serif: "Instrument Sans", sans-serif;
-
-	/* Font Size */
-	--font-size-small: 12px;
-	--font-size-regular: 16px;
-	--font-size-large: 20px;
-}
-
-@font-face {
-	font-family: "Headland One";
-	src: url("/fonts/HeadlandOne-Regular.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "Instrument Sans";
-	src: url("/fonts/InstrumentSans.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
-}
-
 html {
 	font-size: 16px;
 	scroll-behavior: smooth;
@@ -68,7 +5,9 @@ html {
 
 body {
 	font-family: var(--font-sans-serif), system-ui, sans-serif;
-	background-color: var(--bg-primary);
+	/* Semantic Tokens */
+	--bg-primary: var(--color-primary);
+	--bg-dark: rgb(var(--color-slate-900));
 	color: var(--text-main);
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
@@ -81,10 +20,8 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-heading);
 	font-weight: 700;
 	line-height: 1.2;
-	margin-bottom: var(--space-md);
 }
 
 h1 {
@@ -95,10 +32,6 @@ h2 {
 }
 h3 {
 	font-size: clamp(1.5rem, 3vw, 2rem);
-}
-
-p {
-	margin-bottom: var(--space-md);
 }
 
 /* Global Utilities */
@@ -117,9 +50,4 @@ p {
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
 	border: 0;
-}
-
-/* Layout Blocks */
-main {
-	color: var(--text-main);
 }
