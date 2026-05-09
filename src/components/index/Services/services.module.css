@@ -55,8 +55,6 @@
 }
 
 .intro__summary {
-	font: 400 var(--font-size-base) var(--font-sans-serif);
-	line-height: 1.6;
 	color: var(--color-neutral-50);
 	max-width: 680px;
 	opacity: 0.85;

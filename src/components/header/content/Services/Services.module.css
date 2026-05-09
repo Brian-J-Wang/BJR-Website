@@ -4,6 +4,7 @@
 	flex-direction: column;
 	gap: 48px;
 	color: var(--color-primary);
+	padding: 72px 0px;
 }
 
 /* Elements */

@@ -38,28 +38,31 @@
 	--radius-xl: 16px;
 
 	/* Font Size Scale */
-	--font-size-xs: 0.5rem;
-	--font-size-sm: 0.75rem;
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
 	--font-size-base: 1rem;
 	--font-size-lg: 1.25rem;
 	--font-size-xl: 1.5rem;
 	--font-size-2xl: 2rem;
-	--font-size-3xl: 3rem;
+	--font-size-3xl: 2.5rem;
 
 	--width-full: 1152px;
 
 	--min-padding: 72px;
 
-	--font-serif: "CharisSIL", serif;
+	--font-serif: "Lora", serif;
 	--font-serif-fancy: "Headland One", serif;
 	--font-sans-serif: "Instrument Sans", sans-serif;
+
+	--shadow-md: 0px 0px 8px rgba(24, 24, 24, 0.1);
 }
 
 @layer base {
 	p {
 		margin-bottom: 8px;
 		color: var(--color-primary-50);
-		font-weight: 400; /* Standard readable weight */
+		font: 400 var(--font-size-base)/var(--text-xl--line-height)
+			var(--font-sans-serif);
 	}
 }
 
@@ -83,42 +86,47 @@
 
 @font-face {
 	font-family: "Instrument Sans";
-	src: url("/fonts/static/InstrumentSans-Regular.ttf") format("truetype");
-	font-weight: 400;
+	src: url("/fonts/InstrumentSans.ttf") format("truetype");
+	font-weight: 400 900;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: "Instrument Sans";
-	src: url("/fonts/static/InstrumentSans-Medium.ttf") format("truetype");
-	font-weight: 500;
+	font-family: "Lora";
+	src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype");
+	font-weight: 400 700;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: "Instrument Sans";
-	src: url("/fonts/static/InstrumentSans-SemiBold.ttf") format("truetype");
-	font-weight: 600;
-	font-style: normal;
+	font-family: "Lora";
+	src: url("/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype");
+	font-weight: 400 700;
+	font-style: italic;
 }
 
-@font-face {
-	font-family: "Instrument Sans";
-	src: url("/fonts/static/InstrumentSans-Bold.ttf") format("truetype");
-	font-weight: 700;
-	font-style: normal;
+.containerUnderline {
+	position: relative;
 }
 
-@font-face {
-	font-family: "CharisSIL";
-	src: url("/fonts/CharisSIL-Regular.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
+.containerUnderline::after {
+	content: "";
+	height: 2px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background-color: var(--color-primary-900);
 }
 
-@font-face {
-	font-family: "CharisSIL";
-	src: url("/fonts/CharisSIL-Bold.ttf") format("truetype");
-	font-weight: bold;
-	font-style: normal;
+.underlineOnHover {
+	position: relative;
+}
+
+.underlineOnHover:hover::after {
+	content: "";
+	height: 2px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background-color: var(--color-primary-900);
 }

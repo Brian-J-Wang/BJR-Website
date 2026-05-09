@@ -32,10 +32,8 @@
 }
 
 .heading {
-	font:
-		700 40px "Instrument Sans",
-		sans-serif;
-	color: rgb(var(--color-tertiary));
+	font: 500 var(--font-size-3xl) var(--font-serif);
+	color: var(--color-primary-900);
 	margin: 0;
 	line-height: 1.1;
 	position: relative;
@@ -49,7 +47,8 @@
 }
 
 .text {
-	font: 500 18px/1.6 var(--font-body);
+	font: 400 var(--font-size-base)/var(--text-lg--line-height)
+		var(--font-sans-serif);
 	margin: 0;
 }
 

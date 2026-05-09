@@ -129,14 +129,14 @@
 	border: 1px solid rgba(255, 255, 255, 0.4);
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+	transition: var(--transition-default);
 	cursor: pointer;
 }
 
 .appointmentButton:hover {
 	background: white;
-	color: rgb(var(--color-primary));
-	border-color: white;
+	color: var(--color-primary-900);
+	border: 1px solid rgba(255, 255, 255, 0);
 }
 
 .appointmentButton svg {
@@ -151,12 +151,22 @@
 	display: flex;
 	justify-content: center;
 	position: absolute;
+	gap: 24px;
 	bottom: 0;
 	transform: translateY(50%) translateX(-50%);
 	left: calc(50%);
+	width: 100%;
+	padding: 72px max(var(--min-padding), calc((100% - var(--width-full)) / 2));
 }
 
 .stats__card {
+	height: 144px;
+	flex: 1;
+	padding: 32px 24px;
+	border-radius: 2px;
+	box-shadow: var(--shadow-sm);
+	gap: 8px;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -164,24 +174,15 @@
 	background: white;
 }
 
-.stats__card::after {
-	content: "";
-	height: 4px;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	background-color: rgb(var(--color-primary));
-}
-
 .stats__value {
-	font: normal 20px var(--font-sans-serif);
-	color: rgb(var(--color-primary));
+	font: 500 var(--font-size-2xl) var(--font-sans-serif);
+	color: var(--color-primary-900);
 	line-height: 1;
 }
 
 .stats__label {
-	font: lighter 16px var(--font-serif);
-	color: var(--text-muted);
+	font: 500 var(--font-size-lg) var(--font-serif);
+	color: var(--color-primary-100);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	text-align: center;
@@ -261,21 +262,12 @@
 	}
 
 	.stats__card {
-		height: 144px;
-		position: relative;
 		flex: 1;
 		padding: 32px 24px;
 		border-radius: 2px;
 		box-shadow: var(--shadow-sm);
 		gap: 8px;
-		transition: all 0.3s ease;
 		overflow: hidden;
-	}
-
-	.stats__card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-		border-color: rgb(var(--color-primary));
 	}
 
 	.statisticsPadding {

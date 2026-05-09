@@ -20,9 +20,7 @@ const stats = [
 					Expert Eye Care for a Clearer Future
 				</p>
 			</div>
-			<button
-				class={`${styles.appointmentButton} containerUnderlineOnHover`}
-			>
+			<button class={`${styles.appointmentButton} underlineOnHover`}>
 				<span>Book a Consultation</span>
 				<svg
 					width="14"
@@ -48,7 +46,7 @@ const stats = [
 	<div class={styles.stats}>
 		{
 			stats.map(({ value, label }) => (
-				<div class={styles.stats__card}>
+				<div class={`${styles.stats__card} containerUnderline`}>
 					<span class={styles.stats__value}>{value}</span>
 					<span class={styles.stats__label}>{label}</span>
 				</div>

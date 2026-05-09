@@ -1,6 +1,6 @@
 import styles from "./DesktopHeader.module.css";
 import clsx from "clsx";
-import { useEffect, useRef, useState, type RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Logo from "../../logo/logo";
 import { navLinks, type NavLink } from "../content/headerContent";
 import { HeaderContext } from "../context/headerContext";
@@ -12,9 +12,18 @@ const DesktopHeader: React.FC = (props) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const headerRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const visibilityThresholdElement =
 			document.querySelector("#thresholdElement");
+
+		if (!visibilityThresholdElement) {
+			if (!contentRef.current) {
+				return;
+			}
+
+			contentRef.current.style.backgroundColor = `rgba(39, 48, 62, 1)`;
+		}
+
 		let visibilityThreshold = visibilityThresholdElement?.scrollHeight ?? 0;
 
 		const onScroll = () => {
@@ -24,7 +33,7 @@ const DesktopHeader: React.FC = (props) => {
 
 			const addOpacity =
 				((window.scrollY + 160) / visibilityThreshold) * 0.35;
-			contentRef.current.style.backgroundColor = `rgba(45, 96, 148, ${0.65 + addOpacity})`;
+			contentRef.current.style.backgroundColor = `rgba(39, 48, 62, ${0.65 + addOpacity})`;
 		};
 
 		const resizeObserver = visibilityThresholdElement
@@ -73,16 +82,23 @@ const DesktopHeader: React.FC = (props) => {
 
 	return (
 		<HeaderContext.Provider value={{ navLink, setNavLink }}>
-			<header className={styles.header} ref={headerRef} role="banner">
-				<div className={styles.content} ref={contentRef}>
+			<header
+				className={styles.desktopHeader}
+				ref={headerRef}
+				role="banner"
+			>
+				<div className={styles.desktopHeader__content} ref={contentRef}>
 					<Logo
 						containerStyle={""}
-						logoStyle={styles.logo}
-						titleStyle={styles.title}
-						subtitleStyle={styles.subtitle}
+						logoStyle={styles.desktopHeader__logo}
+						titleStyle={styles.desktopHeader__logoTitle}
+						subtitleStyle={styles.desktopHeader__logoSubtitle}
 					/>
-					<nav className={styles.navbar} aria-label="Main Navigation">
-						<ul>
+					<nav
+						className={styles.desktopHeader__navbar}
+						aria-label="Main Navigation"
+					>
+						<ul className={styles.desktopHeader__navList}>
 							{navLinks.map((navItem) => {
 								return (
 									<NavItem
@@ -99,74 +115,74 @@ const DesktopHeader: React.FC = (props) => {
 						</ul>
 					</nav>
 				</div>
-				<div className={styles.drawer}>
+				<div className={styles.desktopHeader__drawer}>
 					<div
-						className={clsx(styles.drawerInner, {
-							[styles.drawerInnerActive]: navLink,
+						className={clsx(styles.desktopHeader__drawerInner, {
+							[styles.desktopHeader__drawerInner_active]: navLink,
 						})}
 					>
 						<DropDown navLink={navLink}></DropDown>
 					</div>
-					<div className={styles.bottomBar}>
+					<div className={styles.desktopHeader__bottomBar}>
 						<nav
-							className={styles.langSelect}
+							className={styles.desktopHeader__langSelect}
 							aria-label="Language Selector"
 						>
-							<a href="/en" className={styles.langLink}>
+							<a
+								href="/en"
+								className={clsx(
+									styles.desktopHeader__langLink,
+									{
+										[styles.desktopHeader__langLink_active]: true, // Replace with actual active logic
+									},
+								)}
+							>
 								English
 							</a>
 							<span aria-hidden="true"> | </span>
-							<a href="/zh" className={styles.langLink}>
+							<a
+								href="/zh"
+								className={styles.desktopHeader__langLink}
+							>
 								中文
 							</a>
 						</nav>
 						<address className="flex gap-6">
 							<div
-								className={styles.location}
+								className={styles.desktopHeader__location}
 								itemScope
 								itemType="https://schema.org/MedicalBusiness"
 							>
 								<span
-									className={styles.fontBold}
+									className={styles.desktopHeader__boldText}
 									itemProp="name"
 								>
 									Manhattan
 								</span>
-								<span
-									aria-hidden="true"
-									className="mx-1 opacity-40"
-								>
-									|
-								</span>
 								<a
 									href="tel:2122197786"
 									itemProp="telephone"
-									className={styles.phoneLink}
+									className={styles.desktopHeader__phoneLink}
 								>
 									(212) 219-7786
 								</a>
 							</div>
 							<div
-								className={styles.location}
+								className={styles.desktopHeader__location}
 								itemScope
 								itemType="https://schema.org/MedicalBusiness"
 							>
 								<span
-									className={styles.fontBold}
+									className={styles.desktopHeader__boldText}
 									itemProp="name"
 								>
 									Brooklyn
 								</span>
-								<span
-									aria-hidden="true"
-									className="mx-1 opacity-40"
-								>
-									|
-								</span>
+
 								<a
 									href="tel:7184923500"
 									itemProp="telephone"
-									className={styles.phoneLink}
+									className={styles.desktopHeader__phoneLink}
 								>
 									(718) 492-3500
 								</a>

@@ -2,9 +2,7 @@ import "./embla.css";
 import styles from "./testimonialsCarousels.module.css";
 import "embla-carousel-react";
 
-import { useCallback, useContext, useEffect, useState, type Ref } from "react";
-import { CarouselContext } from "../../carousel/_carouselContext/carouselContext";
-import { CarouselAnimation } from "../../carousel/carousel.classes";
+import { useCallback, useEffect, useState } from "react";
 import Slide from "./Slide";
 import useEmblaCarousel from "embla-carousel-react";
 

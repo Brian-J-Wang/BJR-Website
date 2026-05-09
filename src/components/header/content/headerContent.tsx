@@ -36,16 +36,15 @@ export const navLinks: NavLink[] = [
 		displayName: "Home",
 	},
 	{
-		type: "customDropdown",
+		type: "simple",
 		href: "/team",
 		displayName: "Our Team",
-		dropdownContent: <TeamDropDown />,
 	},
 	{
 		type: "customDropdown",
 		href: "/services",
 		displayName: "Our Services",
-		dropdownContent: <Services className="py-12" />,
+		dropdownContent: <Services />,
 	},
 	{
 		type: "dropdown",

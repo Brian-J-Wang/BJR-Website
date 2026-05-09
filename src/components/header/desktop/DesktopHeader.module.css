@@ -1,4 +1,4 @@
-.header {
+.desktopHeader {
 	display: none;
 	position: fixed;
 	z-index: 999;
@@ -6,48 +6,44 @@
 	width: 100%;
 }
 
-.content {
+.desktopHeader__content {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	box-sizing: border-box;
 	height: 80px;
 	padding: 0px max(calc((100% - var(--width-full)) / 2), 72px);
-	background-color: rgb(45, 96, 148);
+	background-color: var(--color-primary-50);
 	backdrop-filter: blur(10px);
 	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
 	transition: background-color ease-in 0.1s;
 	overflow: hidden;
 }
 
-.content.scrolled {
-	background-color: rgb(var(--color-primary-dark));
-}
-
-.headerBuffer {
+.desktopHeader__buffer {
 	height: 160px;
 	width: 100vw;
 	background-image: url("brooklynOffice.png");
 }
 
-.logo {
+.desktopHeader__logo {
 	height: 48px;
 	width: 48px;
 	transition: all 0.2s ease-in;
 }
 
-.title {
+.desktopHeader__logoTitle {
 	font-size: var(--font-size-lg);
 	margin: 0px;
 	transition: all 0.2s ease-in;
 	visibility: hidden;
 }
 
-.subtitle {
+.desktopHeader__logoSubtitle {
 	transition: all 0.2s ease-in;
 }
 
-.drawer {
+.desktopHeader__drawer {
 	padding: 0px max(calc((100% - var(--width-full)) / 2), 72px);
 	background-color: color-mix(
 		in srgb,
@@ -56,12 +52,12 @@
 	);
 	backdrop-filter: blur(20px);
 	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.3);
-	color: var(--color-tertiary);
-	font-size: 14px;
+	color: var(--color-primary);
+	font-size: 0.875rem;
 	letter-spacing: 0.5px;
 }
 
-.drawerInner {
+.desktopHeader__drawerInner {
 	interpolate-size: allow-keywords;
 	overflow-y: clip;
 	overflow-x: visible;
@@ -69,11 +65,11 @@
 	transition: height 0.2s ease-out;
 }
 
-.drawerInnerActive {
+.desktopHeader__drawerInner_active {
 	height: fit-content;
 }
 
-.bottomBar {
+.desktopHeader__bottomBar {
 	height: 40px;
 	display: flex;
 	align-items: center;
@@ -81,30 +77,38 @@
 	color: var(--color-primary);
 }
 
-.fontBold {
-	font: 400 0.85rem var(--font-sans-serif);
-	letter-spacing: 0.5px;
+.desktopHeader__boldText {
+	font: 500 0.85rem var(--font-sans-serif);
+	opacity: 60%;
+	letter-spacing: 0;
 }
 
-.phoneLink {
+.desktopHeader__phoneLink {
 	font: 400 0.85rem var(--font-sans-serif);
+	color: inherit;
+	text-decoration: none;
+	transition: opacity 0.2s;
+}
+
+.desktopHeader__phoneLink:hover {
+	opacity: 0.7;
 }
 
 @media (min-width: 980px) {
-	.header {
+	.desktopHeader {
 		display: block;
 	}
 
-	.title {
+	.desktopHeader__logoTitle {
 		visibility: visible;
 	}
 
-	.subtitle {
+	.desktopHeader__logoSubtitle {
 		visibility: visible;
 	}
 }
 
-.navbar {
+.desktopHeader__navbar {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -113,7 +117,7 @@
 	user-select: none;
 }
 
-.navbar > ul {
+.desktopHeader__navList {
 	display: flex;
 	flex-direction: row;
 	list-style: none;
@@ -121,25 +125,32 @@
 	transition: gap 0.2s ease-in;
 }
 
-.langLink,
-.phoneLink {
+.desktopHeader__langSelect {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.desktopHeader__langLink {
 	color: inherit;
 	text-decoration: none;
 	transition: opacity 0.2s;
+	font-size: 0.85rem;
 }
 
-.langLink:hover,
-.phoneLink:hover {
+.desktopHeader__langLink:hover {
 	opacity: 0.7;
 }
 
-.langLink_active {
+.desktopHeader__langLink_active {
 	opacity: 1;
 	font-weight: 600;
 }
 
-.location {
+.desktopHeader__location {
 	display: flex;
 	align-items: center;
 	font-style: normal;
+	text-transform: uppercase;
+	gap: 4px;
 }

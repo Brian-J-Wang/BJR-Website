@@ -1,36 +1,38 @@
 ---
 import Logo from "../logo/logo";
 import styles from "./footer.module.css";
+
+const { class: className } = Astro.props;
 ---
 
-<footer class={styles.footer} role="contentinfo">
-	<div class={styles.mainContent}>
-		<div class={styles.sideContent}>
+<footer class={`${styles.footer} ${className}`} role="contentinfo">
+	<div class={styles.footer__main}>
+		<div class={styles.footer__brand}>
 			<Logo
-				containerStyle={styles.logo}
-				titleStyle={styles.logoTitle}
-				subtitleStyle={styles.logoSubtitle}
-				logoStyle={styles.logoImage}
+				containerStyle={styles.footer__logo}
+				titleStyle={styles.footer__logoTitle}
+				subtitleStyle={styles.footer__logoSubtitle}
+				logoStyle={styles.footer__logoImage}
 				client:load
 			/>
-			<p class={styles.logoBlurb}>
+			<p class={styles.footer__tagline}>
 				Expert Doctors, Professional Staff, Satisfied Patients
 			</p>
 		</div>
 
-		<div class={styles.footerContent}>
-			<nav class={styles.section} aria-label="Footer - Team">
-				<h3>Our Team</h3>
-				<ul class={styles.content}>
+		<div class={styles.footer__navGrid}>
+			<nav class={styles.footer__section} aria-label="Footer - Team">
+				<h3 class={styles.footer__sectionHeading}>Our Team</h3>
+				<ul class={styles.footer__list}>
 					<li><a href="/about-dr-roberts">About Dr. Roberts</a></li>
 					<li><a href="/doctors">Our Doctors</a></li>
 					<li><a href="/staff">Our Staff</a></li>
 				</ul>
 			</nav>
 
-			<nav class={styles.section} aria-label="Footer - Surgeries">
-				<h3>Surgeries</h3>
-				<ul class={styles.content}>
+			<nav class={styles.footer__section} aria-label="Footer - Surgeries">
+				<h3 class={styles.footer__sectionHeading}>Surgeries</h3>
+				<ul class={styles.footer__list}>
 					<li><a href="/surgeries#lasik">LASIK</a></li>
 					<li><a href="/surgeries#evo-icl">EVO ICL</a></li>
 					<li><a href="/surgeries#cataracts">Cataracts</a></li>
@@ -44,92 +46,130 @@ import styles from "./footer.module.css";
 				</ul>
 			</nav>
 
-            <nav>
-                
-            </nav>
+			<nav
+				class={styles.footer__section}
+				aria-label="Footer - Eye Services"
+			>
+				<h3 class={styles.footer__sectionHeading}>Eye Services</h3>
+				<ul class={styles.footer__list}>
+					<li><a href="/services#eye-exam">Eye Exams</a></li>
+					<li>
+						<a href="/services#diabetic-eye-care"
+							>Diabetic Eye Care</a
+						>
+					</li>
+					<li>
+						<a href="/services#macular-degeneration"
+							>Macular Degeration</a
+						>
+					</li>
+					<li><a href="/services#glaucoma">Glaucoma</a></li>
+					<li><a href="/services#dry-eye">Dry Eyes</a></li>
+					<li>
+						<a href="/services#lens fitting">Contact Lens Fittinge</a
+						>
+					</li>
+				</ul>
+			</nav>
 
-			<nav class={styles.section} aria-label="Footer - Resources">
-				<h3>Patient Resources</h3>
-				<ul class={styles.content}>
+			<nav class={styles.footer__section} aria-label="Footer - Resources">
+				<h3 class={styles.footer__sectionHeading}>Patient Resources</h3>
+				<ul class={styles.footer__list}>
 					<li><a href="/insurance">Accepted Insurances</a></li>
 					<li><a href="/careers">Careers</a></li>
 				</ul>
 			</nav>
 
-			<div class={styles.divider}></div>
+			<div class={styles.footer__divider}></div>
 
-			<section class={styles.section} aria-label="Our Locations">
-				<h3 class={styles.title}>Locations</h3>
-				<div class={styles.content}>
+			<section class={styles.footer__section} aria-label="Our Locations">
+				<h3 class={styles.footer__sectionHeading}>Locations</h3>
+				<div class={styles.footer__list}>
 					<address
-						class={styles.location}
+						class={styles.footer__location}
 						itemscope
 						itemtype="https://schema.org/MedicalBusiness"
 					>
-						<h4 itemprop="name">Manhattan</h4>
-						<div
-							itemprop="address"
-							itemscope
-							itemtype="https://schema.org/PostalAddress"
-						>
-							<p itemprop="streetAddress">185 Canal St, #306</p>
-							<p>
-								<span itemprop="addressLocality">Manhattan</span
-								>,
-								<span itemprop="addressRegion">NY</span>
-								<span itemprop="postalCode">10013</span>
-							</p>
+						<h4 class={styles.footer__locationName} itemprop="name">
+							Manhattan
+						</h4>
+						<div class={styles.footer__locationInfo}>
+							<div
+								itemprop="address"
+								itemscope
+								itemtype="https://schema.org/PostalAddress"
+								class={styles.footer__locationAddress}
+							>
+								<p itemprop="streetAddress">
+									185 Canal St, #306
+								</p>
+								<p>
+									<span itemprop="addressLocality"
+										>Manhattan</span
+									>,
+									<span itemprop="addressRegion">NY</span>
+									<span itemprop="postalCode">10013</span>
+								</p>
+							</div>
+							<a
+								href="tel:2122197786"
+								itemprop="telephone"
+								class={styles.footer__phone}>(212) 219-7786</a
+							>
 						</div>
-						<a
-							href="tel:2122197786"
-							itemprop="telephone"
-							class={styles.phoneLink}>(212) 219-7786</a
-						>
 					</address>
 
 					<address
-						class={styles.location}
+						class={styles.footer__location}
 						itemscope
 						itemtype="https://schema.org/MedicalBusiness"
 					>
-						<h4 itemprop="name">Brooklyn</h4>
-						<div
-							itemprop="address"
-							itemscope
-							itemtype="https://schema.org/PostalAddress"
-						>
-							<p itemprop="streetAddress">749 61st St, #303</p>
-							<p>
-								<span itemprop="addressLocality">Brooklyn</span
-								>,
-								<span itemprop="addressRegion">NY</span>
-								<span itemprop="postalCode">11220</span>
-							</p>
+						<h4 class={styles.footer__locationName} itemprop="name">
+							Brooklyn
+						</h4>
+						<div class={styles.footer__locationInfo}>
+							<div
+								itemprop="address"
+								itemscope
+								itemtype="https://schema.org/PostalAddress"
+								class={styles.footer__locationAddress}
+							>
+								<p itemprop="streetAddress">
+									749 61st St, #303
+								</p>
+								<p>
+									<span itemprop="addressLocality"
+										>Brooklyn</span
+									>,
+									<span itemprop="addressRegion">NY</span>
+									<span itemprop="postalCode">11220</span>
+								</p>
+							</div>
+							<a
+								href="tel:7184923500"
+								itemprop="telephone"
+								class={styles.footer__phone}>(718) 492-3500</a
+							>
 						</div>
-						<a
-							href="tel:7184923500"
-							itemprop="telephone"
-							class={styles.phoneLink}>(718) 492-3500</a
-						>
 					</address>
 				</div>
 			</section>
 		</div>
 	</div>
 
-	<div class={styles.miscContent}>
-		<div class={styles.legal}>
+	<div class={styles.footer__bottom}>
+		<div class={styles.footer__legal}>
 			<a href="/accessibility">Accessibility</a> |
 			<a href="/terms">Terms of Service</a> |
 			<a href="/privacy-policy">Privacy Policy</a> |
 			<a href="/sitemap">Sitemap</a>
 		</div>
-		<div class={styles.copyright}>
+		<div class={styles.footer__copyright}>
 			<small>
 				&copy; {new Date().getFullYear()} Bingjing Roberts Ophthalmology.
 				All Rights Reserved.
 			</small>
-			<small class={styles.attribution}>
+			<small class={styles.footer__attribution}>
 				Designed, Developed, and Deployed by Brian Wang
 			</small>
 		</div>
