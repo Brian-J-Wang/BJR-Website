@@ -9,6 +9,7 @@
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
 	font: lighter 0.875rem var(--font-sans-serif);
+	transition: var(--transition-default);
 }
 
 .dropdown:hover {
@@ -29,6 +30,7 @@
 	width: 14px;
 	height: 14px;
 	transition: ease-out 0.15s all;
+	margin-left: 2px;
 }
 
 .cheveron_active {
