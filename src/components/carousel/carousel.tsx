@@ -1,8 +1,17 @@
-import React, { Children, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
+import React, {
+    Children,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+    type ReactElement,
+    type ReactNode,
+} from "react";
 import { CarouselContext } from "./_carouselContext/carouselContext";
 import CarouselSlide from "./_carouselSlide/_carouselSlide";
-import { CarouselAnimation, CarouselAnimationController } from "./carousel.classes";
+import { CarouselAnimation, CarouselAnimationController, CarouselSlideElement } from "./carousel.classes";
 import styles from "./carousel.module.css";
+import useSlideController from "./hooks/useSlideController";
 
 type CarouselProps = {
     slideAnimation: CarouselAnimation;
@@ -13,31 +22,30 @@ type CarouselProps = {
 };
 
 const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
-    const [offset, _setOffset] = useState<number>(0);
     const slides = useRef<HTMLDivElement[]>([]);
-    const controller = useRef<CarouselAnimationController>(null);
+    const slideController = useSlideController();
 
     //calculate and set initial animation state
     useEffect(() => {
-        controller.current = slideAnimation.build(slides.current);
-        controller.current.onOffsetChange = _setOffset;
+        slideController.slides.current = slideAnimation.buildCarouselSlides(slides.current);
     }, []);
 
-    const setOffset = (value: number | ((prev: number) => number)) => {
-        controller.current?.setOffset(value);
-    };
-
+    //should remove the offset, state
     return (
         <CarouselContext.Provider
             value={{
-                offset,
-                setOffset,
+                offset: slideController.offset,
+                setOffset: slideController.setOffset,
+                slideCount: Children.count(props.children),
             }}
         >
             {typeof props.before === "function" ? props.before() : props.before}
             <div className={`${styles.content} ${props.className}`}>
                 {Children.map(props.children, (child, index) => {
                     if (React.isValidElement(child)) {
+                        let grabController =
+                            index == slideController.offset ? slideController.getGrabController() : null;
+
                         return React.cloneElement(child, {
                             key: index,
                             //@ts-ignore
@@ -45,6 +53,9 @@ const Carousel: React.FC<CarouselProps> = ({ slideAnimation, ...props }) => {
                             ref: (el: HTMLDivElement) => {
                                 slides.current[index] = el;
                             },
+                            onPointerUp: grabController?.release,
+                            onPointerMove: grabController?.dragTo,
+                            carouselSlideElement: slideController.slides.current[index],
                         });
                     } else {
                         return null;

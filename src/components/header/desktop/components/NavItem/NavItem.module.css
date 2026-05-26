@@ -1,0 +1,38 @@
+.dropdown {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 4px;
+	opacity: 60%;
+	cursor: pointer;
+	color: var(--color-neutral-50);
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	font: lighter 0.875rem var(--font-sans-serif);
+	transition: var(--transition-default);
+}
+
+.dropdown:hover {
+	opacity: 100%;
+}
+
+.dropdown_active {
+	opacity: 100%;
+}
+
+.dropdown__link {
+	display: inline;
+	text-decoration: none;
+	text-shadow: -1px 1px 2px rgba(29, 29, 29, 0.3);
+}
+
+.cheveron {
+	width: 14px;
+	height: 14px;
+	transition: ease-out 0.15s all;
+	margin-left: 2px;
+}
+
+.cheveron_active {
+	transform: rotate(180deg);
+}

@@ -1,0 +1,103 @@
+.teamPage {
+	padding: 0px;
+}
+
+.teamPage__header {
+	text-align: center;
+	padding: 160px var(--min-padding) 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: transparent;
+	border: none;
+}
+
+.teamPage__overline {
+	display: block;
+	font-size: var(--font-size-xs);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	color: var(--color-primary-300);
+	margin-bottom: 16px;
+}
+
+.teamPage__title {
+	font: 400 var(--font-size-3xl)/1.1 var(--font-serif-fancy);
+	color: var(--color-primary-900);
+	margin-bottom: 4px;
+}
+
+.teamPage__description {
+	font-size: var(--font-size-base);
+	line-height: 1.6;
+	color: var(--color-neutral-600);
+	max-width: 640px;
+	margin: 0 auto;
+	font-weight: 300;
+}
+
+.teamPage__section {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 24px;
+	max-width: var(--width-full);
+	margin: 0px auto 192px auto;
+}
+
+.teamPage__card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: start;
+	flex: 0 368px;
+}
+
+.teamPage__staffBlurb {
+	font-size: var(--font-size-lg);
+	line-height: 1.8;
+	color: var(--color-neutral-600);
+	max-width: 800px;
+}
+
+.teamPage__imageWrapper {
+	position: relative;
+}
+
+.teamPage__image {
+	width: 100%;
+	object-fit: cover;
+	box-shadow: var(--shadow-md);
+	transition: transform 0.3s ease;
+}
+
+.teamPage__doctorInfo {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	max-width: 600px;
+	padding: 16px 0px;
+}
+
+.teamPage__name {
+	font: 600 var(--font-size-xl)/1.2 var(--font-serif);
+	color: var(--color-primary-900);
+	margin-bottom: 2px;
+}
+
+.teamPage__role {
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	color: var(--color-primary-300);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}

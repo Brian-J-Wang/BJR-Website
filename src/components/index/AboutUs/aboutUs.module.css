@@ -1,0 +1,96 @@
+.section {
+	display: flex;
+	flex-direction: column;
+	gap: 64px;
+	justify-content: center;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 0px auto;
+	gap: 24px;
+}
+
+.headingWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+}
+
+.subtitle {
+	font:
+		700 14px "Headland One",
+		serif;
+	color: var(--color-primary-900);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.heading {
+	font: 500 var(--font-size-3xl) var(--font-serif);
+	color: var(--color-primary-900);
+	margin: 0;
+	line-height: 1.1;
+	position: relative;
+	padding-bottom: 12px;
+}
+
+.textContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.text {
+	font: 400 var(--font-size-base)/var(--text-lg--line-height)
+		var(--font-sans-serif);
+	margin: 0;
+}
+
+@media (min-width: 830px) {
+	.content {
+		gap: 64px;
+	}
+
+	.textContainer {
+		max-width: 756px;
+	}
+}
+
+@media (min-width: 1268px) {
+	.statisticsPadding {
+		height: 72px;
+		background-color: var(--color-primary);
+	}
+
+	.section {
+		width: 1152px;
+		margin: auto;
+		gap: 24px;
+	}
+
+	.headingWrapper {
+		display: block;
+		flex: 1 1;
+		max-width: 368px;
+		text-align: center;
+	}
+
+	.content {
+		flex-direction: row-reverse;
+		max-width: 1152px;
+		gap: 24px;
+	}
+
+	.textContainer {
+		padding: 0px auto;
+		flex: 2 1;
+		max-width: 600px;
+		margin: auto;
+	}
+}

@@ -1,0 +1,170 @@
+.doctorBio__card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.doctorBio__portraitWrapper {
+	border-radius: 50%;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+	border: 1px solid white;
+	padding: 12px;
+	margin-bottom: 24px;
+}
+
+.doctorBio__portraitImage {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center top;
+	display: block;
+}
+
+.doctorBio__content {
+	padding: 0;
+	box-shadow: none;
+}
+
+.doctorBio__header {
+	display: flex;
+	flex-direction: column;
+}
+
+.doctorBio__name {
+	font: normal var(--font-size-xl)/1.2 var(--font-serif);
+	color: var(--color-primary-900);
+	letter-spacing: -1px;
+	margin: 0;
+	margin-bottom: 4px;
+	text-align: center;
+}
+
+.doctorBio__title {
+	font: 600 var(--font-size-sm)/1.5 var(--font-sans-serif);
+	color: var(--color-primary-100);
+	opacity: 80%;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.doctorBio__body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: left;
+	gap: 32px;
+}
+
+.doctorBio__paragraph {
+	font-size: var(--font-size-base);
+	line-height: 1.8;
+	color: var(--color-primary-200);
+	margin: 0;
+}
+
+@media (min-width: 830px) {
+	.doctorBio__card {
+		background-color: white;
+		border-radius: var(--radius-md);
+		padding: 64px 72px;
+		box-shadow: var(--shadow-md);
+		max-width: 900px;
+	}
+
+	.doctorBio__name {
+		font-size: var(--font-size-2xl);
+	}
+}
+
+@media (min-width: 1268px) {
+	.doctorBio {
+		max-height: 448px;
+	}
+
+	.doctorBio__card {
+		display: flex;
+		flex-direction: row;
+		gap: 24px;
+		max-width: 1150px;
+		padding: 0;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.doctorBio__portraitWrapper {
+		flex: 1 0 368px;
+		height: 100%;
+		box-shadow: none;
+		padding: 0;
+		margin: 0;
+		position: relative;
+		border-radius: var(--radius-sm);
+		overflow: hidden;
+		background-color: white;
+		box-shadow: 0px 0px 8px
+			color-mix(in srgb, var(--color-primary) 10%, transparent);
+	}
+
+	.doctorBio__portraitWrapper::after {
+		content: "";
+		height: 4px;
+		width: 100%;
+		bottom: 0px;
+		left: 0px;
+		position: absolute;
+		background-color: var(--color-primary-900);
+	}
+
+	.doctorBio__portraitImage {
+		width: 100%;
+		height: 448px;
+		background-color: white;
+	}
+
+	.doctorBio__header {
+		align-items: flex-start;
+		width: 600px;
+		margin: 0px auto;
+	}
+
+	.doctorBio__name {
+		text-align: left;
+		font-weight: 500;
+		font-size: var(--font-size-3xl);
+	}
+
+	.doctorBio__title {
+		font-size: var(--font-size-base);
+	}
+
+	.doctorBio__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		position: relative;
+		overflow: hidden;
+		background-color: white;
+		padding: 64px 24px;
+		width: 760px;
+		height: 448px;
+	}
+
+	.doctorBio__header {
+		margin-bottom: 16px;
+	}
+
+	.doctorBio__body {
+		gap: 12px;
+		width: 600px;
+		margin: 0px auto;
+	}
+
+	.doctorBio__paragraph {
+		font-size: var(--font-size-base);
+		line-height: 1.6;
+	}
+}

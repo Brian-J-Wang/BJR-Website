@@ -1,0 +1,29 @@
+---
+import aboutUs from "./aboutUs.module.css";
+
+const { className } = Astro.props;
+---
+
+<section class={`${className} ${aboutUs.section}`}>
+	<div class={aboutUs.content}>
+		<div class={aboutUs.headingWrapper}>
+			<h2 class={aboutUs.heading}>About Us</h2>
+		</div>
+		<div class={aboutUs.textContainer}>
+			<p class={aboutUs.text}>
+				Established in 2009, our ophthalmology clinic has proudly served
+				patients across the five boroughs. We are dedicated to
+				delivering high-quality, personalized eye care with a deep
+				understanding of the community we serve.
+			</p>
+			<p class={aboutUs.text}>
+				Our team is fluent in Chinese and English, allowing
+				us to communicate clearly and comfortably with a diverse patient
+				base. While we primarily serve the Asian community, we welcome
+				patients from all backgrounds and are committed to providing
+				attentive, culturally sensitive care to everyone who walks
+				through our doors.
+			</p>
+		</div>
+	</div>
+</section>

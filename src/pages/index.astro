@@ -1,119 +1,25 @@
 ---
-	import styles from "../styles/index.module.css"
-	import testimonials from "../styles/index/testimonials.module.css"
-	import drRobert from "../styles/index/drRobert.module.css"
-	import Layout from "../layouts/layout.astro"
-	import ServicesCarousel from "./index.components/_servicesCarousel"
-	import TestimonialCarousel from "./index.components/_testimonialsCarousel"
+import styles from "../styles/index.module.css";
+import Layout from "../layouts/layout.astro";
+import Testimonial from "../components/testimonial/testimonial.astro";
+import Locations from "../components/locations/locations.astro";
+import Hero from "../components/index/Hero/Hero.astro";
+import SurgicalServices from "../components/index/Services/services.astro";
+import AboutUs from "../components/index/AboutUs/aboutUs.astro";
+import DrRoberts from "../components/index/DrRoberts/dr-roberts.astro";
 ---
-<Layout 
+
+<Layout
 	title="Top Ophthalmologist in Manhattan & Brooklyn | BJR Ophthalmology"
 	description="Dr. BingJing Z. Roberts is a board-certified ophthalmologist offering advanced medical and surgical eye care in Brooklyn and Lower Manhattan."
 >
-	<div class={styles.hero} id="thresholdElement">
-		<div class={styles.heroContent}>
-			<span class={styles.kicker}>Welcome to BJR Ophthalmology</span>
-			<h1 class={styles.statement}>
-				Proudly Serving <br/> Lower Manhattan & Brooklyn
-			</h1>
-			<p class={styles.subStatement}>
-				Expert Doctors. Professional Staff. Satisfied Patients.
-			</p>
-			<button class={styles.appointmentButton}>
-				<span>Book a Consultation Today</span>
-				<svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M6 11L10.6464 6.35355C10.8417 6.15829 10.8417 5.84171 10.6464 5.64645L6 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-					<path d="M1 6H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-				</svg>
-			</button>
-		</div>
+	<Hero class="h-[75vh]" />
+	<div class="h-18"></div>
+	<div class="py-32 flex flex-col gap-32">
+		<AboutUs />
+		<DrRoberts />
 	</div>
-	<section class={styles.aboutUs}>
-		<div class={styles.aboutUsContent}>
-			<div class={styles.aboutUsHeadingWrapper}>
-				<span class={styles.aboutUsSubtitle}>Our Clinic</span>
-				<h2 class={styles.aboutUsHeading}>
-					About Us
-				</h2>
-			</div>	
-			<div class={styles.aboutUsTextContainer}>
-				<p class={styles.aboutUsText}>
-					Established in 2009, our ophthalmology clinic has proudly served tens of thousands of patients across the five boroughs. 
-					We are dedicated to delivering high-quality, personalized eye care with a deep understanding of the communities we serve.
-				</p>
-				<p class={styles.aboutUsText}>
-					Our multilingual team is fluent in Chinese and English, allowing us to communicate clearly and comfortably with a diverse patient base.
-					While we primarily serve the Asian community, we welcome patients from all backgrounds and are committed to providing attentive,
-					culturally sensitive care to everyone who walks through our doors.
-				</p>
-			</div>
-		</div>
-	</section>
-	<section class={drRobert.section}>
-		<div class={drRobert.card}>
-			<div class={drRobert.imageContainer}>
-				<img src="/profileBJR.png" alt="Dr. BingJing Z. Roberts, Board-Certified Ophthalmologist" class={drRobert.profile}>
-			</div>
-			<div class={drRobert.content}>
-				<div class={drRobert.header}>
-					<h2 class={drRobert.heading}>
-						BingJing Z. Roberts, M.D.
-					</h2>
-					<span class={drRobert.title}>Board-Certified Ophthalmologist</span>
-				</div>
-				<div class={drRobert.summary}>
-					<p class={drRobert.summaryText}>
-						Dr. BingJing Z. Roberts is a board-certified ophthalmologist with over 20 years of clinical experience.
-						Dr. Roberts received her medical degree from the University of Maryland School of Medicine and completed
-						her residency in ophthalmology at Montefiore Medical Center. She specializes in treating complex eye conditions
-						such as cataracts, glaucoma, and retinal diseases, and performs advanced surgeries including laser retina surgery
-						and lens replacement.
-					</p>
-					<p class={drRobert.summaryText}>
-						She also serves on the board of directors of the Coalition of Asian-American Independent Practice Association (CAIPA).
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class={styles.surgicalServices}>
-		<div>
-			<div class={styles.surgicalServicesContent}>
-			<h2 class={styles.surgicalServicesHeading}>Surgical Services</h2>
-			<p class={styles.surgicalServicesSummary}>
-				Explore our range of advanced surgical treatments for a variety of eye conditions and diseases. 
-				We combine modern technology with personalized care to achieve the best possible outcomes. 
-				From consultation to recovery, Dr. Roberts and her dedicated team are committed to providing high-quality care focused 
-				on your comfort, safety, and long-term vision health.
-			</p>
-			</div>
-			<ServicesCarousel client:only="react"/>
-		</div>
-	</section>
-	<section class={styles.officeLocations}>
-		<h2>Our Locations</h2>
-		<p>
-			We operate in two convenient locations in Brooklyn and Manhattan. 
-			No matter which office you visit, you can expect the same high standard of care from our doctors and staff.
-		</p>
-		<div>
-			<div>
-				Brooklyn
-			</div>
-			<div>
-				Manhattan
-			</div>
-		</div>
-	</section>
-	<section class={testimonials.testimonial}>
-		<div class={testimonials.testimonialHeader}>
-			<h2 class={testimonials.testimonialHeading}>Patient Testimonials</h2>
-			<small class={testimonials.testimonialSubheading}>
-				Real results from real people.
-			</small>
-		</div>
-		<div class={testimonials.testimonialCarousel}>
-			<TestimonialCarousel client:only="react"/>
-		</div>
-	</section>
+	<SurgicalServices class="py-32" />
+	<Locations />
+	<Testimonial />
 </Layout>

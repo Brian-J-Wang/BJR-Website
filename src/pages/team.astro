@@ -1,6 +1,71 @@
 ---
-import Layout from "../layouts/layout";
+import Layout from "../layouts/layout.astro";
+import styles from "../styles/team.module.css";
+
+const doctors = [
+	{
+		name: "BingJing Z. Roberts, M.D.",
+		role: "Board-Certified Ophthalmologist",
+		img: "/doctor-female.svg",
+	},
+	{
+		name: "Doctor 1",
+		role: "",
+		img: "/doctor-male.svg",
+	},
+	{
+		name: "Doctor 2",
+		role: "",
+		img: "/doctor-female.svg",
+	},
+	{
+		name: "Doctor 3",
+		role: "",
+		img: "/doctor-male.svg",
+	},
+	{
+		name: "Doctor 4",
+		role: "",
+		img: "/doctor-female.svg",
+	},
+];
 ---
-<Layout>
-    
+
+<Layout title="Our Team | Bingjing Roberts Ophthalmology">
+	<div class="h-30"></div>
+
+	<main class={styles.teamPage}>
+		<header class={styles.teamPage__header}>
+			<h1 class={styles.teamPage__title}>Meet Your Care Team</h1>
+			<p class={styles.teamPage__description}>
+				Our expert doctors and dedicated staff are committed to
+				providing you with the highest standard of care.
+			</p>
+		</header>
+
+		<!-- Doctors Section -->
+		<section class={styles.teamPage__section}>
+			{
+				doctors.map((doctor) => (
+					<div class={styles.teamPage__card}>
+						<div
+							class={`${styles.teamPage__imageWrapper} containerUnderline`}
+						>
+							<img
+								src={doctor.img}
+								alt={doctor.name}
+								class={styles.teamPage__image}
+							/>
+						</div>
+						<div class={styles.teamPage__doctorInfo}>
+							<h3 class={styles.teamPage__name}>{doctor.name}</h3>
+							<span class={styles.teamPage__role}>
+								{doctor.role}
+							</span>
+						</div>
+					</div>
+				))
+			}
+		</section>
+	</main>
 </Layout>

@@ -1,0 +1,141 @@
+---
+import styles from "./services.module.css";
+import surgicalServices from "./surgical-services";
+import eyeServices from "./eye-services";
+
+const { class: className } = Astro.props;
+---
+
+<section class={`${className} ${styles.section}`}>
+	<div class={styles.content}>
+		<div class={styles.section__group}>
+			<div class={styles.intro}>
+				<div class={styles.intro__headingWrapper}>
+					<span class={styles.intro__subtitle}>Excellence</span>
+					<h2 class={styles.intro__title}>Surgical Services</h2>
+				</div>
+				<p class={styles.intro__summary}>
+					We combine modern technology with personalized care to
+					achieve the best possible outcomes for a variety of eye
+					conditions and diseases. From consultation to recovery, Dr.
+					Roberts and her dedicated team are committed to providing
+					high-quality care focused on your long-term vision health.
+				</p>
+			</div>
+			<div class={styles.masonry}>
+				{
+					surgicalServices.map((element) => (
+						<div class={`${styles.card}`}>
+							<div class={styles.card__image_wrapper}>
+								<img
+									src={element.image}
+									alt={`Image of ${element.title} procedure`}
+									class={styles.card__image}
+								/>
+								<div class={styles.card__image_overlay} />
+								<div class={styles.card__header_overlay}>
+									<h3 class={styles.card__title}>
+										{element.title}
+									</h3>
+									<small class={styles.card__kicker}>
+										{element.kicker}
+									</small>
+								</div>
+							</div>
+
+							<div class={styles.card__content}>
+								<p class={styles.card__description}>
+									{element.description}
+								</p>
+								<button class={styles.card__button}>
+									Learn More
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										aria-hidden="true"
+										class={styles.card__button_arrow}
+									>
+										<path d="M5 12h14" />
+										<path d="m12 5 7 7-7 7" />
+									</svg>
+								</button>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+
+		<div class={styles.section__group}>
+			<div class={styles.intro}>
+				<div class={styles.intro__headingWrapper}>
+					<span class={styles.intro__subtitle}>Care</span>
+					<h2 class={styles.intro__title}>Eye Services</h2>
+				</div>
+				<p class={styles.intro__summary}>
+					Our comprehensive eye services are designed to protect and
+					enhance your vision at every stage of life. From routine
+					exams to specialized management of chronic conditions, we
+					provide expert clinical care tailored to your unique visual
+					needs.
+				</p>
+			</div>
+			<div class={styles.masonry}>
+				{
+					eyeServices.map((element) => (
+						<div class={`${styles.card}`}>
+							<div class={styles.card__image_wrapper}>
+								<img
+									src={element.image}
+									alt={`Image of ${element.title}`}
+									class={styles.card__image}
+								/>
+								<div class={styles.card__image_overlay} />
+								<div class={styles.card__header_overlay}>
+									<h3 class={styles.card__title}>
+										{element.title}
+									</h3>
+									<small class={styles.card__kicker}>
+										{element.kicker}
+									</small>
+								</div>
+							</div>
+
+							<div class={styles.card__content}>
+								<p class={styles.card__description}>
+									{element.description}
+								</p>
+								<button class={styles.card__button}>
+									Learn More
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										aria-hidden="true"
+										class={styles.card__button_arrow}
+									>
+										<path d="M5 12h14" />
+										<path d="m12 5 7 7-7 7" />
+									</svg>
+								</button>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
