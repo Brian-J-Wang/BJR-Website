@@ -1,0 +1,74 @@
+#logs into VPS and set up ssl certifications
+
+name: Bootstrap Nginx
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Copy Compose File to VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "docker-compose.yml"
+          target: "/home/${{secrets.VPS_USER}}/"
+          overwrite: true
+
+      - name: Copy Bootstrap Config File to VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "nginx/bootstrap.conf"
+          target: "/home/${{secrets.VPS_USER}}/nginx/conf.d/"
+          strip_components: 2
+          overwrite: true
+
+      - name: Login to VPS and Run Script
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            sudo apt-get update
+            sudo apt-get install certbot -y
+            mv ./nginx/conf.d/bootstrap.conf ./nginx/conf.d/default.conf
+            docker compose up
+            sudo certbot certonly \
+              --non-interactive \
+              --agree-tos \
+              --no-eff-email \
+              --email ${{ secrets.EMAIL }} \
+              --webroot -w ./certbot/www \
+              -d ${{ secrets.DOMAIN }}
+
+      - name: Copy default.conf to VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "nginx/default.conf"
+          target: "/home/${{secrets.VPS_USER}}/nginx/conf.d/"
+          strip_components: 2
+          overwrite: true
+          
+      - name: Login to VPS and Reload Nginx
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            docker compose exec nginx nginx -s reload
+            
