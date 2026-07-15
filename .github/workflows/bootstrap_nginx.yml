@@ -4,7 +4,7 @@ name: Bootstrap Nginx
 
 on:
   workflow_dispatch:
-    
+
 jobs:
   bootstrap:
     runs-on: ubuntu-latest
@@ -43,6 +43,7 @@ jobs:
             sudo apt-get update
             sudo apt-get install certbot -y
             mv ./nginx/conf.d/bootstrap.conf ./nginx/conf.d/default.conf
+            mkdir -p .certbot/www
             docker compose up
             sudo certbot certonly \
               --non-interactive \
@@ -62,7 +63,7 @@ jobs:
           target: "/home/${{secrets.VPS_USER}}/nginx/conf.d/"
           strip_components: 2
           overwrite: true
-          
+
       - name: Login to VPS and Reload Nginx
         uses: appleboy/ssh-action@v1
         with:
@@ -71,4 +72,3 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             docker compose exec nginx nginx -s reload
-            
