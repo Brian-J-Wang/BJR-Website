@@ -8,8 +8,8 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./certbot/www:/var/www/certbot:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
-    
+
   frontend:
-    image: ghcr.io/brian-j-wang/bjr-website:latest
-    expose: 
+    image: ghcr.io/brian-j-wang/${GHCR_TAG}:latest
+    expose:
       - "3000"
