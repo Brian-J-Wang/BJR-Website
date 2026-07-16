@@ -10,6 +10,6 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
 
   frontend:
-    image: ghcr.io/brian-j-wang/${GHCR_TAG}:latest
+    image: ghcr.io/${GHCR_TAG}:latest
     expose:
       - "3000"
