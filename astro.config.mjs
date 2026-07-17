@@ -19,6 +19,7 @@ export default defineConfig({
 			noExternal: true,
 		},
 	},
+	output: "server",
 
 	adapter: node({
 		mode: "standalone",
