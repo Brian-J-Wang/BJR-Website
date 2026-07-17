@@ -51,7 +51,7 @@ jobs:
               --agree-tos \
               --no-eff-email \
               --email "${{ secrets.EMAIL }}" \
-              --webroot -w /home/${{secrets.VPS_USER}}certbot/www \
+              --webroot -w /home/${{secrets.VPS_USER}}/certbot/www \
               -d "${{ secrets.DOMAIN }}"
 
       - name: Copy default.conf to VPS
