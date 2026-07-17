@@ -44,7 +44,7 @@ jobs:
             sudo apt-get install certbot -y
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             mv ./nginx/conf.d/bootstrap.conf ./nginx/conf.d/default.conf
-            mkdir -p .certbot/www ./tmp/log
+            mkdir -p ./certbot/www ./certbot/logs ./certbot/config ./certbot/work
             docker compose up -d
             sudo certbot certonly \
               --non-interactive \
@@ -52,7 +52,9 @@ jobs:
               --no-eff-email \
               --email ${{ secrets.EMAIL }} \
               --webroot -w ./certbot/www \
-              --logs-dir ./tmp/log \
+              --logs-dir ./certbot/log \
+              --work-dir ./certbot/work \
+              --config-dir ./certbot/config \
               -d ${{ secrets.DOMAIN }}
 
       - name: Copy default.conf to VPS
