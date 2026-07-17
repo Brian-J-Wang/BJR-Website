@@ -44,14 +44,14 @@ jobs:
             sudo apt-get install certbot -y
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             mv ./nginx/conf.d/bootstrap.conf ./nginx/conf.d/default.conf
-            mkdir -p certbot/www
+            mkdir -p .certbot/www
             docker compose up -d
             sudo certbot certonly \
               --non-interactive \
               --agree-tos \
               --no-eff-email \
               --email "${{ secrets.EMAIL }}" \
-              --webroot -w certbot/www \
+              --webroot -w /home/${{secrets.VPS_USER}}certbot/www \
               -d "${{ secrets.DOMAIN }}"
 
       - name: Copy default.conf to VPS
