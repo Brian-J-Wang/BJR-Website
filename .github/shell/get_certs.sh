@@ -1,6 +1,6 @@
 #!bin/bash
 
-if [ ! -f /etc/letsencrypt/live/$DOMAIN/fullchain.pem ]; then
+if [ ! -f /etc/letsencrypt/live/${DOMAIN}/fullchain.pem ]; then
     sudo certbot certonly --webroot \
         --non-interactive --agree-tos \
         --no-eff-email --email ${EMAIL}
