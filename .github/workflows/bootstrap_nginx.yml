@@ -46,6 +46,10 @@ jobs:
 
       - name: Login to VPS and Run Script
         uses: appleboy/ssh-action@v1
+        env:
+          DOMAIN: ${{ secrets.DOMAIN }}
+          USER: ${{ secrets.USER }}
+          EMAIL: ${{ secrets.EMAIL }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
