@@ -62,7 +62,7 @@ jobs:
             mkdir -p .certbot/www
             docker compose up -d
             sudo chmod +x scripts/get_certs.sh
-            sudo scripts/get_certs.sh
+            sudo /home/${{secrets.VPS_USER}}/scripts/get_certs.sh
             sudo systemctl enable certbot.timer
 
       - name: Copy default.conf to VPS
