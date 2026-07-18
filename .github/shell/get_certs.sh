@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 if [ ! -f /etc/letsencrypt/live/${DOMAIN}/fullchain.pem ]; then
     sudo certbot certonly --webroot \
