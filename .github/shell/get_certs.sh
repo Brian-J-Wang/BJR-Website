@@ -1,5 +1,6 @@
 #!bin/bash
 cat ${DOMAIN} >> test.txt
+echo "here"
 if [ ! -f /etc/letsencrypt/live/${DOMAIN}/fullchain.pem ]; then
     sudo certbot certonly --webroot \
         --non-interactive --agree-tos \
