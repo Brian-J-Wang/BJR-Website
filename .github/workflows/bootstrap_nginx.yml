@@ -33,6 +33,17 @@ jobs:
           strip_components: 2
           overwrite: true
 
+      - name: Copy Bootstrap Script to VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: ".github/shell/get_certs.sh"
+          target: "/home/${{secrets.VPS_USER}}/scripts/"
+          strip_components: 2
+          overwrite: true
+
       - name: Login to VPS and Run Script
         uses: appleboy/ssh-action@v1
         with:
@@ -46,13 +57,9 @@ jobs:
             mv ./nginx/conf.d/bootstrap.conf ./nginx/conf.d/default.conf
             mkdir -p .certbot/www
             docker compose up -d
-            sudo certbot certonly --webroot \
-              --non-interactive \
-              --agree-tos \
-              --no-eff-email \
-              --email "${{ secrets.EMAIL }}" \
-              -w /home/${{secrets.VPS_USER}}/certbot/www/ \
-              -d "${{ secrets.DOMAIN }}"
+            sudo chmod +x scripts/get_certs.sh
+            ./scripts/get_certs.sh
+            sudo systemctl enable certbot.timer
 
       - name: Copy default.conf to VPS
         uses: appleboy/scp-action@v1
@@ -60,7 +67,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "nginx/default.conf"
+          source: "./nginx/default.conf"
           target: "/home/${{secrets.VPS_USER}}/nginx/conf.d/"
           strip_components: 2
           overwrite: true
