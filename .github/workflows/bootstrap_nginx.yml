@@ -61,7 +61,7 @@ jobs:
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             mv ./nginx/conf.d/bootstrap.conf ./nginx/conf.d/default.conf
             mkdir -p .certbot/www
-            docker compose up -d
+            docker compose up -d --force-recreate nginx
             chmod +x scripts/get_certs.sh
             /home/${{secrets.VPS_USER}}/scripts/get_certs.sh
             sudo systemctl enable certbot.timer
