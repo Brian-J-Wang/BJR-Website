@@ -1,13 +1,8 @@
 ---
 import styles from "./Hero.module.css";
+import Chevron from "@assets/chevron.svg"
 
 const { class: className = "" } = Astro.props;
-
-const stats = [
-	{ value: "2", label: "Locations" },
-	{ value: "5", label: "Expert Doctors" },
-	{ value: "2009", label: "Open Since" },
-];
 ---
 
 <div class={`${className} ${styles.wrapper}`}>
@@ -22,35 +17,9 @@ const stats = [
 			</div>
 			<button class={`${styles.appointmentButton} underlineOnHover`}>
 				<span>Book a Consultation</span>
-				<svg
-					width="14"
-					height="14"
-					viewBox="0 0 12 12"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M6 11L10.6464 6.35355C10.8417 6.15829 10.8417 5.84171 10.6464 5.64645L6 1"
-						stroke="currentColor"
-						stroke-width="1.5"
-						stroke-linecap="round"></path>
-					<path
-						d="M1 6H10"
-						stroke="currentColor"
-						stroke-width="1.5"
-						stroke-linecap="round"></path>
-				</svg>
+				<Chevron class={styles.appointmentChevron}/>
 			</button>
 		</div>
 	</section>
-	<div class={styles.stats}>
-		{
-			stats.map(({ value, label }) => (
-				<div class={`${styles.stats__card} containerUnderline`}>
-					<span class={styles.stats__value}>{value}</span>
-					<span class={styles.stats__label}>{label}</span>
-				</div>
-			))
-		}
-	</div>
+	
 </div>

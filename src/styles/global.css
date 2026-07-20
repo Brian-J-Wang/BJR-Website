@@ -1,138 +1,139 @@
 @import "tailwindcss";
 
 @theme {
-	/* Custom color tokens — maps to bg-*, text-*, border-* utilities */
-	--color-neutral-50: #f5f5f5;
+    /* Custom color tokens — maps to bg-*, text-*, border-* utilities */
+    --color-neutral-50: #f5f5f5;
 
-	/* Primary scale — darkest to lightest (inverted from convention) */
-	--color-primary: #222933; /* bg-primary        */
-	--color-primary-50: #27303e; /* bg-primary-50     */
-	--color-primary-100: #2b3848; /* bg-primary-100    */
-	--color-primary-200: #2f3f52; /* bg-primary-200    */
-	--color-primary-300: #33465d; /* bg-primary-300    */
-	--color-primary-400: #374d68; /* bg-primary-400    */
-	--color-primary-500: #395372; /* bg-primary-500    */
-	--color-primary-600: #3c5a7d; /* bg-primary-600    */
-	--color-primary-700: #3d6187; /* bg-primary-700    */
-	--color-primary-800: #3f6792; /* bg-primary-800    */
-	--color-primary-900: #406e9d; /* bg-primary-900    */
+    /* Primary scale — darkest to lightest (inverted from convention) */
+    --color-primary: #222933; /* bg-primary        */
+    --color-primary-50: #27303e; /* bg-primary-50     */
+    --color-primary-100: #2b3848; /* bg-primary-100    */
+    --color-primary-200: #2f3f52; /* bg-primary-200    */
+    --color-primary-300: #33465d; /* bg-primary-300    */
+    --color-primary-400: #374d68; /* bg-primary-400    */
+    --color-primary-500: #395372; /* bg-primary-500    */
+    --color-primary-600: #3c5a7d; /* bg-primary-600    */
+    --color-primary-700: #3d6187; /* bg-primary-700    */
+    --color-primary-800: #3f6792; /* bg-primary-800    */
+    --color-primary-900: #406e9d; /* bg-primary-900    */
 
-	--transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-	/* Spacing Scale (defines the base unit for --spacing-1, --spacing-2, etc.) */
-	--spacing-1: 4px;
-	--spacing-2: 8px;
-	--spacing-3: 12px;
-	--spacing-4: 16px;
-	--spacing-5: 24px;
-	--spacing-6: 32px;
-	--spacing-8: 48px;
-	--spacing-10: 64px;
-	--spacing-12: 96px;
+    /* Spacing Scale (defines the base unit for --spacing-1, --spacing-2, etc.) */
+    --spacing-1: 4px;
+    --spacing-2: 8px;
+    --spacing-3: 12px;
+    --spacing-4: 16px;
+    --spacing-5: 24px;
+    --spacing-6: 32px;
+    --spacing-8: 48px;
+    --spacing-10: 64px;
+    --spacing-12: 96px;
 
-	/* Border Radius Scale */
-	--radius-xs: 2px;
-	--radius-sm: 4px;
-	--radius-md: 8px;
-	--radius-lg: 12px;
-	--radius-xl: 16px;
+    /* Border Radius Scale */
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
 
-	/* Font Size Scale */
-	--font-size-xs: 0.75rem;
-	--font-size-sm: 0.875rem;
-	--font-size-base: 1rem;
-	--font-size-lg: 1.25rem;
-	--font-size-xl: 1.5rem;
-	--font-size-2xl: 2rem;
-	--font-size-3xl: 2.5rem;
+    /* Font Size Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.5rem;
 
-	--width-full: 1152px;
+    --width-full: 1152px;
+    --max-col-width: 368px;
 
-	--min-padding: 72px;
+    --min-padding: 72px;
 
-	--font-serif: "Lora", serif;
-	--font-serif-fancy: "Headland One", serif;
-	--font-sans-serif: "Instrument Sans", sans-serif;
+    --font-serif: "Lora", serif;
+    --font-serif-fancy: "Headland One", serif;
+    --font-sans-serif: "Instrument Sans", sans-serif;
 
-	--shadow-md: 0px 0px 8px rgba(24, 24, 24, 0.1);
+    --shadow-md: 0px 0px 8px rgba(24, 24, 24, 0.1);
 }
 
 @layer base {
-	p {
-		margin-bottom: 8px;
-		color: var(--color-primary-50);
-		font: 400 var(--font-size-base)/var(--text-xl--line-height)
-			var(--font-sans-serif);
-	}
+    p {
+        margin-bottom: 8px;
+        color: var(--color-primary-50);
+        font: 400 var(--font-size-base)/var(--text-xl--line-height)
+            var(--font-sans-serif);
+    }
 }
 
 :root {
-	/* Typography Fonts */
+    /* Typography Fonts */
 
-	/* Line Heights */
-	--leading-tight: 1.2;
-	--leading-normal: 1.5;
-	--text-xs--line-height: 1rem;
-	--text-sm--line-height: 1.25rem;
-	--text-base--line-height: 1.5rem;
+    /* Line Heights */
+    --leading-tight: 1.2;
+    --leading-normal: 1.5;
+    --text-xs--line-height: 1rem;
+    --text-sm--line-height: 1.25rem;
+    --text-base--line-height: 1.5rem;
 }
 
 @font-face {
-	font-family: "Headland One";
-	src: url("/fonts/HeadlandOne-Regular.ttf") format("truetype");
-	font-weight: 400;
-	font-style: normal;
+    font-family: "Headland One";
+    src: url("/fonts/HeadlandOne-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: "Instrument Sans";
-	src: url("/fonts/InstrumentSans.ttf") format("truetype");
-	font-weight: 400 900;
-	font-style: normal;
+    font-family: "Instrument Sans";
+    src: url("/fonts/InstrumentSans.ttf") format("truetype");
+    font-weight: 400 900;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: "Lora";
-	src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype");
-	font-weight: 400 700;
-	font-style: normal;
+    font-family: "Lora";
+    src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype");
+    font-weight: 400 700;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: "Lora";
-	src: url("/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype");
-	font-weight: 400 700;
-	font-style: italic;
+    font-family: "Lora";
+    src: url("/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype");
+    font-weight: 400 700;
+    font-style: italic;
 }
 
 .containerUnderline {
-	position: relative;
+    position: relative;
 }
 
 .containerUnderline::after {
-	content: "";
-	height: 2px;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	background-color: var(--color-primary-900);
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--color-primary-900);
 }
 
 .underlineOnHover {
-	position: relative;
+    position: relative;
 }
 
 .underlineOnHover::after {
-	position: absolute;
-	height: 2px;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	content: "";
-	background-color: rgba(0, 0, 0, 0);
-	transition: var(--transition-default);
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    content: "";
+    background-color: rgba(0, 0, 0, 0);
+    transition: var(--transition-default);
 }
 
 .underlineOnHover:hover::after {
-	background-color: var(--color-primary-900);
+    background-color: var(--color-primary-900);
 }

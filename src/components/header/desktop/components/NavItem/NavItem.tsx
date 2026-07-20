@@ -119,7 +119,7 @@ const CustomDropdownNavItem: React.FC<{
 				className={clsx(styles.cheveron, {
 					[styles.cheveron_active]: navLink === navItem,
 				})}
-				src="/public/cheveron.svg"
+				src="cheveron.svg"
 				alt="dropdown arrow"
 			/>
 		</li>

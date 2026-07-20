@@ -1,96 +1,142 @@
 .section {
-	display: flex;
-	flex-direction: column;
-	gap: 64px;
-	justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
 }
 
 .content {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	margin: 0px auto;
-	gap: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0px auto;
+    gap: 24px;
 }
 
 .headingWrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 12px;
-}
-
-.subtitle {
-	font:
-		700 14px "Headland One",
-		serif;
-	color: var(--color-primary-900);
-	text-transform: uppercase;
-	letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .heading {
-	font: 500 var(--font-size-3xl) var(--font-serif);
-	color: var(--color-primary-900);
-	margin: 0;
-	line-height: 1.1;
-	position: relative;
-	padding-bottom: 12px;
+    font: 500 var(--font-size-3xl) var(--font-serif);
+    color: var(--color-primary-900);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font:
+        700 14px "Headland One",
+        serif;
+    color: var(--color-primary-900);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .textContainer {
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .text {
-	font: 400 var(--font-size-base)/var(--text-lg--line-height)
-		var(--font-sans-serif);
-	margin: 0;
+    font: 400 var(--font-size-base)/var(--text-lg--line-height)
+        var(--font-sans-serif);
+    margin: 0;
+}
+
+.stats {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    max-width: 368px;
+    padding: 72px max(var(--min-padding), calc((100% - var(--width-full)) / 2));
+}
+
+.stats__card {
+    display: flex;
+    gap: 12px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+.stats__value {
+    font: 500 var(--font-size-2xl) var(--font-sans-serif);
+    color: var(--color-primary-900);
+    line-height: 1;
+}
+
+.stats__label {
+    font: 500 var(--font-size-xl) var(--font-serif);
+    color: var(--color-primary-100);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
 }
 
 @media (min-width: 830px) {
-	.content {
-		gap: 64px;
-	}
+    .content {
+        gap: 24px;
+    }
 
-	.textContainer {
-		max-width: 756px;
-	}
+    .textContainer {
+        max-width: 756px;
+    }
 }
 
 @media (min-width: 1268px) {
-	.statisticsPadding {
-		height: 72px;
-		background-color: var(--color-primary);
-	}
+    .content {
+        max-width: calc(var(--max-col-width) * 2);
+        margin: 0px;
+    }
 
-	.section {
-		width: 1152px;
-		margin: auto;
-		gap: 24px;
-	}
+    .section {
+        width: 1152px;
+        margin: auto;
+        gap: 24px;
+        display: flex;
+        flex-direction: row;
+    }
 
-	.headingWrapper {
-		display: block;
-		flex: 1 1;
-		max-width: 368px;
-		text-align: center;
-	}
+    .headingWrapper {
+        display: block;
+        flex: 1 1;
+        width: 600px;
+        text-align: left;
+    }
 
-	.content {
-		flex-direction: row-reverse;
-		max-width: 1152px;
-		gap: 24px;
-	}
+    .textContainer {
+        padding: 0px auto;
+        width: 600px;
+        flex: 2 1;
+    }
 
-	.textContainer {
-		padding: 0px auto;
-		flex: 2 1;
-		max-width: 600px;
-		margin: auto;
-	}
+    .stats {
+        padding: 0px;
+    }
+
+    .stats__card {
+        position: relative;
+        min-width: var(--max-col-width);
+    }
+
+    .stats__card::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        width: 70%;
+        border-bottom: 1px solid var(--color-neutral-200);
+    }
+
+    .stats__card:last-of-type::after {
+        border-bottom: none;
+    }
 }

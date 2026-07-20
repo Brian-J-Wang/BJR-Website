@@ -1,22 +1,22 @@
 ---
-import aboutUs from "./aboutUs.module.css";
+import styles from "./aboutUs.module.css";
 
 const { className } = Astro.props;
 ---
 
-<section class={`${className} ${aboutUs.section}`}>
-	<div class={aboutUs.content}>
-		<div class={aboutUs.headingWrapper}>
-			<h2 class={aboutUs.heading}>About Us</h2>
+<section class={`${className} ${styles.section}`}>
+	<div class={styles.content}>
+		<div class={styles.headingWrapper}>
+			<h2 class={styles.heading}>About Us</h2>
 		</div>
-		<div class={aboutUs.textContainer}>
-			<p class={aboutUs.text}>
+		<div class={styles.textContainer}>
+			<p class={styles.text}>
 				Established in 2009, our ophthalmology clinic has proudly served
 				patients across the five boroughs. We are dedicated to
 				delivering high-quality, personalized eye care with a deep
 				understanding of the community we serve.
 			</p>
-			<p class={aboutUs.text}>
+			<p class={styles.text}>
 				Our team is fluent in Chinese and English, allowing
 				us to communicate clearly and comfortably with a diverse patient
 				base. While we primarily serve the Asian community, we welcome
@@ -25,5 +25,27 @@ const { className } = Astro.props;
 				through our doors.
 			</p>
 		</div>
+	</div>
+	<div>
+		<div class={styles.stats}>
+			<div class={`${styles.stats__card}`}>
+				<span class={styles.stats__value}>2</span>
+				<span class={styles.stats__label}> 
+					 Locations 
+				</span>
+			</div>
+			<div class={`${styles.stats__card}`}>
+				<span class={styles.stats__value}>5</span>
+				<span class={styles.stats__label}> 
+					 Expert Doctors
+				</span>
+			</div>
+			<div class={`${styles.stats__card}`}>
+				<span class={styles.stats__label}>Open Since </span>
+				<span class={styles.stats__value}> 
+					 2009 
+				</span>
+			</div>
+	</div>
 	</div>
 </section>

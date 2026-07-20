@@ -1,277 +1,240 @@
 .wrapper {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	flex: 1 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0;
+    height: max(600px, calc(100vh - 120px));
 }
 
 .hero {
-	position: relative;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 96px;
-	overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 0px 0px;
+    overflow: hidden;
 }
 
 .hero::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background:
-		linear-gradient(
-			0deg,
-			rgba(15, 23, 42, 0.9) 0%,
-			rgba(15, 23, 42, 0.5) 40%,
-			rgba(15, 23, 42, 0.2) 100%
-		),
-		url("/brooklynOffice.jpg") center/cover no-repeat;
-	z-index: -1;
-	animation: unblur 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(
+            0deg,
+            rgba(15, 23, 42, 0.9) 0%,
+            rgba(15, 23, 42, 0.5) 40%,
+            rgba(15, 23, 42, 0.2) 100%
+        ),
+        url("/brooklynOffice.jpg") center/cover no-repeat;
+    z-index: -1;
+    animation: unblur 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes unblur {
-	from {
-		filter: blur(20px);
-		transform: scale(1.1);
-	}
-	to {
-		filter: blur(0);
-		transform: scale(1);
-	}
+    from {
+        filter: blur(20px);
+        transform: scale(1.1);
+    }
+    to {
+        filter: blur(0);
+        transform: scale(1);
+    }
 }
 
 .heroContent {
-	display: flex;
-	flex-direction: column;
-	padding: 0 48px;
-	gap: 12px;
-	align-items: center;
-	text-align: center;
-	max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 48px;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
 }
 
 .welcome {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 8px;
-	margin: 0 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 1rem 0;
 }
 
 .welcome span {
-	font:
-		300 0.75rem var(--font-serif),
-		serif;
-	color: var(--color-neutral-50);
-	text-transform: uppercase;
-	letter-spacing: 0.5em;
-	opacity: 0.8;
+    font:
+        300 0.75rem var(--font-serif),
+        serif;
+    color: var(--color-neutral-50);
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    opacity: 0.8;
 }
 
 .welcome strong {
-	font:
-		800 2.5rem/1 var(--font-sans-serif),
-		sans-serif;
-	color: white;
-	text-transform: uppercase;
-	letter-spacing: -0.02em;
-	text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font:
+        800 2.5rem/1 var(--font-sans-serif),
+        sans-serif;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .statement {
-	color: #ffffff;
-	margin: 0 0 2rem 0;
-	font:
-		400 0.875rem var(--font-sans-serif),
-		sans-serif;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	opacity: 0.7;
-	display: flex;
-	align-items: center;
-	gap: 12px;
+    color: #ffffff;
+    margin: 0 0 2rem 0;
+    font:
+        400 0.875rem var(--font-sans-serif),
+        sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .statement::before,
 .statement::after {
-	content: "";
-	width: 20px;
-	height: 1px;
-	background: rgba(255, 255, 255, 0.3);
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .subStatement {
-	font:
-		400 12px/1.5 "Instrument Sans",
-		sans-serif;
-	color: #e2e8f0;
-	margin-bottom: 16px;
-	max-width: 600px;
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font:
+        400 12px/1.5 "Instrument Sans",
+        sans-serif;
+    color: #e2e8f0;
+    margin-bottom: 16px;
+    max-width: 600px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .appointmentButton {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 12px;
-	padding: 14px 24px;
-	border-radius: 2px;
-	font: 600 0.75rem var(--font-sans-serif);
-	color: white;
-	background: transparent;
-	border: 1px solid rgba(255, 255, 255, 0.4);
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	transition: var(--transition-default);
-	cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border-radius: 2px;
+    font: 600 0.75rem var(--font-sans-serif);
+    color: white;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition-default);
+    cursor: pointer;
 }
 
 .appointmentButton:hover {
-	background: white;
-	color: var(--color-primary-900);
-	border: 1px solid rgba(255, 255, 255, 0);
+    background: white;
+    color: var(--color-primary-900);
+    border: 1px solid rgba(255, 255, 255, 0);
 }
 
 .appointmentButton svg {
-	transition: transform 0.3s ease;
+    height: 16px;
+    width: 16px;
+    transform: rotate(90deg);
+    transition: var(--transition-default);
 }
 
-.appointmentButton:hover svg {
-	transform: translateX(4px);
-}
-
-.stats {
-	display: flex;
-	justify-content: center;
-	position: absolute;
-	gap: 24px;
-	bottom: 0;
-	transform: translateY(50%) translateX(-50%);
-	left: calc(50%);
-	width: 100%;
-	padding: 72px max(var(--min-padding), calc((100% - var(--width-full)) / 2));
-}
-
-.stats__card {
-	height: 144px;
-	flex: 1;
-	padding: 32px 24px;
-	border-radius: 2px;
-	box-shadow: var(--shadow-sm);
-	gap: 8px;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: white;
-}
-
-.stats__value {
-	font: 500 var(--font-size-2xl) var(--font-sans-serif);
-	color: var(--color-primary-900);
-	line-height: 1;
-}
-
-.stats__label {
-	font: 500 var(--font-size-lg) var(--font-serif);
-	color: var(--color-primary-100);
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-	text-align: center;
+.appointmentButton:hover path {
+    stroke: var(--color-primary-800);
 }
 
 @media (min-width: 830px) {
-	.heroContent {
-		gap: 24px;
-	}
+    .heroContent {
+        gap: 24px;
+    }
 
-	.welcome {
-		font-size: 20px;
-	}
+    .welcome {
+        font-size: 20px;
+    }
 
-	.statement {
-		font-size: 48px;
-	}
+    .statement {
+        font-size: 48px;
+    }
 
-	.subStatement {
-		font-size: 20px;
-	}
+    .subStatement {
+        font-size: 20px;
+    }
 
-	.appointmentButton {
-		gap: 12px;
-		padding: 16px 36px;
-		font-size: 16px;
-	}
+    .appointmentButton {
+        gap: 12px;
+        padding: 16px 36px;
+        font-size: 16px;
+    }
 
-	.statistics {
-		padding: 32px;
-	}
+    .statistics {
+        padding: 32px;
+    }
 
-	.statValue {
-		font-size: 36px;
-	}
+    .statValue {
+        font-size: 36px;
+    }
 
-	.statLabel {
-		font-size: 12px;
-		letter-spacing: 1px;
-	}
+    .statLabel {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
 
-	.statDivider {
-		height: 40px;
-	}
+    .statDivider {
+        height: 40px;
+    }
 }
 
 @media (min-width: 1268px) {
-	.welcome {
-		margin: 0px 0px 24px 0px;
-		gap: 8px;
-	}
+    .welcome {
+        margin: 0px 0px 24px 0px;
+        gap: 8px;
+    }
 
-	.welcome span {
-		font: normal 1rem var(--font-serif);
-		letter-spacing: 4px;
-	}
+    .welcome span {
+        font: normal 1rem var(--font-serif);
+        letter-spacing: 4px;
+    }
 
-	.welcome strong {
-		font: normal 3.5rem var(--font-sans-serif);
-	}
+    .welcome strong {
+        font: normal 3.5rem var(--font-sans-serif);
+    }
 
-	.statement {
-		font-size: 16px;
-		letter-spacing: 1px;
-		margin: 0px;
-	}
+    .statement {
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin: 0px;
+    }
 
-	.appointmentButton {
-		width: 368px;
-	}
+    .appointmentButton {
+        width: 368px;
+    }
 
-	.stats {
-		padding: 0px;
-		width: 1152px;
-		gap: 24px;
-		z-index: 10;
-	}
+    .stats {
+        padding: 0px;
+        width: 1152px;
+        gap: 24px;
+        z-index: 10;
+    }
 
-	.stats__card {
-		flex: 1;
-		padding: 32px 24px;
-		border-radius: 2px;
-		box-shadow: var(--shadow-sm);
-		gap: 8px;
-		overflow: hidden;
-	}
+    .stats__card {
+        flex: 1;
+        padding: 32px 24px;
+        border-radius: 2px;
+        box-shadow: var(--shadow-sm);
+        gap: 8px;
+        overflow: hidden;
+    }
 
-	.statisticsPadding {
-		height: 72px;
-		width: 100%;
-	}
+    .statisticsPadding {
+        height: 72px;
+        width: 100%;
+    }
 }

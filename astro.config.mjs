@@ -15,8 +15,8 @@ export default defineConfig({
 			//@ts-ignore
 			tsconfigPaths: true,
 		},
-		ssr: {
-			noExternal: true,
+		optimizeDeps: {
+			include: ["cookie"],
 		},
 	},
 	output: "server",
