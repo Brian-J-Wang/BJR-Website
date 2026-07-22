@@ -1,61 +1,62 @@
 .section {
-	background: #222933;
-	background: linear-gradient(
-		0deg,
-		rgba(34, 41, 51, 1) 0%,
-		var(--color-primary-100) 30%,
-		var(--color-primary-100) 70%,
-		rgba(34, 41, 51, 1) 100%
-	);
-	color: var(--color-primary-900);
+    background: #222933;
+    background: linear-gradient(
+        0deg,
+        rgba(34, 41, 51, 1) 0%,
+        var(--color-primary-100) 30%,
+        var(--color-primary-100) 70%,
+        rgba(34, 41, 51, 1) 100%
+    );
+    color: var(--color-primary-900);
+    display: flex;
+    justify-content: center;
 }
 
 .content {
-	display: flex;
-	flex-direction: column;
-	gap: 64px;
-	max-width: 1152px;
-
-	margin: 0 auto;
-	width: 100%;
+    display: flex;
+    box-sizing: content-box;
+    flex-direction: column;
+    gap: 64px;
+    max-width: 1152px;
+    padding: 0px 72px;
+    width: 100%;
 }
 
 .intro {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	width: 100%;
-	gap: 16px;
-	padding: 0px var(--min-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    gap: 16px;
+    padding: 0px var(--min-padding);
 }
 
 .intro__headingWrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 8px;
-	margin-bottom: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing-4);
 }
 
 .intro__subtitle {
-	font: 600 var(--font-size-sm) var(--font-sans-serif);
-	color: var(--color-primary-900);
-	text-transform: uppercase;
-	letter-spacing: 0.15em;
+    font: 600 var(--font-size-sm) var(--font-sans-serif);
+    color: var(--color-primary-900);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
 }
 
 .intro__title {
-	font: 400 var(--font-size-3xl) var(--font-serif);
-	color: var(--color-neutral-50);
-	margin: 0;
-	line-height: 1.2;
+    font: 400 var(--font-size-3xl) var(--font-serif);
+    color: var(--color-neutral-50);
+    margin: 0;
+    line-height: 1.2;
 }
 
 .intro__summary {
-	color: var(--color-neutral-50);
-	max-width: 680px;
-	opacity: 0.85;
-	margin: 0 auto;
+    color: var(--color-neutral-50);
+    max-width: 680px;
+    opacity: 0.85;
+    margin: 0 auto;
 }
-

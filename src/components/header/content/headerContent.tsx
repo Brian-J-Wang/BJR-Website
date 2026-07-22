@@ -48,12 +48,6 @@ export const navLinks: NavLink[] = [
 		dropdownContent: <Services />,
 	},
 	{
-		type: "customDropdown",
-		href: "",
-		displayName: "Locations",
-		dropdownContent: <Locations />,
-	},
-	{
 		type: "dropdown",
 		href: "/resources",
 		displayName: "Resources",

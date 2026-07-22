@@ -48,8 +48,10 @@
 
     --width-full: 1152px;
     --max-col-width: 368px;
+    --max-paragraph-width: 700px;
 
     --min-padding: 72px;
+    --auto-padding: max(calc((100% - var(--width-full)) / 2), 72px);
 
     --font-serif: "Lora", serif;
     --font-serif-fancy: "Headland One", serif;
@@ -61,9 +63,13 @@
 @layer base {
     p {
         margin-bottom: 8px;
-        color: var(--color-primary-50);
-        font: 400 var(--font-size-base)/var(--text-xl--line-height)
+        color: var(--color-primary-);
+        font: 400 var(--font-size-base)/var(--text-base--line-height)
             var(--font-sans-serif);
+    }
+
+    p[data-variant="contrast"] {
+        color: var(--color-neutral-100);
     }
 }
 

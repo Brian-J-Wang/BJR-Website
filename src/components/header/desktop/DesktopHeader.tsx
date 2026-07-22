@@ -121,7 +121,7 @@ const DesktopHeader: React.FC = (props) => {
 							[styles.desktopHeader__drawerInner_active]: navLink,
 						})}
 					>
-						<DropDown navLink={navLink}></DropDown>
+						<DropDown navLink={navLink} />
 					</div>
 					<div className={styles.desktopHeader__bottomBar}>
 						<nav

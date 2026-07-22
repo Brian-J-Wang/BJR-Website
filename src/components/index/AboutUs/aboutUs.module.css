@@ -1,23 +1,21 @@
 .section {
     display: flex;
     flex-direction: column;
-    gap: 24px;
     justify-content: center;
+    height: fit-content;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin: 0px auto;
-    gap: 24px;
+    margin: 0px 32px;
 }
 
 .headingWrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 12px;
 }
 
@@ -28,37 +26,23 @@
     line-height: 1.1;
 }
 
-.subtitle {
-    font:
-        700 14px "Headland One",
-        serif;
-    color: var(--color-primary-900);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
 .textContainer {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
-.text {
-    font: 400 var(--font-size-base)/var(--text-lg--line-height)
-        var(--font-sans-serif);
-    margin: 0;
-}
-
 .stats {
     height: 100%;
     display: flex;
+    flex: 1;
     flex-direction: column;
     bottom: 0;
-    max-width: 368px;
-    padding: 72px max(var(--min-padding), calc((100% - var(--width-full)) / 2));
+    padding: 16px max(var(--min-padding), calc((100% - var(--width-full)) / 2));
 }
 
 .stats__card {
+    position: relative;
     display: flex;
     gap: 12px;
     flex: 1;
@@ -83,12 +67,35 @@
 }
 
 @media (min-width: 830px) {
+    .section {
+        margin-bottom: 64px;
+    }
+
     .content {
         gap: 24px;
+        align-items: center;
     }
 
     .textContainer {
-        max-width: 756px;
+        max-width: var(--max-paragraph-width);
+    }
+
+    .stats {
+        width: 100%;
+        flex-direction: row;
+        padding: 64px 0px;
+    }
+
+    .stats__card::after {
+        content: "";
+        position: absolute;
+        right: 0px;
+        height: 200%;
+        border-right: 1px solid var(--color-neutral-200);
+    }
+
+    .stats__card:last-of-type::after {
+        border-right: none;
     }
 }
 
@@ -100,10 +107,11 @@
 
     .section {
         width: 1152px;
-        margin: auto;
         gap: 24px;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        margin: 0px auto 64px auto;
     }
 
     .headingWrapper {
@@ -121,6 +129,8 @@
 
     .stats {
         padding: 0px;
+        max-width: 368px;
+        flex-direction: column;
     }
 
     .stats__card {
@@ -132,11 +142,16 @@
         content: "";
         position: absolute;
         bottom: 0px;
+        right: auto;
         width: 70%;
         border-bottom: 1px solid var(--color-neutral-200);
+        transform: translateX();
+        border-right: none;
     }
 
     .stats__card:last-of-type::after {
+        right: auto;
         border-bottom: none;
+        border-right: none;
     }
 }
