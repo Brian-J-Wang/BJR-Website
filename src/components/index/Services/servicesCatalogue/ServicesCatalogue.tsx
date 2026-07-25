@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./ServicesCatalogue.module.css";
+import shared from "@styles/shared.module.css";
+import clsx from "clsx";
 
 interface ServiceItem {
 	title: string;
@@ -28,7 +30,12 @@ export default function Tabs({ allServices }: { allServices: ServiceGroup[] }) {
 			<div className={styles.tabs__sidebar}>
 				{allServices.map((group, groupIndex) => (
 					<div className={styles.tabs__group} key={group.group}>
-						<h3 className={styles.tabs__groupTitle}>
+						<h3
+							className={clsx(
+								styles.tabs__groupTitle,
+								shared.fontSerif__h3,
+							)}
+						>
 							{group.group}
 						</h3>
 						<div className={styles.tabs__list} role="tablist">

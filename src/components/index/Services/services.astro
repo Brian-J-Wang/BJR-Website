@@ -1,7 +1,6 @@
 ---
 import styles from "./services.module.css";
-import surgicalServices from "./surgical-services";
-import eyeServices from "./eye-services";
+import { surgicalServices, eyeServices } from "./services";
 import Tabs from "./servicesCatalogue/ServicesCatalogue";
 
 const { class: className } = Astro.props;
@@ -19,7 +18,7 @@ const allServices = [
 				<span class={styles.intro__subtitle}>Excellence & Care</span>
 				<h2 class={styles.intro__title}>Our Services</h2>
 			</div>
-			<p data-variant="contrast">
+			<p data-variant="contrast" class="w-(--max-paragraph-width)">
 				We combine modern technology with personalized care to achieve
 				the best possible outcomes for a variety of eye conditions and
 				diseases. From consultation to recovery, we provide expert

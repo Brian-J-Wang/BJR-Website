@@ -1,50 +1,85 @@
 ---
-import styles from "./aboutUs.module.css";
+import styles from "./styles.module.css";
+import clinic from "./clinic.module.css";
+import drRobert from "./drRoberts.module.css";
 
 const { className } = Astro.props;
 ---
 
 <section class={`${className} ${styles.section}`}>
-	<div class={styles.content}>
-		<div class={styles.headingWrapper}>
-			<h2 class={styles.heading}>About Us</h2>
+	<div class={styles.clinic}>
+		<div class={clinic.content}>
+			<div class={clinic.heading}>
+				<h2 class={clinic.headingTitle}>About Us</h2>
+			</div>
+			<div class={clinic.textContainer}>
+				<p>
+					Established in 2009, our ophthalmology clinic has proudly
+					served patients across the five boroughs. We are dedicated
+					to delivering high-quality, personalized eye care with a
+					deep understanding of the community we serve.
+				</p>
+				<p>
+					Our team is fluent in Chinese and English, allowing us to
+					communicate clearly and comfortably with a diverse patient
+					base. While we primarily serve the Asian community, we
+					welcome patients from all backgrounds and are committed to
+					providing attentive, culturally sensitive care to everyone
+					who walks through our doors.
+				</p>
+			</div>
 		</div>
-		<div class={styles.textContainer}>
-			<p>
-				Established in 2009, our ophthalmology clinic has proudly served
-				patients across the five boroughs. We are dedicated to
-				delivering high-quality, personalized eye care with a deep
-				understanding of the community we serve.
-			</p>
-			<p>
-				Our team is fluent in Chinese and English, allowing
-				us to communicate clearly and comfortably with a diverse patient
-				base. While we primarily serve the Asian community, we welcome
-				patients from all backgrounds and are committed to providing
-				attentive, culturally sensitive care to everyone who walks
-				through our doors.
-			</p>
+		<div class={clinic.stats}>
+			<div class={`${clinic.stats__card}`}>
+				<span class={clinic.stats__value}>2</span>
+				<span class={clinic.stats__label}> Locations </span>
+			</div>
+			<div class={`${clinic.stats__card}`}>
+				<span class={clinic.stats__value}>5</span>
+				<span class={clinic.stats__label}> Expert Doctors </span>
+			</div>
+			<div class={`${clinic.stats__card}`}>
+				<span class={clinic.stats__label}>Open Since </span>
+				<span class={clinic.stats__value}> 2009 </span>
+			</div>
 		</div>
 	</div>
-	<div>
-		<div class={styles.stats}>
-			<div class={`${styles.stats__card}`}>
-				<span class={styles.stats__value}>2</span>
-				<span class={styles.stats__label}> 
-					 Locations 
-				</span>
+	<div class={styles.drRoberts}>
+		<div class={drRobert.doctorBio__card}>
+			<div class={drRobert.doctorBio__portraitWrapper}>
+				<img
+					src="/profileBJR.png"
+					alt="Dr. BingJing Z. Roberts, Board-Certified Ophthalmologist"
+					class={drRobert.doctorBio__portraitImage}
+				/>
 			</div>
-			<div class={`${styles.stats__card}`}>
-				<span class={styles.stats__value}>5</span>
-				<span class={styles.stats__label}> 
-					 Expert Doctors
-				</span>
-			</div>
-			<div class={`${styles.stats__card}`}>
-				<span class={styles.stats__label}>Open Since </span>
-				<span class={styles.stats__value}> 
-					 2009 
-				</span>
+			<div class={drRobert.doctorBio__content}>
+				<div class={drRobert.doctorBio__header}>
+					<h2 class={drRobert.doctorBio__name}>
+						BingJing Z. Roberts, M.D.
+					</h2>
+					<span class={drRobert.doctorBio__title}>
+						Board-Certified Ophthalmologist
+					</span>
+				</div>
+				<div class={drRobert.doctorBio__body}>
+					<p>
+						Dr. BingJing Z. Roberts is a board-certified
+						ophthalmologist with over 20 years of clinical
+						experience. Dr. Roberts received her medical degree from
+						the University of Maryland School of Medicine and
+						completed her residency in ophthalmology at Montefiore
+						Medical Center. She specializes in treating complex eye
+						conditions such as cataracts, glaucoma, and retinal
+						diseases, and performs advanced surgeries including
+						laser retina surgery and lens replacement.
+					</p>
+					<p>
+						She also serves on the board of directors of the
+						Coalition of Asian-American Independent Practice
+						Association (CAIPA).
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,7 +1,8 @@
 ---
-import locations from "./locations.module.css"
-import InteractiveLocations from "./InteractiveLocations/InteractiveLocations"
+import locations from "./locations.module.css";
+import Map from "./map/map.tsx";
 ---
+
 <section class={locations.section}>
-    <InteractiveLocations client:visible/>
+	<Map client:visible />
 </section>

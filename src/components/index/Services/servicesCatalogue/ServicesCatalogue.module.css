@@ -1,5 +1,4 @@
 /* #region Tabs Layout */
-
 .tabs {
 	display: flex;
 	gap: 48px;
@@ -24,14 +23,13 @@
 .tabs__group {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 8px;
 }
 
 .tabs__groupTitle {
-	font: 400 var(--font-size-lg) var(--font-serif);
 	color: var(--color-neutral-50);
-	margin: 0;
-	padding-bottom: 8px;
+	margin: 0px;
+	padding-bottom: 6px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 

@@ -1,23 +1,18 @@
 ---
-import styles from "../styles/index.module.css";
 import Layout from "../layouts/layout.astro";
 import Testimonial from "../components/testimonial/testimonial.astro";
 import Locations from "../components/locations/locations.astro";
 import Hero from "../components/index/Hero/Hero.astro";
 import SurgicalServices from "../components/index/Services/services.astro";
 import AboutUs from "../components/index/AboutUs/aboutUs.astro";
-import DrRoberts from "../components/index/DrRoberts/dr-roberts.astro";
 ---
 
 <Layout
 	title="BingJing Roberts Ophthalmology | Brooklyn and Mannhatten"
 	description="Dr. BingJing Z. Roberts is a board-certified ophthalmologist offering advanced medical and surgical eye care in Brooklyn and Lower Manhattan."
 >
-	<Hero/>
-	<div class="py-32">
-		<AboutUs />
-		<DrRoberts />
-	</div>
+	<Hero />
+	<AboutUs />
 	<SurgicalServices class="py-32" />
 	<Locations />
 	<Testimonial />

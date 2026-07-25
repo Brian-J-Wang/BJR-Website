@@ -1,0 +1,37 @@
+import styles from "./marker.module.css";
+
+import markerImage from "./marker.svg?url";
+
+type MapMarkerProps = {
+	name: string;
+};
+
+const MapMarker: React.FC<MapMarkerProps> = ({ name }) => {
+	return (
+		<div className={styles.wrapper}>
+			<svg
+				width="24"
+				height="24"
+				viewBox="0 0 96 96"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				className={styles.marker}
+			>
+				<circle cx="48" cy="48" r="48" fill="#D9D9D9" />
+				<path
+					d="M90 47.5C90 70.696 71.196 89.5 48 89.5C24.804 89.5 6 70.696 6 47.5C6 24.304 24.804 5.5 48 5.5C71.196 5.5 90 24.304 90 47.5Z"
+					fill="#406E9D"
+				/>
+				<path
+					d="M70 47.5C70 59.6503 60.1503 69.5 48 69.5C35.8497 69.5 26 59.6503 26 47.5C26 35.3497 35.8497 25.5 48 25.5C60.1503 25.5 70 35.3497 70 47.5Z"
+					fill="#222933"
+				/>
+			</svg>
+			<div className={styles.nameTag}>
+				<span className={styles.marker__name}>{name}</span>
+			</div>
+		</div>
+	);
+};
+
+export default MapMarker;

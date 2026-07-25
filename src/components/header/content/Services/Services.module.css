@@ -15,9 +15,6 @@
 }
 
 .services__groupName {
-	font: 700 1.5rem var(--font-serif);
-	text-transform: uppercase;
-	letter-spacing: 1.5px;
 	margin: 0 0 8px 0;
 	color: var(--color-primary-50);
 }

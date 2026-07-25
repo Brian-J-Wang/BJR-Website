@@ -1,0 +1,40 @@
+.mapContainer {
+	position: relative;
+	width: var(--width-full);
+	height: var(--width-full);
+	padding: 12px;
+	border-radius: var(--radius-sm);
+	background-color: white;
+	box-shadow: var(--shadow-sm);
+}
+
+.map {
+	width: 100%;
+	height: 100%;
+}
+
+.modalContainer {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	margin: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-sm);
+}
+
+.modal {
+	background-color: white;
+	width: var(--max-col-width);
+	padding: 16px;
+	box-shadow: var(--shadow-md);
+	border-radius: var(--radius-sm);
+}
+
+.modal__text {
+}
+
+.modalHeader {
+	margin-bottom: 8px;
+	color: var(--color-primary-700);
+}

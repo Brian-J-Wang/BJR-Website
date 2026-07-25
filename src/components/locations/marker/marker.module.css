@@ -1,0 +1,60 @@
+@import "@styles/global.css";
+
+.wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.wrapper_active {
+}
+
+.marker {
+	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+	transition: var(--transition-default);
+	cursor: pointer;
+}
+
+.marker:hover {
+	height: 32px;
+	width: 32px;
+}
+
+.wrapper_active .marker {
+	height: 32px;
+	width: 32px;
+}
+
+.nameTag {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	height: 24px;
+	right: 0px;
+	transform: translateX(calc(100% + 8px));
+	margin-left: 0.5rem;
+	background-color: white;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+	color: var(--color-primary-700);
+	border-radius: 4px;
+	padding: 0px 8px;
+	transition: ease-in-out 1s all;
+}
+
+.wrapper_active .nameTag {
+	height: 32px;
+	padding: 0px 12px;
+}
+
+.marker__name {
+	font: inherit;
+	font-family: "Lora", serif;
+	font-size: 16px;
+	font-weight: 600;
+	white-space: nowrap;
+	transition: inherit;
+}
+
+.wrapper_active .marker__name {
+	font-size: 24px;
+}

@@ -1,0 +1,16 @@
+.header {
+	margin-bottom: 0;
+	color: var(--color-primary-700);
+}
+
+.textBox {
+	background-color: white;
+	padding: 16px;
+	border-radius: var(--radius-sm);
+	flex: 1;
+	box-shadow: var(--shadow-md);
+}
+
+.header {
+	margin-bottom: var(--gap-xs);
+}

@@ -1,0 +1,11 @@
+.fontSerif__h2 {
+	font: 600 var(--text-2xl) var(--font-serif);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.fontSerif__h3 {
+	font: 500 var(--text-xl) var(--font-serif);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
