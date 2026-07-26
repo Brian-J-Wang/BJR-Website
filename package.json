@@ -8,6 +8,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
+		"docker:build": "docker build -t bjr-website .",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
@@ -29,5 +30,8 @@
 	"devDependencies": {
 		"prettier": "3.9.5",
 		"prettier-plugin-astro": "0.14.1"
+	},
+	"allowScripts": {
+		"esbuild@0.28.1": true
 	}
 }
