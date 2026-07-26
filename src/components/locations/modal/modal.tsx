@@ -1,5 +1,5 @@
 import React from "react";
-import type { LocationData } from "../map/map.types";
+import type { LocationData } from "../display/map.types";
 import styles from "./modal.module.css";
 import shared from "@styles/shared.module.css";
 import clsx from "clsx";
