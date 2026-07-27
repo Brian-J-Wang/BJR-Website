@@ -7,4 +7,5 @@ export type LocationData = {
 	phone: string;
 	phoneNum: number;
 	mtaLines: string[];
+	googleMapsLink: string;
 };

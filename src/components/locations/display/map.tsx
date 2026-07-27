@@ -119,6 +119,14 @@ const Map = () => {
 		};
 	}, []);
 
+	const getLocation = () => {
+		if (activeLocation == null) {
+			return null;
+		} else {
+			return activeLocation === "brooklyn" ? brooklynLocation : manhattanLocation;
+		}
+	};
+
 	return (
 		<div className={styles.mapContainer}>
 			<div ref={mapContainer} id="map" className={styles.map}></div>
@@ -127,12 +135,16 @@ const Map = () => {
 					<h2 className={clsx(styles.modalHeader, shared.fontSerif__h2)}>
 						Our Locations
 					</h2>
+					<p>
+						Our offices in Manhattan and Brooklyn are conveniently located with easy
+						access to public transportation.
+					</p>
 					<p className="m-0">
-						No matter which office you go to, you can expect the same quality of care.
+						Whichever location you visit, you can expect the same exceptional quality
+						of care.
 					</p>
 				</div>
-				{activeLocation === "manhattan" && <Modal location={manhattanLocation} />}
-				{activeLocation === "brooklyn" && <Modal location={brooklynLocation} />}
+				<Modal locationData={getLocation()} />
 			</div>
 		</div>
 	);

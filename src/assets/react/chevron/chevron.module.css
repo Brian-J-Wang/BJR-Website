@@ -1,0 +1,29 @@
+.chevron {
+	width: 16px;
+	height: 16px;
+}
+
+.chevron path {
+	transition: var(--transition-slow);
+	stroke: var(--stroke, var(--color-neutral-50));
+}
+
+.chevron[data-direction="right"] {
+	transform: rotate(90deg);
+}
+
+.chevron[data-direction="down"] {
+	transform: rotate(180deg);
+}
+
+.chevron[data-direction="left"] {
+	transform: rotate(270deg);
+}
+
+.chevron[data-direction="up"] {
+	transform: rotate(0px);
+}
+
+.chevron[data-contrast="true"] path {
+	stroke: var(--stroke, var(--color-primary));
+}

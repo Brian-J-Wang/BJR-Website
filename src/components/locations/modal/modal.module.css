@@ -9,8 +9,38 @@
 	border-radius: var(--radius-sm);
 	flex: 1;
 	box-shadow: var(--shadow-md);
+	opacity: 0%;
+	transition: var(--transition-default);
+}
+
+.textBox_active {
+	opacity: 100%;
 }
 
 .header {
-	margin-bottom: var(--gap-xs);
+	margin-bottom: 12px;
+}
+
+.mtaLine {
+	display: flex;
+	gap: var(--gap-2xs);
+	margin-bottom: var(--gap-3xs);
+}
+
+.locationInfo {
+	margin-bottom: var(--gap-sm);
+}
+
+.mtaLine__symbol {
+	height: 16px;
+	width: 16px;
+}
+
+.directionsButton {
+	transition: var(--transition-default);
+	cursor: pointer;
+}
+
+.directionsButton:hover .directionsButton__chevron {
+	--stroke: var(--color-neutral-50);
 }

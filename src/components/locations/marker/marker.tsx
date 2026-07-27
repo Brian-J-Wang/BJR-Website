@@ -24,7 +24,7 @@ const MapMarker: React.FC<MapMarkerProps> = ({ name }) => {
 				/>
 				<path
 					d="M70 47.5C70 59.6503 60.1503 69.5 48 69.5C35.8497 69.5 26 59.6503 26 47.5C26 35.3497 35.8497 25.5 48 25.5C60.1503 25.5 70 35.3497 70 47.5Z"
-					fill="#222933"
+					className={styles.marker__innerEye}
 				/>
 			</svg>
 			<div className={styles.nameTag}>

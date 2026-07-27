@@ -17,7 +17,9 @@
 	--color-primary-800: #3f6792; /* bg-primary-800    */
 	--color-primary-900: #406e9d; /* bg-primary-900    */
 
+	--transition-fast: all 0.16s cubic-bezier(0.4, 0, 0.2, 1);
 	--transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
 	/* Spacing Scale (defines the base unit for --spacing-1, --spacing-2, etc.) */
 	--spacing-1: 4px;
@@ -57,7 +59,9 @@
 	--font-serif-fancy: "Headland One", serif;
 	--font-sans-serif: "Instrument Sans", sans-serif;
 
-	--gap-xs: 8px;
+	--gap-3xs: 4px;
+	--gap-2xs: 8px;
+	--gap-xs: 12px;
 	--gap-sm: 16px;
 	--gap-base: 24px;
 	--gap-lg: 32px;
@@ -83,6 +87,35 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 96px 0px;
+	}
+
+	button {
+		display: flex;
+		align-items: center;
+		border: 1px solid var(--color-primary);
+		padding: 8px 12px;
+		gap: var(--gap-2xs);
+		border-radius: var(--radius-xs);
+	}
+
+	button:hover {
+		background-color: var(--color-primary-50);
+		color: var(--color-neutral-100);
+	}
+
+	a[data-variant="button"] {
+		display: flex;
+		align-items: center;
+		border: 1px solid var(--color-primary);
+		padding: 8px 12px;
+		gap: var(--gap-2xs);
+		border-radius: var(--radius-xs);
+		width: fit-content;
+	}
+
+	a[data-variant="button"]:hover {
+		background-color: var(--color-primary-50);
+		color: var(--color-neutral-100);
 	}
 }
 

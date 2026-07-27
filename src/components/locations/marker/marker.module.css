@@ -12,7 +12,7 @@
 	cursor: pointer;
 }
 
-.marker:hover {
+.wrapper:hover .marker {
 	height: 32px;
 	width: 32px;
 }
@@ -35,23 +35,35 @@
 	color: var(--color-primary-700);
 	border-radius: 4px;
 	padding: 0px 8px;
-	transition: ease-in-out 1s all;
+	transition: var(--transition-default);
+	font-size: 16px;
+}
+
+.wrapper:hover .nameTag {
+	height: 28px;
+	padding: 0px 10px;
+	font-size: 18px;
 }
 
 .wrapper_active .nameTag {
 	height: 32px;
 	padding: 0px 12px;
+	font-size: 20px;
 }
 
 .marker__name {
 	font: inherit;
 	font-family: "Lora", serif;
-	font-size: 16px;
 	font-weight: 600;
 	white-space: nowrap;
-	transition: inherit;
+	transition: var(--transition-default);
 }
 
-.wrapper_active .marker__name {
-	font-size: 24px;
+.marker__innerEye {
+	fill: #406e9d;
+	transition: var(--transition-default);
+}
+
+.wrapper_active .marker__innerEye {
+	fill: #222933;
 }
