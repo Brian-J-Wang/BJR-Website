@@ -3,6 +3,7 @@
 	flex-direction: column;
 	padding: 72px 0px;
 	background-color: var(--color-neutral-50);
+	overflow: hidden;
 }
 
 .testimonialHeader {
@@ -21,6 +22,7 @@
 }
 
 .testimonialCarousel {
+	width: 100vw;
 	position: relative;
 }
 
