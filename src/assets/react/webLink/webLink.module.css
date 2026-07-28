@@ -1,0 +1,8 @@
+.webLink {
+	stroke: var(--color-primary);
+	stroke-width: 3;
+}
+
+.webLink[data-contrast="true"] {
+	stroke: var(--color-primary-900);
+}
