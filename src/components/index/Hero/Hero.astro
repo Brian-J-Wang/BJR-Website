@@ -1,6 +1,6 @@
 ---
 import styles from "./Hero.module.css";
-import Chevron from "@assets/chevron.svg"
+import { Chevron } from "@assets/react";
 
 const { class: className = "" } = Astro.props;
 ---
@@ -11,15 +11,12 @@ const { class: className = "" } = Astro.props;
 			<div class={styles.welcome}>
 				<span>Welcome to</span>
 				<strong>BJR OPHTHALMOLOGY</strong>
-				<p class={styles.statement}>
-					Expert Eye Care for a Clearer Future
-				</p>
+				<p class={styles.statement}>Expert Eye Care for a Clearer Future</p>
 			</div>
 			<button class={`${styles.appointmentButton} underlineOnHover`}>
 				<span>Book a Consultation</span>
-				<Chevron class={styles.appointmentChevron}/>
+				<Chevron direction="right" />
 			</button>
 		</div>
 	</section>
-	
 </div>

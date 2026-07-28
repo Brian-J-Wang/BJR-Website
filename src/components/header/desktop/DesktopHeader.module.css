@@ -1,164 +1,160 @@
 .desktopHeader {
-    position: fixed;
-    z-index: 999;
-    color: var(--color-neutral-50);
-    width: 100%;
+	position: fixed;
+	z-index: 999;
+	color: var(--color-neutral-50);
+	width: 100vw;
 }
 
 .desktopHeader__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    height: 80px;
-    padding: 0px max(calc((100% - var(--width-full)) / 2), 72px);
-    background-color: var(--color-primary-50);
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
-    transition: background-color ease-in 0.1s;
-    overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+	height: 80px;
+	padding: 0px max(calc((100% - var(--width-full)) / 2), 72px);
+	background-color: var(--color-primary-50);
+	backdrop-filter: blur(10px);
+	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
+	transition: background-color ease-in 0.1s;
+	overflow: hidden;
 }
 
 .desktopHeader__buffer {
-    height: 160px;
-    width: 100vw;
-    background-image: url("brooklynOffice.png");
+	height: 160px;
+	width: 100vw;
+	background-image: url("brooklynOffice.png");
 }
 
 .desktopHeader__logo {
-    height: 48px;
-    width: 48px;
-    transition: all 0.2s ease-in;
+	height: 48px;
+	width: 48px;
+	transition: all 0.2s ease-in;
 }
 
 .desktopHeader__logoTitle {
-    display: none;
+	display: none;
 }
 
 .desktopHeader__logoSubtitle {
-    display: none;
+	display: none;
 }
 
 .desktopHeader__drawer {
-    padding: 0px var(--auto-padding);
-    background-color: color-mix(
-        in srgb,
-        var(--color-neutral-50) 40%,
-        var(--color-neutral-50)
-    );
-    backdrop-filter: blur(20px);
-    box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.3);
-    color: var(--color-primary);
-    font-size: 0.875rem;
-    letter-spacing: 0.5px;
+	padding: 0px var(--auto-padding);
+	background-color: color-mix(in srgb, var(--color-neutral-50) 40%, var(--color-neutral-50));
+	backdrop-filter: blur(20px);
+	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.3);
+	color: var(--color-primary);
+	font-size: 0.875rem;
+	letter-spacing: 0.5px;
 }
 
 .desktopHeader__drawerInner {
-    interpolate-size: allow-keywords;
-    overflow-y: clip;
-    overflow-x: visible;
-    height: 0px;
-    transition: height 0.2s ease-out;
+	interpolate-size: allow-keywords;
+	overflow-y: clip;
+	overflow-x: visible;
+	height: 0px;
+	transition: height 0.2s ease-out;
 }
 
 .desktopHeader__drawerInner_active {
-    height: fit-content;
+	height: fit-content;
 }
 
 .desktopHeader__bottomBar {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--color-primary);
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--color-primary);
 }
 
 .desktopHeader__boldText {
-    font: 500 0.85rem var(--font-sans-serif);
-    opacity: 60%;
-    letter-spacing: 0;
+	font: 500 0.85rem var(--font-sans-serif);
+	opacity: 60%;
+	letter-spacing: 0;
 }
 
 .desktopHeader__phoneLink {
-    font: 400 0.85rem var(--font-sans-serif);
-    color: inherit;
-    text-decoration: none;
-    transition: opacity 0.2s;
+	font: 400 0.85rem var(--font-sans-serif);
+	color: inherit;
+	text-decoration: none;
+	transition: opacity 0.2s;
 }
 
 .desktopHeader__phoneLink:hover {
-    opacity: 0.7;
+	opacity: 0.7;
 }
 
 .desktopHeader__navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--color-primary);
-    overflow: hidden;
-    user-select: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--color-primary);
+	overflow: hidden;
+	user-select: none;
 }
 
 .desktopHeader__navList {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 24px;
-    transition: gap 0.2s ease-in;
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	gap: 24px;
+	transition: gap 0.2s ease-in;
 }
 
 .desktopHeader__langSelect {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 
 .desktopHeader__langLink {
-    color: inherit;
-    text-decoration: none;
-    transition: opacity 0.2s;
-    font-size: 0.85rem;
+	color: inherit;
+	text-decoration: none;
+	transition: opacity 0.2s;
+	font-size: 0.85rem;
 }
 
 .desktopHeader__langLink:hover {
-    opacity: 0.7;
+	opacity: 0.7;
 }
 
 .desktopHeader__langLink_active {
-    opacity: 1;
-    font-weight: 600;
+	opacity: 1;
+	font-weight: 600;
 }
 
 .desktopHeader__location {
-    display: flex;
-    align-items: center;
-    font-style: normal;
-    text-transform: uppercase;
-    gap: 4px;
+	display: flex;
+	align-items: center;
+	font-style: normal;
+	text-transform: uppercase;
+	gap: 4px;
 }
 
 @media (min-width: 980px) {
-    .desktopHeader__logoTitle {
-        font-size: var(--font-size-base);
-        display: block;
-    }
+	.desktopHeader__logoTitle {
+		font-size: var(--font-size-base);
+		display: block;
+	}
 
-    .desktopHeader__logoSubtitle {
-        font-size: var(--font-size-sm);
-        display: block;
-    }
+	.desktopHeader__logoSubtitle {
+		font-size: var(--font-size-sm);
+		display: block;
+	}
 }
 
 @media (min-width: 1064px) {
-    .desktopHeader {
-        display: block;
-    }
+	.desktopHeader {
+		display: block;
+	}
 
-    .desktopHeader__logoTitle {
-        font-size: var(--font-size-lg);
-    }
+	.desktopHeader__logoTitle {
+		font-size: var(--font-size-lg);
+	}
 
-    .desktopHeader__logoSubtitle {
-        font-size: var(--font-size-base);
-    }
+	.desktopHeader__logoSubtitle {
+		font-size: var(--font-size-base);
+	}
 }
