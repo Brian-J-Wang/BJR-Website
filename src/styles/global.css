@@ -48,12 +48,16 @@
 	--font-size-2xl: 2rem;
 	--font-size-3xl: 2.5rem;
 
-	--width-full: 1152px;
+	--max-content-width: 1152px;
 	--max-col-width: 368px;
 	--max-paragraph-width: 700px;
 
 	--min-padding: 72px;
-	--auto-padding: max(calc((100% - var(--width-full)) / 2), 72px);
+	--auto-padding: max(calc((100% - var(--max-content-width)) / 2), 72px);
+
+	--side-padding-large: 72px;
+	--side-padding-medium: 36px;
+	--side-padding-small: 24px;
 
 	--font-serif: "Lora", serif;
 	--font-serif-fancy: "Headland One", serif;
@@ -86,7 +90,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 96px 0px;
+		padding: 48px var(--side-padding-small);
 	}
 
 	button {
@@ -116,6 +120,18 @@
 	a[data-variant="button"]:hover {
 		background-color: var(--color-primary-50);
 		color: var(--color-neutral-100);
+	}
+
+	@media (min-width: 425px) {
+		section {
+			padding: 96px var(--side-padding-medium);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		section {
+			padding: 96px var(--side-padding-large);
+		}
 	}
 }
 

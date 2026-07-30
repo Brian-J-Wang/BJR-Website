@@ -1,42 +1,10 @@
 .section {
 	display: flex;
 	flex-direction: column;
-	gap: var(--gap-xl);
 }
 
-.clinic {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	max-width: var(--width-full);
-	flex: 1;
-}
-
-.drRoberts {
-}
-
-@media (min-width: 830px) {
+@media (min-width: 425px) {
 	.section {
-		padding: 72px 0px;
-	}
-
-	.clinic {
-	}
-
-	.drRoberts {
-	}
-}
-
-@media (min-width: 1268px) {
-	.section {
-		padding: 72px var(--min-padding);
-	}
-
-	.clinic {
-		width: var(--width-full);
-		flex-direction: row;
-	}
-
-	.drRoberts {
+		padding: 96px 48px;
 	}
 }

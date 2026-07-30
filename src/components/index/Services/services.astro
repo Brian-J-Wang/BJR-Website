@@ -1,7 +1,9 @@
 ---
+import shared from "@styles/shared.module.css";
 import styles from "./services.module.css";
 import { surgicalServices, eyeServices } from "./services";
 import Tabs from "./servicesCatalogue/ServicesCatalogue";
+import clsx from "clsx";
 
 const { class: className } = Astro.props;
 
@@ -11,18 +13,16 @@ const allServices = [
 ];
 ---
 
-<section class={`${className} ${styles.section}`}>
+<section class={`${styles.section}`}>
 	<div class={styles.content}>
 		<div class={styles.intro}>
 			<div class={styles.intro__headingWrapper}>
-				<span class={styles.intro__subtitle}>Excellence & Care</span>
 				<h2 class={styles.intro__title}>Our Services</h2>
 			</div>
-			<p data-variant="contrast" class="w-(--max-paragraph-width)">
-				We combine modern technology with personalized care to achieve
-				the best possible outcomes for a variety of eye conditions and
-				diseases. From consultation to recovery, we provide expert
-				clinical care tailored to your unique visual needs.
+			<p data-variant="contrast">
+				We combine modern technology with personalized care to achieve the best possible
+				outcomes for a variety of eye conditions and diseases. From consultation to
+				recovery, we provide expert clinical care tailored to your unique visual needs.
 			</p>
 		</div>
 

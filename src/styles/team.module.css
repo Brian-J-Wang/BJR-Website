@@ -43,7 +43,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 24px;
-	max-width: var(--width-full);
+	max-width: var(--max-content-width);
 	margin: 0px auto 192px auto;
 }
 

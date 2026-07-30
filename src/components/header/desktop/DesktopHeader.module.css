@@ -2,7 +2,7 @@
 	position: fixed;
 	z-index: 999;
 	color: var(--color-neutral-50);
-	width: 100vw;
+	width: 100%;
 }
 
 .desktopHeader__content {
@@ -11,7 +11,7 @@
 	justify-content: space-between;
 	box-sizing: border-box;
 	height: 80px;
-	padding: 0px max(calc((100% - var(--width-full)) / 2), 72px);
+	padding: 0px max(calc((100% - var(--max-content-width)) / 2), 72px);
 	background-color: var(--color-primary-50);
 	backdrop-filter: blur(10px);
 	box-shadow: 0px 2px 8px rgba(29, 29, 29, 0.7);
@@ -21,7 +21,7 @@
 
 .desktopHeader__buffer {
 	height: 160px;
-	width: 100vw;
+	width: 100%;
 	background-image: url("brooklynOffice.png");
 }
 

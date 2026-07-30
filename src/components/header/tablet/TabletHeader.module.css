@@ -4,7 +4,7 @@
 	justify-content: center;
 	box-sizing: border-box;
 	height: 80px;
-	width: 100vw;
+	width: 100%;
 	padding: 0px 80px;
 	color: var(--color-primary);
 	background-color: rgba(45, 96, 148, 0.75);

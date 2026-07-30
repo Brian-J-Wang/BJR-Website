@@ -7,25 +7,23 @@ const { className } = Astro.props;
 ---
 
 <section class={`${className} ${styles.section}`}>
-	<div class={styles.clinic}>
+	<div class={clinic.container}>
 		<div class={clinic.content}>
 			<div class={clinic.heading}>
 				<h2 class={clinic.headingTitle}>About Us</h2>
 			</div>
 			<div class={clinic.textContainer}>
 				<p>
-					Established in 2009, our ophthalmology clinic has proudly
-					served patients across the five boroughs. We are dedicated
-					to delivering high-quality, personalized eye care with a
-					deep understanding of the community we serve.
+					Established in 2009, our ophthalmology clinic has proudly served patients across
+					the five boroughs. We are dedicated to delivering high-quality, personalized eye
+					care with a deep understanding of the community we serve.
 				</p>
 				<p>
-					Our team is fluent in Chinese and English, allowing us to
-					communicate clearly and comfortably with a diverse patient
-					base. While we primarily serve the Asian community, we
-					welcome patients from all backgrounds and are committed to
-					providing attentive, culturally sensitive care to everyone
-					who walks through our doors.
+					Our team is fluent in Chinese and English, allowing us to communicate clearly
+					and comfortably with a diverse patient base. While we primarily serve the Asian
+					community, we welcome patients from all backgrounds and are committed to
+					providing attentive, culturally sensitive care to everyone who walks through our
+					doors.
 				</p>
 			</div>
 		</div>
@@ -44,43 +42,34 @@ const { className } = Astro.props;
 			</div>
 		</div>
 	</div>
-	<div class={styles.drRoberts}>
-		<div class={drRobert.doctorBio__card}>
-			<div class={drRobert.doctorBio__portraitWrapper}>
+	<div class={drRobert.container}>
+		<div class={drRobert.portraitFrame}>
+			<div class={drRobert.portraitWrapper}>
 				<img
 					src="/profileBJR.png"
 					alt="Dr. BingJing Z. Roberts, Board-Certified Ophthalmologist"
-					class={drRobert.doctorBio__portraitImage}
+					class={drRobert.portrait}
 				/>
 			</div>
-			<div class={drRobert.doctorBio__content}>
-				<div class={drRobert.doctorBio__header}>
-					<h2 class={drRobert.doctorBio__name}>
-						BingJing Z. Roberts, M.D.
-					</h2>
-					<span class={drRobert.doctorBio__title}>
-						Board-Certified Ophthalmologist
-					</span>
-				</div>
-				<div class={drRobert.doctorBio__body}>
-					<p>
-						Dr. BingJing Z. Roberts is a board-certified
-						ophthalmologist with over 20 years of clinical
-						experience. Dr. Roberts received her medical degree from
-						the University of Maryland School of Medicine and
-						completed her residency in ophthalmology at Montefiore
-						Medical Center. She specializes in treating complex eye
-						conditions such as cataracts, glaucoma, and retinal
-						diseases, and performs advanced surgeries including
-						laser retina surgery and lens replacement.
-					</p>
-					<p>
-						She also serves on the board of directors of the
-						Coalition of Asian-American Independent Practice
-						Association (CAIPA).
-					</p>
-				</div>
+		</div>
+
+		<div class={drRobert.biography}>
+			<div class={drRobert.header}>
+				<h2 class={drRobert.doctorName}>BingJing Z. Roberts, M.D.</h2>
+				<span class={drRobert.doctorTitle}> Board-Certified Ophthalmologist </span>
 			</div>
+			<p>
+				Dr. BingJing Z. Roberts is a board-certified ophthalmologist with over 20 years of
+				clinical experience. She received her medical degree from the University of Maryland
+				School of Medicine and completed her residency in ophthalmology at Montefiore
+				Medical Center. She specializes in treating complex eye conditions such as
+				cataracts, glaucoma, and retinal diseases, and performs advanced surgeries including
+				laser retina surgery and lens replacement.
+			</p>
+			<p>
+				She also serves on the board of directors of the Coalition of Asian-American
+				Independent Practice Association (CAIPA).
+			</p>
 		</div>
 	</div>
 </section>

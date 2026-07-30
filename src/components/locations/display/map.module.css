@@ -1,7 +1,7 @@
 .mapContainer {
 	position: relative;
-	width: var(--width-full);
-	height: var(--width-full);
+	width: var(--max-content-width);
+	height: var(--max-content-width);
 	padding: 12px;
 	border-radius: var(--radius-sm);
 	background-color: white;

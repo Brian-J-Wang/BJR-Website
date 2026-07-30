@@ -1,47 +1,51 @@
-.doctorBio__card {
-	display: flex;
-	align-items: center;
-	text-align: center;
-	margin: 0 auto;
-}
-
-.doctorBio__portraitWrapper {
-	border-radius: 50%;
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-	border: 1px solid white;
-	padding: 12px;
-	margin-bottom: 24px;
-}
-
-.doctorBio__portraitImage {
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	object-fit: cover;
-	object-position: center top;
-	display: block;
-}
-
-.doctorBio__content {
-	padding: 0;
-	box-shadow: none;
-}
-
-.doctorBio__header {
+.container {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
-.doctorBio__name {
+.portraitFrame {
+	width: 256px;
+	height: 256px;
+	padding: 12px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: white;
+	margin-bottom: var(--gap-base);
+	box-shadow: var(--shadow-md);
+	box-sizing: border-box;
+}
+
+.portraitWrapper {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.portrait {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-bottom: var(--gap-sm);
+}
+
+.doctorName {
 	font: normal var(--font-size-xl)/1.2 var(--font-serif);
 	color: var(--color-primary-900);
 	letter-spacing: -1px;
 	margin: 0;
 	margin-bottom: 4px;
-	text-align: center;
 }
 
-.doctorBio__title {
+.doctorTitle {
 	font: 600 var(--font-size-sm)/1.5 var(--font-sans-serif);
 	color: var(--color-primary-100);
 	opacity: 80%;
@@ -55,12 +59,41 @@
 	flex-direction: column;
 	justify-content: center;
 	text-align: left;
-	gap: 32px;
 }
 
 @media (min-width: 830px) {
+	.container {
+		max-width: 700px;
+		flex-direction: row;
+		align-items: start;
+		gap: 32px;
+	}
+
+	.portraitFrame {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1 / 1;
+		flex: 1 0;
+		box-sizing: border-box;
+	}
+
+	.biography {
+		flex: 2 0;
+	}
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: var(--gap-sm);
+		text-align: start;
+	}
+
+	.doctorName {
+		font-size: var(--font-size-2xl);
+	}
+
 	.doctorBio__card {
-		background-color: white;
+		flex-direction: column;
 		border-radius: var(--radius-md);
 		max-width: 900px;
 	}
@@ -79,15 +112,53 @@
 }
 
 @media (min-width: 1268px) {
-	.doctorBio {
-		max-height: 448px;
+	.container {
+		display: flex;
+		gap: 24px;
+		width: var(--max-content-width);
+		max-width: var(--max-content-width);
+	}
+
+	.portraitFrame {
+		max-width: var(--max-col-width);
+		height: auto;
+		border-radius: var(--radius-sm);
+		padding: 12px;
+		box-sizing: border-box;
+	}
+
+	.biography {
+		max-width: var(--max-paragraph-width);
+		margin: 0px auto;
+	}
+
+	.header {
+		margin-bottom: var(--gap-sm);
+	}
+
+	.doctorName {
+		text-align: left;
+		font-weight: 500;
+	}
+
+	.doctorTitle {
+		text-align: left;
+	}
+
+	.portraitFrame {
+		width: var(--max-col-width);
+		margin: 0px;
+	}
+
+	.portrait {
+		height: 100%;
 	}
 
 	.doctorBio__card {
 		display: flex;
 		flex-direction: row;
 		gap: 24px;
-		max-width: var(--width-full);
+		max-width: var(--max-content-width);
 		padding: 0;
 		background: transparent;
 		box-shadow: none;
@@ -96,15 +167,13 @@
 	.doctorBio__portraitWrapper {
 		flex: 1 0 368px;
 		height: 100%;
-		box-shadow: none;
 		padding: 0;
 		margin: 0;
 		position: relative;
 		border-radius: var(--radius-sm);
 		overflow: hidden;
 		background-color: white;
-		box-shadow: 0px 0px 8px
-			color-mix(in srgb, var(--color-primary) 10%, transparent);
+		box-shadow: 0px 0px 8px color-mix(in srgb, var(--color-primary) 10%, transparent);
 	}
 
 	.doctorBio__portraitWrapper::after {
@@ -155,8 +224,6 @@
 	}
 
 	.doctorBio__body {
-		gap: 12px;
-		width: 600px;
 		margin: 0px auto;
 	}
 }

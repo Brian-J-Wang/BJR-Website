@@ -1,7 +1,8 @@
+
 .embla__viewport {
 	overflow: hidden;
 	--slide-spacing: 24px;
-	max-width: 100vw;
+	max-width: 100%;
 }
 
 .embla__container {
@@ -81,6 +82,6 @@
 
 @media (min-width: 992px) {
 	.embla__slide {
-		flex: 0 0 min(calc(100vw / 3), calc(var(--max-col-width) * 1.3));
+		flex: 0 0 min(calc(100% / 3), calc(var(--max-col-width) * 1.3));
 	}
 }

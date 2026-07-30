@@ -158,11 +158,23 @@
 	}
 
 	.welcome {
-		font-size: 20px;
+		margin: 0px 0px 24px 0px;
+		gap: 8px;
+	}
+
+	.welcome span {
+		font: normal 1rem var(--font-serif);
+		letter-spacing: 4px;
+	}
+
+	.welcome strong {
+		font: normal 3.5rem var(--font-sans-serif);
 	}
 
 	.statement {
-		font-size: 48px;
+		font-size: 16px;
+		letter-spacing: 1px;
+		margin: 0px;
 	}
 
 	.subStatement {
