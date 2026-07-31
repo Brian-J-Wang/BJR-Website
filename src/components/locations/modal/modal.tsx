@@ -1,29 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { LocationData } from "../map/map.types";
 import styles from "./modal.module.css";
 import shared from "@styles/shared.module.css";
 import clsx from "clsx";
-import pointer from "./pointer.svg?url";
 import { Chevron } from "@assets/react";
 
 type MapModalProps = {
-	locationData: LocationData | null;
+	location: LocationData | null;
 };
 
-const MapModal: React.FC<MapModalProps> = ({ locationData }) => {
-	const [location, setLocation] = useState<LocationData | null>(locationData);
-
-	useEffect(() => {
-		if (locationData != null) {
-			setLocation(locationData);
-		}
-	}, [locationData]);
-
+const MapModal: React.FC<MapModalProps> = ({ location }) => {
 	return (
 		<div
 			itemScope
 			itemType="https://schema.org/MedicalClinic"
-			className={clsx(styles.textBox, locationData != null && styles.textBox_active)}
+			className={clsx(styles.textBox, location != null && styles.textBox_active)}
 		>
 			{location && (
 				<>
@@ -62,7 +53,7 @@ const MapModal: React.FC<MapModalProps> = ({ locationData }) => {
 					<a
 						href={location.googleMapsLink}
 						className={styles.directionsButton}
-						data-variant="button"
+						data-variant="button-low-vis"
 					>
 						<span>Get Directions</span>
 						<Chevron

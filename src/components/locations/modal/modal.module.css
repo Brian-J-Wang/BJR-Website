@@ -5,10 +5,7 @@
 
 .textBox {
 	background-color: white;
-	padding: 16px;
-	border-radius: var(--radius-sm);
 	flex: 1;
-	box-shadow: var(--shadow-md);
 	opacity: 0%;
 	transition: var(--transition-default);
 }
@@ -18,13 +15,13 @@
 }
 
 .header {
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 }
 
 .mtaLine {
 	display: flex;
 	gap: var(--gap-2xs);
-	margin-bottom: var(--gap-3xs);
+	margin-bottom: var(--gap-2xs);
 }
 
 .locationInfo {

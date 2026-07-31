@@ -1,17 +1,16 @@
-import styles from "./map.module.css";
-import "./maplibre.css";
+import styles from "./desktopMap.module.css";
 
 import maplibregl, { type LngLatLike, type StyleSpecification } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
-import mapStyle from "./styles.json";
-import Modal from "../modal/modal";
+import mapStyle from "../styles.json";
 import { createRoot } from "react-dom/client";
-import { brooklynLocation, manhattanLocation } from "./officeLocations";
-import MapMarker from "../marker/marker";
-import markerStyles from "../marker/marker.module.css";
+import { brooklynLocation, manhattanLocation } from "../officeLocations";
+import MapMarker from "../../marker/marker";
+import markerStyles from "../../marker/marker.module.css";
 import shared from "@styles/shared.module.css";
 import clsx from "clsx";
+import MapModal from "@components/locations/modal/modal";
 
 const defaultCoords: LngLatLike = [-74, 40.675];
 const manhattanCoords: LngLatLike = [-73.99777155378611, 40.71717392006884];
@@ -40,10 +39,6 @@ const Map = () => {
 			keyboard: false,
 		});
 
-		map.current.setPadding({
-			right: 392,
-		});
-
 		// Manhattan Office
 		const manhattanMarkerContainer = document.createElement("div");
 		createRoot(manhattanMarkerContainer).render(<MapMarker name="Manhattan Office" />);
@@ -52,18 +47,6 @@ const Map = () => {
 		})
 			.setLngLat(manhattanCoords)
 			.addTo(map.current);
-
-		manhattanMarker.on("click", () => {
-			map.current?.flyTo({
-				center: manhattanCoords,
-				zoom: 14,
-				duration: 1000,
-			});
-
-			manhattanMarker.getElement().classList.add(markerStyles.wrapper_active);
-
-			setActiveLocation("manhattan");
-		});
 
 		// Brooklyn Office
 		const brooklyMarkerContainer = document.createElement("div");
@@ -74,42 +57,10 @@ const Map = () => {
 			.setLngLat(brooklynCoords)
 			.addTo(map.current);
 
-		brooklynMarker.on("click", () => {
-			map.current?.flyTo({
-				center: brooklynCoords,
-				zoom: 14,
-				duration: 1000,
-			});
-
-			brooklynMarker.getElement().classList.add(markerStyles.wrapper_active);
-
-			setActiveLocation("brooklyn");
-		});
-
 		map.current.on("load", () => {
 			map.current?.flyTo({
-				zoom: 12.15,
+				zoom: 11.9,
 				duration: 1000,
-			});
-		});
-
-		map.current.on("click", (evt) => {
-			//@ts-ignore
-			if (evt.originalEvent.target?.closest(".maplibregl-marker")) return;
-
-			setActiveLocation(null);
-			const markers = document.querySelectorAll(".maplibregl-marker");
-			markers.forEach((marker) => {
-				marker.classList.remove(markerStyles.wrapper_active);
-			});
-
-			map.current?.flyTo({
-				center: defaultCoords,
-				zoom: 12.15,
-				duration: 1000,
-				padding: {
-					right: 392,
-				},
 			});
 		});
 
@@ -130,8 +81,8 @@ const Map = () => {
 	return (
 		<div className={styles.mapContainer}>
 			<div ref={mapContainer} id="map" className={styles.map}></div>
-			<div className={styles.modalContainer}>
-				<div className={styles.modal}>
+			<div className={styles.sideBar}>
+				<div className={styles.sideBar__intro}>
 					<h2 className={clsx(styles.modalHeader, shared.fontSerif__h2)}>
 						Our Locations
 					</h2>
@@ -139,12 +90,15 @@ const Map = () => {
 						Our offices in Manhattan and Brooklyn are conveniently located with easy
 						access to public transportation.
 					</p>
-					<p className="m-0">
-						Whichever location you visit, you can expect the same exceptional quality
-						of care.
+					<p>
+						Whichever location you visit, you can expect the same exceptional quality of
+						care.
 					</p>
 				</div>
-				<Modal locationData={getLocation()} />
+				<div className={styles.sideBar__locationWrappers}>
+					<MapModal location={brooklynLocation} />
+					<MapModal location={manhattanLocation} />
+				</div>
 			</div>
 		</div>
 	);

@@ -102,6 +102,16 @@
 		border-radius: var(--radius-xs);
 	}
 
+	button[data-variant="low-vis"] {
+		opacity: 0.3;
+	}
+
+	button[data-variant="low-vis"]:hover {
+		opacity: 1;
+		background-color: var(--color-primary-50);
+		color: var(--color-neutral-100);
+	}
+
 	button:hover {
 		background-color: var(--color-primary-50);
 		color: var(--color-neutral-100);
@@ -118,6 +128,23 @@
 	}
 
 	a[data-variant="button"]:hover {
+		background-color: var(--color-primary-50);
+		color: var(--color-neutral-100);
+	}
+
+	a[data-variant="button-low-vis"] {
+		opacity: 0.6;
+		display: flex;
+		align-items: center;
+		border: 1px solid var(--color-primary);
+		padding: 8px 12px;
+		gap: var(--gap-2xs);
+		border-radius: var(--radius-xs);
+		width: fit-content;
+	}
+
+	a[data-variant="button-low-vis"]:hover {
+		opacity: 1;
 		background-color: var(--color-primary-50);
 		color: var(--color-neutral-100);
 	}
