@@ -79,8 +79,10 @@ const Map = () => {
 	};
 
 	return (
-		<div className={styles.mapContainer}>
-			<div ref={mapContainer} id="map" className={styles.map}></div>
+		<div className={styles.mapWrapper}>
+			<div className={styles.mapFrame}>
+				<div ref={mapContainer} id="map" className={styles.map}></div>
+			</div>
 			<div className={styles.sideBar}>
 				<div className={styles.sideBar__intro}>
 					<h2 className={clsx(styles.modalHeader, shared.fontSerif__h2)}>
@@ -95,9 +97,10 @@ const Map = () => {
 						care.
 					</p>
 				</div>
-				<div className={styles.sideBar__locationWrappers}>
-					<MapModal location={brooklynLocation} />
-					<MapModal location={manhattanLocation} />
+				<div className={styles.sideBar__locationWrapper}>
+					<MapModal className={styles.location} location={brooklynLocation} />
+					<hr className={styles.sideBar__divider} />
+					<MapModal className={styles.location} location={manhattanLocation} />
 				</div>
 			</div>
 		</div>

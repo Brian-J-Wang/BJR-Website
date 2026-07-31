@@ -1,6 +1,13 @@
-.mapContainer {
+.mapWrapper {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
 	max-width: var(--max-content-width);
+}
+
+.mapFrame {
+	display: none;
 	width: 100%;
 	height: calc(100vh - 200px);
 	padding: 12px;
@@ -10,7 +17,6 @@
 }
 
 .map {
-	display: none;
 	width: 100%;
 	height: 100%;
 }
@@ -36,13 +42,68 @@
 .modal__text {
 }
 
+.sideBar__intro {
+	text-align: center;
+	max-width: var(--max-paragraph-width);
+	margin-bottom: var(--gap-lg);
+}
+
 .modalHeader {
 	margin-bottom: 8px;
 	color: var(--color-primary-700);
 }
 
+.sideBar__locationWrapper {
+	gap: var(--gap-lg);
+}
+
+.sideBar__divider {
+	width: 1px;
+	height: auto;
+	align-self: stretch;
+	background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+	border: none;
+	margin: 0;
+}
+
+.sideBar__locationWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-lg);
+}
+
+.location {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+@media (min-width: 768px) {
+	.sideBar__locationWrapper {
+		flex-direction: row;
+		gap: var(--gap-lg);
+	}
+
+	.sideBar__locationWrapper > :not(.sideBar__divider) {
+		flex: 1;
+	}
+
+	.sideBar__divider {
+		width: 1px;
+		height: auto;
+		align-self: stretch;
+		background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+		border: none;
+		margin: 0;
+	}
+}
+
 @media (min-width: 1024px) {
-	.map {
+	.mapWrapper {
+		flex-direction: row;
+	}
+
+	.mapFrame {
 		display: block;
 		flex: 2 1 calc(var(--max-col-width) * 2);
 	}
@@ -56,9 +117,21 @@
 		margin-bottom: var(--gap-lg);
 	}
 
-	.sideBar__locationWrappers {
+	.sideBar__locationWrapper {
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap-lg);
+	}
+
+	.sideBar__divider {
+		width: 100%;
+		height: 1px;
+		background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+		border: none;
+		margin: 0;
+	}
+
+	.location {
+		align-items: start;
 	}
 }

@@ -6,15 +6,16 @@ import clsx from "clsx";
 import { Chevron } from "@assets/react";
 
 type MapModalProps = {
+	className?: string;
 	location: LocationData | null;
 };
 
-const MapModal: React.FC<MapModalProps> = ({ location }) => {
+const MapModal: React.FC<MapModalProps> = ({ className = "", location }) => {
 	return (
 		<div
 			itemScope
 			itemType="https://schema.org/MedicalClinic"
-			className={clsx(styles.textBox, location != null && styles.textBox_active)}
+			className={clsx(className, styles.textBox, location != null && styles.textBox_active)}
 		>
 			{location && (
 				<>
