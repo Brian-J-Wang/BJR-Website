@@ -13,6 +13,18 @@
 	}
 }
 
+.accordion {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	width: 100%;
+}
+
+.accordion__item {
+	display: flex;
+	flex-direction: column;
+}
+
 .tabs__sidebar {
 	display: flex;
 	flex-direction: column;
