@@ -1,8 +1,9 @@
-
 .embla__viewport {
 	overflow: hidden;
 	--slide-spacing: 24px;
-	max-width: 100%;
+	width: 100vw;
+	position: relative;
+	z-index: 2;
 }
 
 .embla__container {
@@ -16,7 +17,7 @@
 	display: flex;
 	box-sizing: border-box;
 	min-width: 0;
-	flex: 0 calc(var(--max-col-width) * 1.3);
+	flex: 0 0 min(calc(var(--max-col-width) * 1.3), calc(100vw));
 	padding-left: var(--slide-spacing);
 }
 
@@ -80,7 +81,7 @@
 	border-radius: 3px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
 	.embla__slide {
 		flex: 0 0 min(calc(100% / 3), calc(var(--max-col-width) * 1.3));
 	}

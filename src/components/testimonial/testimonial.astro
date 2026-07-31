@@ -1,14 +1,19 @@
 ---
+import sharedStyles from "@styles/shared.module.css";
 import testimonials from "./testimonial.module.css";
 import TestimonialCarousel from "./testimonialCarousel/TestimonialsCarousel";
+import clsx from "clsx";
 ---
 
 <section class={testimonials.testimonial}>
 	<div class={testimonials.testimonialHeader}>
-		<h2 class={testimonials.testimonialHeading}>Patient Testimonials</h2>
-		<small class={testimonials.testimonialSubheading}>
-			Real results from satisfied patients
-		</small>
+		<h2 class={clsx(testimonials.testimonialHeading, sharedStyles.fontSerif__h2)}>
+			Patient Testimonials
+		</h2>
+		<p>
+			Hear from our patients about their experiences receiving personalized care, advanced
+			treatments, and life-changing results at our clinics.
+		</p>
 	</div>
 	<TestimonialCarousel client:only="react" />
 </section>

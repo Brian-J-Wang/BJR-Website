@@ -1,9 +1,7 @@
 .testimonial {
 	display: flex;
 	flex-direction: column;
-	padding: 72px 0px;
 	background-color: var(--color-neutral-50);
-	overflow: hidden;
 }
 
 .testimonialHeader {
@@ -11,9 +9,7 @@
 }
 
 .testimonialHeading {
-	font-size: 16px;
-	margin: 0px;
-	color: rgb(var(--color-primary));
+	margin-bottom: var(--gap-sm);
 }
 
 .testimonialSubheading {
