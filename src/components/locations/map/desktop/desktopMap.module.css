@@ -39,9 +39,6 @@
 	border-radius: var(--radius-sm);
 }
 
-.modal__text {
-}
-
 .sideBar__intro {
 	text-align: center;
 	max-width: var(--max-paragraph-width);
@@ -101,6 +98,7 @@
 @media (min-width: 1024px) {
 	.mapWrapper {
 		flex-direction: row;
+		align-items: start;
 	}
 
 	.mapFrame {
@@ -115,6 +113,7 @@
 
 	.sideBar__intro {
 		margin-bottom: var(--gap-lg);
+		text-align: start;
 	}
 
 	.sideBar__locationWrapper {

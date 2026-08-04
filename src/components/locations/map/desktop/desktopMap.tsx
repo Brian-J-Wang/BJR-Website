@@ -70,14 +70,6 @@ const Map = () => {
 		};
 	}, []);
 
-	const getLocation = () => {
-		if (activeLocation == null) {
-			return null;
-		} else {
-			return activeLocation === "brooklyn" ? brooklynLocation : manhattanLocation;
-		}
-	};
-
 	return (
 		<div className={styles.mapWrapper}>
 			<div className={styles.mapFrame}>
