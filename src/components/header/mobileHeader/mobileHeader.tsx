@@ -1,13 +1,15 @@
 import Logo from "@components/logo/logo";
 import styles from "./mobileHeader.module.css";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import HamburgerMenu from "@assets/react/hamburgerMenu/hamburger";
 import { navLinks, type NavLink } from "../content/headerContent";
 import clsx from "clsx";
 
 const MobileHeader = () => {
+	const [navLink, setNavLink] = useState<ReactNode | null>(null);
 	const [drawerActive, setDrawerActive] = useState<boolean>(false);
 	const contentRef = useRef<HTMLDivElement>(null);
+	const headerRef = useRef<HTMLDivElement>(null);
 
 	useLayoutEffect(() => {
 		const visibilityThresholdElement = document.querySelector("#thresholdElement");
@@ -48,19 +50,43 @@ const MobileHeader = () => {
 		};
 	}, []);
 
-	const openDrawer = () => {
-		setDrawerActive(true);
+	useEffect(() => {
+		if (navLink == null) {
+			return;
+		}
+
+		const onMouseDown = (evt: MouseEvent) => {
+			if (headerRef.current && !headerRef.current.contains(evt.target as Node)) {
+				setNavLink(null);
+			}
+		};
+
+		const onScroll = () => {
+			setNavLink(null);
+		};
+
+		window.addEventListener("mousedown", onMouseDown);
+		window.addEventListener("scroll", onScroll);
+		return () => {
+			window.removeEventListener("mousedown", onMouseDown);
+			window.removeEventListener("scroll", onScroll);
+		};
+	}, [navLink]);
+
+	const toggleDrawer = () => {
+		setDrawerActive(!drawerActive);
 	};
 
 	const openLink = (link: NavLink) => () => {
 		if (link.type == "simple") {
 			window.location.href = link.href;
 			setDrawerActive(false);
+		} else if (link.type == "dropdown") {
 		}
 	};
 
 	return (
-		<header className={styles.header} role="banner">
+		<header className={styles.header} role="banner" ref={headerRef}>
 			<div className={styles.banner} ref={contentRef}>
 				<Logo
 					containerStyle={styles.container}
@@ -68,16 +94,20 @@ const MobileHeader = () => {
 					titleStyle={styles.logoTitle}
 					subtitleStyle={styles.logoSubtitle}
 				/>
-				<HamburgerMenu onClick={openDrawer} />
+				<HamburgerMenu onClick={toggleDrawer} />
 			</div>
 			<div className={clsx(styles.ribbon, drawerActive && styles.ribbon_active)}>
-				<ul className={styles.linkList}>
-					{navLinks.map((link) => (
-						<li className={styles.link} onClick={openLink(link)}>
-							<a className={styles.anchor}>{link.displayName}</a>
-						</li>
-					))}
-				</ul>
+				{navLink ? (
+					navLink
+				) : (
+					<ul className={styles.linkList}>
+						{navLinks.map((link) => (
+							<li className={styles.link} onClick={openLink(link)}>
+								<a className={styles.anchor}>{link.displayName}</a>
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 		</header>
 	);
