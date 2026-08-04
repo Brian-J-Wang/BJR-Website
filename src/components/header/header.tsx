@@ -1,15 +1,18 @@
-import { useMediaQuery } from "react-responsive";
+import styles from "./header.module.css";
 import MobileHeader from "./mobileHeader/mobileHeader";
 import DesktopHeader from "./desktop/DesktopHeader";
 
 const Header = () => {
-	const isMobile = useMediaQuery({ maxWidth: 768 });
-
-	if (isMobile) {
-		return <MobileHeader />;
-	} else {
-		return <DesktopHeader />;
-	}
+	return (
+		<>
+			<div className={styles.mobile}>
+				<MobileHeader />
+			</div>
+			<div className={styles.desktop}>
+				<DesktopHeader />
+			</div>
+		</>
+	);
 };
 
 export default Header;

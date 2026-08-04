@@ -3,6 +3,7 @@ import styles from "./mobileHeader.module.css";
 import { useLayoutEffect, useRef, useState } from "react";
 import HamburgerMenu from "@assets/react/hamburgerMenu/hamburger";
 import { navLinks, type NavLink } from "../content/headerContent";
+import clsx from "clsx";
 
 const MobileHeader = () => {
 	const [drawerActive, setDrawerActive] = useState<boolean>(false);
@@ -47,9 +48,16 @@ const MobileHeader = () => {
 		};
 	}, []);
 
-	const openDrawer = () => {};
+	const openDrawer = () => {
+		setDrawerActive(true);
+	};
 
-	const openLink = (link: NavLink) => () => {};
+	const openLink = (link: NavLink) => () => {
+		if (link.type == "simple") {
+			window.location.href = link.href;
+			setDrawerActive(false);
+		}
+	};
 
 	return (
 		<header className={styles.header} role="banner">
@@ -62,7 +70,7 @@ const MobileHeader = () => {
 				/>
 				<HamburgerMenu onClick={openDrawer} />
 			</div>
-			<div className={styles.ribbon}>
+			<div className={clsx(styles.ribbon, drawerActive && styles.ribbon_active)}>
 				<ul className={styles.linkList}>
 					{navLinks.map((link) => (
 						<li className={styles.link} onClick={openLink(link)}>
