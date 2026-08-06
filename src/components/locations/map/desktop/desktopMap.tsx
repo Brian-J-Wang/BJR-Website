@@ -30,7 +30,7 @@ const Map = () => {
 			container: mapContainer.current,
 			style: mapStyle as StyleSpecification,
 			center: defaultCoords,
-			zoom: 11.85,
+			zoom: 11.25,
 			maxZoom: 24,
 			scrollZoom: false,
 			dragPan: false,
@@ -59,7 +59,7 @@ const Map = () => {
 
 		map.current.on("load", () => {
 			map.current?.flyTo({
-				zoom: 11.9,
+				zoom: 11.5,
 				duration: 1000,
 			});
 		});

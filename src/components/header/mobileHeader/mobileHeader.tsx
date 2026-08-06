@@ -102,7 +102,7 @@ const MobileHeader = () => {
 				) : (
 					<ul className={styles.linkList}>
 						{navLinks.map((link) => (
-							<li className={styles.link} onClick={openLink(link)}>
+							<li key={link.href} className={styles.link} onClick={openLink(link)}>
 								<a className={styles.anchor}>{link.displayName}</a>
 							</li>
 						))}
