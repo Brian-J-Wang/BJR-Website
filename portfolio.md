@@ -1,0 +1,13 @@
+---
+name: BingJing Roberts Ophthalmology
+project_type: "work"
+description: > 
+  Medical website for BingJing Roberts M.D. It shows her clinic's location and the services that is offered
+  by her clinic. Users can also schedule an appointment using this website.
+tech_stack:
+ - Astro
+ - React
+ - TailwindCSS
+ - Docker
+---
+A medical website created for an ophthalmology clinic in the New York City area.
